@@ -2,5 +2,5 @@
   desc: An empty world (no obstacles at all)
   code: 
       - vehicles.worlds.EmptyFixed
-      - bounds: [[-4,4],[-4,4],[-10,10]]
+      - bounds: [[-1.5,1.5],[-1.5,1.5],[-10,10]]
         start_pose: [0,0,90]      

@@ -4,10 +4,27 @@
   - bootstrapping_olympics.programs.manager.experiments_utils.experiment_explore_learn_compmake
   - robots: [r_brai_blind]
     agents: [expswitch_t1]
-    episode_len: 4
+    episode_len: 5
     explorer: canonical
     num_ep_expl: 10
     num_ep_expl_v: 10
+    expl_videos: 
+      - id: trace
+        model:  boot_log2movie_cairo_avi
+        model_params: 
+          'plotter.zoom': 0
+          'plotter.display_sidebar': False
+          'plotter.width': 256
+          'plotter.height': 256
+      - id: tracesb
+        model:  boot_log2movie_cairo_avi
+        model_params: 
+          'plotter.zoom': 0
+          'plotter.display_sidebar': True
+          'plotter.width': 256
+          'plotter.height': 256
+          'plotter.sidebar_width': 128
+
     # No servo
     num_ep_serv: 0
     num_ep_serv_v: 0
