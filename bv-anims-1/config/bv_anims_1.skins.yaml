@@ -1,0 +1,5 @@
+- id: brai
+  desc: "Simple braitenberg vehicle"
+  code:
+  - vehicles_cairo.skins.brai
+  - {}

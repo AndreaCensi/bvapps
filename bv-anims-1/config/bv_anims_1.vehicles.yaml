@@ -1,0 +1,8 @@
+- id: v_brai_blind
+  desc: ""
+  id_dynamics: d_SE2_dd_v
+  sensors:
+    - id_sensor: random_5
+  radius: 0.5
+  extra:
+    skin: brai_classic

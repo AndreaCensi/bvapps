@@ -1,0 +1,7 @@
+- id: SE2_rb_v
+  desc: 'Planar robot on SE2'
+  code: 
+  - vehicles_dynamics.SE2Dynamics
+  - max_linear_velocity: [1,1]
+    max_angular_velocity: 1
+    #noise_drift: [0.05, 0.05, 0.05]

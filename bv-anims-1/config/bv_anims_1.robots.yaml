@@ -1,0 +1,8 @@
+
+- id: r_brai_blind
+  desc: ""
+  code:
+     - vehicles_boot.BOVehicleSimulation
+     - dt: 0.05
+       id_vehicle: v_brai_blind
+       id_world: empty_fixed_5

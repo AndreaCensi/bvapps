@@ -1,0 +1,10 @@
+- id: s_fs_A
+  desc: ""
+  code: 
+    - vehicles.sensors.FieldSamplerRandCircle
+    - radius: 0.45
+      n: 144
+      normalize: True
+      noise: 
+        - vehicles.sensors.AdditiveGaussian
+        - std_dev: 0.05
