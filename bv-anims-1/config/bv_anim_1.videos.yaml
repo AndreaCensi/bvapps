@@ -1,0 +1,18 @@
+- id: trace
+  desc: ''
+  code:
+  - boot_log2movie_cairo_avi
+  - 'plotter.zoom': 0
+    'plotter.display_sidebar': False
+    'plotter.width': 256
+    'plotter.height': 256
+
+- id: tracesb
+  desc: ''
+  code:  
+  - boot_log2movie_cairo_avi
+  - 'plotter.zoom': 0
+    'plotter.display_sidebar': True
+    'plotter.width': 256
+    'plotter.height': 256
+    'plotter.sidebar_width': 128
