@@ -1,0 +1,41 @@
+- id: expswitch_t1
+  desc: Switches randomly between commands with an exponential switching time.
+  code:
+      - boot_agents.ExpSwitcher
+      - beta: 1
+
+- id: embed
+  desc: Estimates sensor geometry with MDS.
+  code:
+      - boot_agents.Embed
+      - beta: 1
+
+
+- id: EstStats
+  desc: Estimates some observations statistics.
+  code:
+      - boot_agents.EstStats
+      - beta: 1
+
+
+- id: BDSAgent_C1
+  desc: "BDS agent"
+  code:
+      - boot_agents.BDSAgent
+      - beta: 1
+        change_fraction: 0.5
+
+
+- id: BGDSAgent_C1
+  desc: "BGDS agent"
+  code:
+      - boot_agents.BGDSAgent
+      - beta: 1
+
+
+- id: hidden
+  desc: Estimates hidden state
+  code:
+      - bo_hidden.HiddenAgent
+      - max_t: 10
+

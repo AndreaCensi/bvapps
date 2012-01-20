@@ -1,0 +1,8 @@
+.log_learn_indices
+.compmake_history.txt
+*.avi
+*.avi.timestamps
+compmake_storage
+display_demo
+build
+sets

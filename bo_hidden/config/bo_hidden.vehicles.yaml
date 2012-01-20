@@ -1,0 +1,52 @@
+- id: turret
+  desc: 'A robot with a rotating turrent'
+  dynamics: 
+      id: turret
+      desc: 'A dynamics with 2 joints.'
+      code: 
+      - bo_hidden.Turret
+      - max_linear_velocity: [0.2,0.2]
+        max_angular_velocity: 0.2
+        max_turret_velocity: 0.05
+  sensors:
+      - pose: [0,0,0]
+        joint: 1
+        sensor:         
+            id: cam_f180_s90
+            desc: A camera with 180fov.
+            code: 
+              - vehicles.sensors.PhotoreceptorsSmoothUniform
+              - num_sensels: 90
+                fov_deg:     180                
+                spatial_sigma_deg: 5
+                noise: 
+                - vehicles.sensors.AdditiveGaussian
+                - std_dev: 0.05
+
+  radius: 0.5
+
+- id: turret_C2
+  desc: 'A robot with a rotating turrent'
+  dynamics: 
+      id: turret
+      desc: 'A dynamics with 2 joints.'
+      code: 
+      - bo_hidden.Turret
+      - max_linear_velocity: [0.2,0.2]
+        max_angular_velocity: 0.2
+        max_turret_velocity: 0.05
+  sensors:
+      - pose: [0,0,0]
+        joint: 1
+        sensor:         
+            id: cam_f180_s90
+            desc: A camera with 180fov.
+            code: 
+              - vehicles.sensors.PhotoreceptorsUniform
+              - num_sensels: 90
+                fov_deg:     180                
+                noise: 
+                - vehicles.sensors.AdditiveGaussian
+                - std_dev: 0.05
+
+  radius: 0.5
