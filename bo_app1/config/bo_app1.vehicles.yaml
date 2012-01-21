@@ -3,7 +3,6 @@
   id_dynamics: SE2_rb_v
   sensors:
     - id_sensor: s_fs_A
-      pose: [0,0,0]
   radius: 0.5
 
 - id: v_fs_B
@@ -11,7 +10,6 @@
   id_dynamics: SE2_rb_v
   sensors:
     - id_sensor: s_fs_B
-      pose: [0,0,0]
   radius: 0.5
 
 - id: v_rf_A
@@ -19,7 +17,6 @@
   id_dynamics: SE2_rb_v
   sensors:
     - id_sensor: s_rf_A
-      pose: [0,0,0]
   radius: 0.5
 
 - id: v_cam_A
@@ -27,5 +24,4 @@
   id_dynamics: SE2_rb_v
   sensors:
     - id_sensor: s_cam_A
-      pose: [0,0,0]
   radius: 0.5

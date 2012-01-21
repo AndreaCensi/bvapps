@@ -1,53 +1,4 @@
 
-# - id: r_cam360
-#   desc: Robot with 360deg camera.
-#   code:
-#      - vehicles_boot.BOVehicleSimulation
-#      - dt: 0.1
-#        id_vehicle: d_SE2_rb_v-cam360 
-#        id_world: stochastic_box_10
-
-# - id: r_cam180
-#   desc: Robot with 180deg camera.
-#   code:
-#      - vehicles_boot.BOVehicleSimulation
-#      - dt: 0.1
-#        id_vehicle: d_SE2_rb_v-cam180 
-#        id_world: stochastic_box_10
-
-# - id: r_cam360s15
-#   desc: Robot with 360deg camera.
-#   code:
-#      - vehicles_boot.BOVehicleSimulation
-#      - dt: 0.1
-#        id_vehicle: d_SE2_rb_v-cam360s15
-#        id_world: stochastic_box_10
-
-# - id: r_rf360
-#   desc: Robot with 360deg range-finder.
-#   code:
-#      - vehicles_boot.BOVehicleSimulation
-#      - dt: 0.1
-#        id_vehicle: d_SE2_rb_v-rf360 
-#        id_world: stochastic_box_10
-
-# - id: r_sf12
-#   desc: Robot with 12x12 field sampler.
-#   code:
-#      - vehicles_boot.BOVehicleSimulation
-#      - dt: 0.1
-#        id_vehicle: d_SE2_rb_v-fs12
-#        id_world: SBox2_10a
-
-# - id: r_sf144r
-#   desc: Robot with 144 point field sampler with random positions
-#   code:
-#      - vehicles_boot.BOVehicleSimulation
-#      - dt: 0.1
-#        id_vehicle: d_SE2_rb_v-fs12r
-#        id_world: SBox2_10a
-
-
 - id: r_fs_A
   desc: ""
   code:
@@ -71,9 +22,6 @@
      - dt: 0.1
        id_vehicle: v_fs_B
        id_world: SBox2_10a
-
-
-
 
 - id: r_cam_A_n1
   desc: "Camera with permutation perturbation."

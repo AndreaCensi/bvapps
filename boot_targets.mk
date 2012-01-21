@@ -1,4 +1,7 @@
 max_processes=8
+bom=boot_olympics_manager 
+
+all: sets-all subdirs-all
 
 %-set-status:
 	@echo "----------------------- Status for $* -----------------------"
@@ -6,7 +9,7 @@ max_processes=8
 
 boottests:
 	#BO_TEST_CONFIG=${PROJ_ROOT} nosetests -w $BO_DIR $*
-	BO_TEST_CONFIG=$(PWD)/config/ VEHICLES_TEST_CONFIG:$(PWD)/config/ nosetests bootstrapping_olympics $*
+	BO_TEST_CONFIG=$(PWD)/config/ VEHICLES_TEST_CONFIG=$(PWD)/config/ nosetests bootstrapping_olympics $*
 
 
 %-set-all:
@@ -52,7 +55,7 @@ subdirs-distclean: $(addsuffix -subdir-distclean,$(sets))
 	make -C $* clean-compmake
 
 ###
-all: sets-all subdirs-all
+
 status: sets-status subdirs-status
 learn: sets-learn subdirs-learn
 clean-compmake: sets-clean-compmake subdirs-clean-compmake
