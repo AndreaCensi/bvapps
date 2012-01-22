@@ -10,9 +10,13 @@ all: learn
 	$(bom) learn-log -a BDSAgent_C1 -r LDR13 --once
 
 status:
+	true
 	
 test:
 	true
 
 clean:
 	true
+	
+distclean:
+	rm -rf states

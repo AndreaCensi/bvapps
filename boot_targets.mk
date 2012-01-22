@@ -13,7 +13,7 @@ boottests:
 	BO_TEST_CONFIG=$(PWD)/config/ VEHICLES_TEST_CONFIG=$(PWD)/config/ nosetests bootstrapping_olympics $*
 
 %-set-all:
-	$(bom) $(bom_params) batch $* --command "parmake n=$(max_processes)"
+	-$(bom) $(bom_params) batch $* --command "parmake n=$(max_processes)"
 
 %-set-learn:
 	$(bom) $(bom_params) batch $* --command "parmake n=$(max_processes)"
@@ -27,20 +27,20 @@ boottests:
 ### 
 
 sets-all: $(addsuffix -set-all,$(sets))
-subdirs-all: $(addsuffix -subdir-all,$(sets))
+subdirs-all: $(addsuffix -subdir-all,$(subdirs))
 
 sets-learn: $(addsuffix -set-learn,$(sets))
-subdirs-learn: $(addsuffix -subdir-learn,$(sets))
+subdirs-learn: $(addsuffix -subdir-learn,$(subdirs))
 
 sets-status: $(addsuffix -set-status,$(sets)) 
 subdirs-status: $(addsuffix -subdir-status,$(subdirs))
 
 sets-clean-compmake: $(addsuffix -set-clean-compmake,$(sets))
-subdirs-clean-compmake: $(addsuffix -subdir-clean-compmake,$(sets))
+subdirs-clean-compmake: $(addsuffix -subdir-clean-compmake,$(subdirs))
 
 sets-distclean: $(addsuffix -set-distclean,$(sets))
-subdirs-distclean: $(addsuffix -subdir-distclean,$(sets))
-
+subdirs-distclean: $(addsuffix -subdir-distclean,$(subdirs))
+	true
 ### 
 
 %-subdir-all:
