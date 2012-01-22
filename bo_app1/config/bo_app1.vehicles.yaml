@@ -4,6 +4,8 @@
   sensors:
     - id_sensor: s_fs_A
   radius: 0.5
+  extra:
+    skin: omni
 
 - id: v_fs_B
   desc: "Omnidirectional, square field sampler."
@@ -11,6 +13,8 @@
   sensors:
     - id_sensor: s_fs_B
   radius: 0.5
+  extra:
+    skin: omni
 
 - id: v_rf_A
   desc: ""
@@ -18,6 +22,8 @@
   sensors:
     - id_sensor: s_rf_A
   radius: 0.5
+  extra:
+    skin: omni
 
 - id: v_cam_A
   desc: ""
@@ -25,3 +31,5 @@
   sensors:
     - id_sensor: s_cam_A
   radius: 0.5
+  extra:
+    skin: omni

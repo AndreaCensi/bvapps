@@ -1,5 +1,6 @@
 max_processes=8
 bom=boot_olympics_manager 
+bom_params=--contracts --seterr=raise
 
 all: sets-all subdirs-all
 
@@ -11,12 +12,11 @@ boottests:
 	#BO_TEST_CONFIG=${PROJ_ROOT} nosetests -w $BO_DIR $*
 	BO_TEST_CONFIG=$(PWD)/config/ VEHICLES_TEST_CONFIG=$(PWD)/config/ nosetests bootstrapping_olympics $*
 
-
 %-set-all:
-	$(bom) batch $* --command "parmake n=$(max_processes)"
+	$(bom) $(bom_params) batch $* --command "parmake n=$(max_processes)"
 
 %-set-learn:
-	$(bom) batch $* --command "parmake n=$(max_processes)"
+	$(bom) $(bom_params) batch $* --command "parmake n=$(max_processes)"
 
 %-set-clean-compmake:
 	-rm -rf sets/$*/storage/compmake
@@ -52,11 +52,11 @@ subdirs-distclean: $(addsuffix -subdir-distclean,$(sets))
 %-subdir-clean-compmake:
 	make -C $* clean-compmake
 %-subdir-distclean:
-	make -C $* clean-compmake
+	make -C $* distclean
 
 ###
 
 status: sets-status subdirs-status
 learn: sets-learn subdirs-learn
 clean-compmake: sets-clean-compmake subdirs-clean-compmake
-distclean: sets-distclean-compmake subdirs-distclean-compmake
+distclean: sets-distclean subdirs-distclean
