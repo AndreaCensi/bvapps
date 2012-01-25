@@ -22,8 +22,13 @@
                 noise: 
                 - vehicles.sensors.AdditiveGaussian
                 - std_dev: 0.05
-
   radius: 0.5
+  extra:
+      skin: omni
+      skins:
+          - joint: 1
+            pose: [0,0,0]
+            skin: braitenberg
 
 - id: turret_C2
   desc: 'A robot with a rotating turrent'
@@ -48,5 +53,7 @@
                 noise: 
                 - vehicles.sensors.AdditiveGaussian
                 - std_dev: 0.05
+   extra:
+     skin: omni
 
   radius: 0.5

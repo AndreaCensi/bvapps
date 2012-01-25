@@ -6,12 +6,30 @@
     agents: [expswitch_t1]
     episode_len: 5
     explorer: canonical
-    num_ep_expl: 10
-    num_ep_expl_v: 10
+    num_ep_expl: 8
+    num_ep_expl_v: 8
     expl_videos: [trace, tracesb, pdfz0sb]
     # No servo
     num_ep_serv: 0
     num_ep_serv_v: 0
     servo_max_episode_len: 10
     servo_displacement: 0.5
+
+- id: bv_anims_1_cars
+  desc: ''
+  code:
+  - bootstrapping_olympics.programs.manager.experiments_utils.experiment_explore_learn_compmake
+  - robots: ["d_SE2_car_v_w-cam360-empty"]
+    agents: [expswitch_t1]
+    episode_len: 5
+    explorer: canonical
+    num_ep_expl: 8
+    num_ep_expl_v: 8
+    expl_videos: [pdfz0sb]
+    # No servo
+    num_ep_serv: 0
+    num_ep_serv_v: 0
+    servo_max_episode_len: 10
+    servo_displacement: 0.5
+
 

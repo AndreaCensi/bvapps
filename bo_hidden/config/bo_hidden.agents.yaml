@@ -39,3 +39,9 @@
       - bo_hidden.HiddenAgent
       - max_t: 10
 
+- id: canonical
+  desc: basic motions
+  code:
+    - boot_agents.CanonicalCommandsAgent
+    - {}
+

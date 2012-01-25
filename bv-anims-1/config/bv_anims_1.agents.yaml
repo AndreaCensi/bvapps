@@ -10,20 +10,20 @@
   code:
       - boot_agents.CanonicalCommandsAgent
       - {}
-
-- id: motions_2
-  desc: basic motions
-  code:
-      - boot_agents.Motions
-      - actions:
-        - commands: [1, 0]
-          delta: 1
-        - commands: [1, 1]
-          delta: 1
-        - commands: [0, 1]
-          delta: 1
-        - commands: [1, 1]
-          delta: 1
-        speedup: 1
-        loop: true
+# 
+# - id: motions_2
+#   desc: basic motions
+#   code:
+#       - boot_agents.Motions
+#       - actions:
+#         - commands: [1, 0]
+#           delta: 1
+#         - commands: [1, 1]
+#           delta: 1
+#         - commands: [0, 1]
+#           delta: 1
+#         - commands: [1, 1]
+#           delta: 1
+#         speedup: 1
+#         loop: true
 
