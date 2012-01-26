@@ -1,0 +1,18 @@
+
+- id: fixed2_10
+  desc: basic motions
+  code:
+    - bootstrapping_olympics.examples.agents.TestAgent
+    - cmd: [1,0]
+
+- id: fixed2_1s
+  desc: basic motions
+  code:
+    - bootstrapping_olympics.examples.agents.TestAgent
+    - cmd: '[1, np.cos(t)]'
+
+- id: fixed2_1ss
+  desc: basic motions
+  code:
+    - bootstrapping_olympics.examples.agents.TestAgent
+    - cmd: '[0.9+0.1*np.cos(5*t), 0.1*np.cos(5*t), 0.1*np.sin(t)]'

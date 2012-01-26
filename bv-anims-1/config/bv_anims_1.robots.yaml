@@ -7,6 +7,8 @@
        id_vehicle: d_SE2_car_v_w-cam360
        id_world: empty_fixed_5
 
+
+
 - id: r_brai_blind
   desc: ""
   code:

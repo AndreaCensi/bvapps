@@ -1,0 +1,12 @@
+    
+
+- id: wallpaper
+  desc: 'MP4 video to be used as background'
+  code:  
+  - boot_log2movie_cairo_avi
+  - 'plotter.zoom': 0
+    'plotter.display_sidebar': 0
+    'plotter.grid': 0
+    'plotter.width': 1024
+    'plotter.height': 768
+    'plotter.sidebar_width': 128
