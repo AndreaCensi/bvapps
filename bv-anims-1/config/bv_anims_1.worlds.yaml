@@ -5,9 +5,3 @@
       - bounds: [[-1.5,1.5],[-1.5,1.5],[-10,10]]
         start_pose: [0,0,90]      
 
-- id: wp1
-  desc: An empty world (no obstacles at all) 100 pixels
-  code: 
-      - vehicles.worlds.EmptyFixed
-      - bounds: [[0,10.24],[0,7.68],[-10,10]]
-        start_pose: [8,9,-90]      

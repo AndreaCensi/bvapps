@@ -34,20 +34,5 @@
 
 
 
-- id: wallpapers1
-  desc: 'Cute animations to use as wallpapers'
-  code:
-  - bootstrapping_olympics.programs.manager.experiments_utils.experiment_explore_learn_compmake
-  - robots: ["d_SE2_rb_v-cam180-stereo-wp1",
-             "d_SE2_car_v_w-cam360-wp1"]
-    agents: [random_agent]
-    episode_len: 12
-    explorer: fixed2_1ss
-    num_ep_expl: 1
-    num_ep_expl_v: 1
-    expl_videos: [wallpaper]
-    # No servo
-    num_ep_serv: 0
-    num_ep_serv_v: 0 
 
 
