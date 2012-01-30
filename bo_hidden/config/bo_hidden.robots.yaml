@@ -8,10 +8,10 @@
        id_world: stochastic_box_10
 
 
-- id: r_turret_C2
+- id: r_turret_rf
   desc: Robot with turret
   code:
      - vehicles_boot.BOVehicleSimulation
      - dt: 0.1
-       id_vehicle: turret_C2
+       id_vehicle: turret_rf
        id_world: stochastic_box_10

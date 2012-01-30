@@ -1,0 +1,26 @@
+  
+- id: omni_turret
+  desc: "Omnidirectional with a turret"
+  code:
+  - vehicles_cairo.skins.ComplexSkin
+  - skins:
+      - joint: 0
+        skin: omni
+      - joint: 0
+        skin: sjoint_big
+      - joint: 1
+        skin: sjoint_small
+        
+- id: sjoint_small
+  desc: "A square joint"
+  code:
+  - vehicles_cairo.skins.rectangle
+  - w: 0.65
+    h: 0.65
+    
+- id: sjoint_big
+  desc: "A square joint"
+  code:
+  - vehicles_cairo.skins.rectangle
+  - w: 0.9
+    h: 0.9

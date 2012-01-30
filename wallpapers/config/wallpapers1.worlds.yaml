@@ -4,3 +4,19 @@
       - vehicles.worlds.EmptyFixed
       - bounds: [[0,10.24],[0,7.68],[-10,10]]
         start_pose: [8,9,-90]      
+
+- id: wp2
+  desc: An empty world; start from top left
+  code: 
+      - vehicles.worlds.EmptyFixed
+      - bounds: [[0,10.24],[0,7.68],[-10,10]]
+        start_pose: [-1,8.5,-36]
+        
+
+
+- id: wp3
+  desc: An empty world; start from left
+  code: 
+      - vehicles.worlds.EmptyFixed
+      - bounds: [[0,10.24],[0,7.68],[-10,10]]
+        start_pose: [-1,8,0]

@@ -1,10 +1,10 @@
-sets=wallpapers1
+sets=wallpapers1 wallpapers2 wallpapers3
 subdirs=
 
 include ../boot_targets.mk
 
 
-files=$(shell find sets -type f -name '*.mp4')
+files=$(shell find sets/wallpapers1 -type f -name '*.mp4')
 
 join: joined.mp4 sets/joined-opt.gif
 

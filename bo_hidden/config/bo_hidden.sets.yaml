@@ -1,19 +1,19 @@
-- id: bo_hidden_light
+- id: bo_hidden1
   desc: ''
   code:
   - bootstrapping_olympics.programs.manager.experiments_utils.experiment_explore_learn_compmake
-  - robots: [r_turret, r_turret_C2]
+  - robots: [r_turret, r_turret_rf]
     agents: [embed, BDSAgent_C1, EstStats]
     episode_len: 30
     explorer: expswitch_t1
-    num_ep_expl: 5
+    num_ep_expl: 100
     num_ep_expl_v: 5
-    num_ep_serv: 0
-    num_ep_serv_v: 0
+    num_ep_serv: 100
+    num_ep_serv_v: 10
     servo_max_episode_len: 10
     servo_displacement: 0.5
 
-- id: bo_hidden1
+- id: bo_hidden1_light
   desc: ''
   code:
   - bootstrapping_olympics.programs.manager.experiments_utils.experiment_explore_learn_compmake
@@ -21,8 +21,8 @@
     agents: [canonical]
     episode_len: 30
     explorer: expswitch_t1
-    num_ep_expl: 16
-    num_ep_expl_v: 16
+    num_ep_expl: 5
+    num_ep_expl_v: 5
     num_ep_serv: 0
     num_ep_serv_v: 0
     servo_max_episode_len: 10

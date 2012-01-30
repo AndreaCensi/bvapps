@@ -3,15 +3,30 @@ bom=boot_olympics_manager
 #bom_params=--seterr=raise
 bom_params=--contracts --seterr=raise
 
+
+nose=nosetests --with-id #--processes=16 --process-timeout=30 --process-restartworker
+
+#--processes=8
+
+
 all: sets-all subdirs-all
 
 %-set-status:
 	@echo "----------------------- Status for $* -----------------------"
 	@compmake --slave --path sets/$*/storage/compmake default stats
 
-boottests:
-	#BO_TEST_CONFIG=${PROJ_ROOT} nosetests -w $BO_DIR $*
-	BO_TEST_CONFIG=default:$(PWD)/config/ VEHICLES_TEST_CONFIG=default:$(PWD)/config/ nosetests bootstrapping_olympics $(NOSE_PARAMS) $*
+test: subdirs-test boot-tests vehicles-tests local-tests
+
+local-tests:
+	$(nose) $(NOSE_PARAMS) 
+	
+boot-tests:
+	BO_TEST_CONFIG=default:$(PWD)/config/ VEHICLES_TEST_CONFIG=default:$(PWD)/config/ $(nose) bootstrapping_olympics $(NOSE_PARAMS) 
+
+
+vehicles-tests:
+	VEHICLES_TEST_CONFIG=default:$(PWD)/config/ $(nose) vehicles  $(NOSE_PARAMS) 
+
 
 %-set-all:
 	$(bom) $(bom_params) batch $* --command "parmake n=$(max_processes)"
@@ -39,6 +54,9 @@ subdirs-clean-videos: $(addsuffix -subdir-clean-videos,$(subdirs))
 sets-all: $(addsuffix -set-all,$(sets))
 subdirs-all: $(addsuffix -subdir-all,$(subdirs))
 
+#sets-test: $(addsuffix -set-test,$(sets))
+subdirs-test: $(addsuffix -subdir-test,$(subdirs))
+
 sets-try: $(addsuffix -set-try,$(sets))
 subdirs-try: $(addsuffix -subdir-try,$(subdirs))
 
@@ -55,6 +73,8 @@ subdirs-distclean: $(addsuffix -subdir-distclean,$(subdirs))
 
 %-subdir-all:
 	$(MAKE) -C $* all
+%-subdir-test:
+	$(MAKE) -C $* test
 %-subdir-status:
 	$(MAKE) -C $* status
 %-subdir-try:
@@ -70,3 +90,4 @@ status: sets-status subdirs-status
 try: sets-try subdirs-try
 clean-compmake: sets-clean-compmake subdirs-clean-compmake
 distclean: sets-distclean subdirs-distclean
+

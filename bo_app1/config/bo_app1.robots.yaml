@@ -3,7 +3,7 @@
   desc: ""
   code:
      - vehicles_boot.BOVehicleSimulation
-     - dt: 0.1
+     - dt: 0.033
        id_vehicle: v_fs_A
        id_world: SBox2_10a
 
@@ -11,7 +11,7 @@
   desc: ""
   code:
      - vehicles_boot.BOVehicleSimulation
-     - dt: 0.1
+     - dt: 0.033
        id_vehicle: v_cam_A
        id_world: SBox3_10scale05
 
@@ -19,7 +19,7 @@
   desc: "Field sampler with square disposition"
   code:
      - vehicles_boot.BOVehicleSimulation
-     - dt: 0.1
+     - dt: 0.033
        id_vehicle: v_fs_B
        id_world: SBox2_10a
 
@@ -43,7 +43,7 @@
   desc: ""
   code:
      - vehicles_boot.BOVehicleSimulation
-     - dt: 0.1
+     - dt: 0.033
        id_vehicle: v_rf_A
        id_world: stochastic_box_10
 

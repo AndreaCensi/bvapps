@@ -1,4 +1,4 @@
-subdirs=bo_app1 bv-anims-1 bo_hidden 
+subdirs=bo_app1 bv-anims-1 bo_hidden wallpapers
 
 # roslog_test  needs logs
 
