@@ -68,7 +68,7 @@ subdirs-clean-compmake: $(addsuffix -subdir-clean-compmake,$(subdirs))
 
 sets-distclean: $(addsuffix -set-distclean,$(sets))
 subdirs-distclean: $(addsuffix -subdir-distclean,$(subdirs))
-	true
+
 ### 
 
 %-subdir-all:

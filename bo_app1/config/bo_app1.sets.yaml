@@ -4,14 +4,21 @@
   - bootstrapping_olympics.programs.manager.experiments_utils.experiment_explore_learn_compmake
   - robots: [r_cam_A, r_rf_A, r_fs_A]
     agents: [embed, BDSAgent_C1, EstStats]
-    episode_len: 30
-    explorer: expswitch_t1
-    num_ep_expl: 200
-    num_ep_expl_v: 5
-    num_ep_serv: 100
-    num_ep_serv_v: 10
-    servo_max_episode_len: 10
-    servo_displacement: 0.5
+    explore:
+        num_episodes: 200
+        num_episodes_videos: 5
+        explorer: expswitch_t1
+        max_episode_len: 30
+    servo:
+        num_episodes:  100
+        num_episodes_videos: 5
+        max_episode_len: 10
+        displacement: 0.5
+    servonav:
+        num_episodes: 20
+        num_episodes_videos: 10
+        max_episode_len: 600
+        resolution: 0.5
 
 - id: bo_app1b
   desc: ""
@@ -21,11 +28,19 @@
             'r_rf_A_n1', 'r_rf_A_n2',
             'r_cam_A_n1', 'r_cam_A_n2']
     agents: [embed, BDSAgent_C1, EstStats]
-    explorer: expswitch_t1
-    episode_len: 30
-    num_ep_expl: 300
-    num_ep_expl_v: 5
-    num_ep_serv: 100
-    num_ep_serv_v: 5
-    servo_max_episode_len: 10
+    explore:
+        num_episodes: 300
+        num_episodes_videos: 5
+        explorer: expswitch_t1
+        max_episode_len: 30
+    servo:
+        num_episodes:  100
+        num_episodes_videos: 10
+        max_episode_len: 10
+        displacement: 0.5
+    servonav:
+        num_episodes: 20
+        num_episodes_videos: 10
+        max_episode_len: 10
+        resolution: 0.5
 

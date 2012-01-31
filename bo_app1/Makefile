@@ -8,8 +8,8 @@ include ../boot_targets.mk
 
 
 agent=BDSAgent_C1
-# robot=r_rf_A
-robot=r_cam_A
+robot=r_rf_A
+# robot=r_cam_A
 set=bo_app1a
 bomt=bom -d sets/$(set) 
 test-servonav:

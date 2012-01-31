@@ -26,7 +26,8 @@
       - vehicles.sensors.PhotoreceptorsSmoothUniform
       - num_sensels: 180
         fov_deg:     360
-        spatial_sigma_deg: 7.5
+        spatial_sigma_deg: 4
+        upsample: 15
         noise: 
             - vehicles.sensors.AdditiveGaussian
             - std_dev: 0.01  
