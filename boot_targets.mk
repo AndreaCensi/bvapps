@@ -1,7 +1,7 @@
 max_processes=8
 bom=boot_olympics_manager 
-#bom_params=--seterr=raise
-bom_params=--contracts --seterr=raise
+bom_params=--seterr=raise
+#bom_params=--contracts --seterr=raise
 
 
 nose=nosetests --with-id #--processes=16 --process-timeout=30 --process-restartworker

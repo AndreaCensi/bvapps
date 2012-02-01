@@ -1,7 +1,7 @@
 - id: bv_anims_1_brai_blind
   desc: ''
   code:
-  - bootstrapping_olympics.programs.manager.experiments_utils.experiment_explore_learn_compmake
+  - bootstrapping_olympics.batch_jobs1
   - robots: [r_brai_blind]
     agents: [expswitch_t1]
     episode_len: 5
@@ -15,10 +15,11 @@
     servo_max_episode_len: 10
     servo_displacement: 0.5
 
+
 - id: bv_anims_1_cars
   desc: ''
   code:
-  - bootstrapping_olympics.programs.manager.experiments_utils.experiment_explore_learn_compmake
+  - bootstrapping_olympics.batch_jobs1
   - robots: ["d_SE2_car_v_w-cam360-empty"]
     agents: [expswitch_t1]
     episode_len: 5

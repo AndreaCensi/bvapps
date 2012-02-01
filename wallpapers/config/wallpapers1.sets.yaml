@@ -2,87 +2,46 @@
 - id: wallpapers1
   desc: 'Cute animations to use as wallpapers'
   code:
-  - bootstrapping_olympics.programs.manager.experiments_utils.experiment_explore_learn_compmake
+  - bootstrapping_olympics.batch_jobs1
   - robots: ["rsim-d_SE2_rb_v-cam180-stereo-wp1",
              "rsim-d_SE2_car_v_w-cam360-wp1",
              "rsim-d_SE2_car_v-rf360-wp1",
              "rsim-d_SE2_rb_v-fs_rand144-wp1"]
     agents: [random_agent]
-    episode_len: 12
-    explorer: fixed_1ss
-    num_ep_expl: 1
-    num_ep_expl_v: 1
-    expl_videos: [wallpaper]
-    # No servo
-    num_ep_serv: 0
-    num_ep_serv_v: 0 
+    explore:
+        max_episode_len: 12
+        explorer: fixed_1ss
+        num_episodes: 1
+        num_episodes_videos: 1
+        videos: [wallpaper]
 
 
 
 - id: wallpapers2
   desc: 'Cute animations to use as wallpapers'
   code:
-  - bootstrapping_olympics.programs.manager.experiments_utils.experiment_explore_learn_compmake
+  - bootstrapping_olympics.batch_jobs1
   - robots: ["rsim-v_brai_blind-wp2"]
     agents: [random_agent]
-    episode_len: 15
-    explorer: fixed_s1
-    num_ep_expl: 1
-    num_ep_expl_v: 1
-    expl_videos: [wallpaper]
-    # No servo
-    num_ep_serv: 0
-    num_ep_serv_v: 0 
+    explore:
+        max_episode_len: 15
+        explorer: fixed_s1
+        num_episodes: 1
+        num_episodes_videos: 1
+        videos: [wallpaper]
 
 
 - id: wallpapers3
   desc: 'Cute animations to use as wallpapers'
   code:
-  - bootstrapping_olympics.programs.manager.experiments_utils.experiment_explore_learn_compmake
+  - bootstrapping_olympics.batch_jobs1
   - robots: ["rsim-v_brai_blind-wp3"]
-    agents: [random_agent]
-    episode_len: 15
-    explorer: fixed_m1
-    num_ep_expl: 1
-    num_ep_expl_v: 1
-    expl_videos: [wallpaper]
-    # No servo
-    num_ep_serv: 0
-    num_ep_serv_v: 0 
+    agents: [random_agent] 
+    explore:
+        max_episode_len: 15
+        explorer: fixed_m1
+        num_episodes: 1
+        num_episodes_videos: 1
+        videos: [wallpaper]
 
 
-
-# 
-# - id: wallpapers2
-#   desc: 'Enters diagonally from top-left.'
-#   code:
-#   - bootstrapping_olympics.programs.manager.experiments_utils.experiment_explore_learn_compmake
-#   - robots: 
-#       - id: myrobot
-#         desc: ""
-#         code:
-#          - vehicles_boot.BOVehicleSimulation
-#          - dt: 0.05
-#            vehicle: d_SE2_car_v_w-cam360
-#            world: 
-#              id: wp1
-#              desc: An empty world (no obstacles at all) 100 pixels
-#              code: 
-#                  - vehicles.worlds.EmptyFixed
-#                  - bounds: [[0,10.24],[0,7.68],[-10,10]]
-#                    start_pose: [8,9,-90]
-#                    
-#     agents: [random_agent]
-#     episode_len: 12
-#     explorer: 
-#         id: fixed_1ss
-#         desc: basic motions
-#         code:
-#             - bootstrapping_olympics.examples.agents.TestAgent
-#             - cmd: '[0.9+0.1*np.cos(5*t), 0.1*np.cos(5*t), 0.1*np.sin(t)]'
-#     num_ep_expl: 1
-#     num_ep_expl_v: 1
-#     expl_videos: [wallpaper]
-#     # No servo
-#     num_ep_serv: 0
-#     num_ep_serv_v: 0 

@@ -1,8 +1,9 @@
 - id: s_fs_A
-  desc: ""
+  desc: "Random circular distribution"
   code: 
     - vehicles.sensors.FieldSamplerRandCircle
-    - radius: 0.45
+    # So it can fit inside radius 0.5
+    - radius: 0.38  
       n: 144
       normalize: True
       noise: 
@@ -19,9 +20,31 @@
       noise: 
         - vehicles.sensors.AdditiveGaussian
         - std_dev: 0.05
+        
+- id: s_fs_C
+  desc: "Random circular distribution, normalized"
+  code: 
+    - vehicles.sensors.FieldSamplerRandCircle
+    - radius: 0.38 # So it can fit inside radius 0.5
+      n: 144
+      normalize: True
+      noise: 
+        - vehicles.sensors.AdditiveGaussian
+        - std_dev: 0.05
 
+- id: s_fs_D
+  desc: "Uniform 12x12 disposition, normalized."
+  code: 
+    - vehicles.sensors.FieldSamplerUniform
+    - sides: [0.45,0.45]
+      shape: [12,12]
+      normalize: True
+      noise: 
+        - vehicles.sensors.AdditiveGaussian
+        - std_dev: 0.05
+        
 - id: s_cam_A
-  desc: "An omnidirectional camera with 180 sensels, 15 deg smooth"
+  desc: "An omnidirectional camera with 180 sensels, sigma = 4 deg"
   code: 
       - vehicles.sensors.PhotoreceptorsSmoothUniform
       - num_sensels: 180

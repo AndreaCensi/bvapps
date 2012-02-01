@@ -28,7 +28,7 @@
   desc: basic motions
   code:
     - bootstrapping_olympics.examples.agents.TestAgent
-    - cmd: [0,1]
+    - cmd: [0, 1]
 
 
 - id: fixed_1s

@@ -5,7 +5,7 @@
      - vehicles_boot.BOVehicleSimulation
      - dt: 0.033
        id_vehicle: v_fs_A
-       id_world: SBox3_10scale05
+       id_world: SBox2_10a # Need SBox2 for sources
 
 - id: r_cam_A
   desc: ""
@@ -21,7 +21,24 @@
      - vehicles_boot.BOVehicleSimulation
      - dt: 0.033
        id_vehicle: v_fs_B
-       id_world: SBox2_10a
+       id_world: SBox2_10a # Need SBox2 for sources
+
+
+- id: r_fs_C
+  desc: "Field sampler with square disposition"
+  code:
+    - vehicles_boot.BOVehicleSimulation
+    - dt: 0.033
+      id_vehicle: v_fs_C
+      id_world: SBox2_10a # Need SBox2 for sources
+
+- id: r_fs_D
+  desc: "Field sampler with square disposition"
+  code:
+      - vehicles_boot.BOVehicleSimulation
+      - dt: 0.033
+        id_vehicle: v_fs_D
+        id_world: SBox2_10a # Need SBox2 for sources
 
 - id: r_cam_A_n1
   desc: "Camera with permutation perturbation."

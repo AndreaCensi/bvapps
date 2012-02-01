@@ -1,7 +1,7 @@
 - id: diffeo_test_light
   desc: 'Try everything fast'
   code:
-  - bootstrapping_olympics.programs.manager.experiments_utils.experiment_explore_learn_compmake
+  - bootstrapping_olympics.batch_jobs1
   - robots: ['r-d_SE2_dd_v2-rf360-pc', 'r-d_SE2_car_v-rf360-pc']
     agents: ['icra12-diffeo-vehicles_c']
     episode_len: 10

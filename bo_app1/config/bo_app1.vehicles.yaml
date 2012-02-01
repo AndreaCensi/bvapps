@@ -16,6 +16,26 @@
   extra:
     skin: omni
 
+- id: v_fs_C
+  desc: "Omnidirectional, square field sampler."
+  id_dynamics: SE2_rb_v
+  sensors:
+    - id_sensor: s_fs_C
+  radius: 0.5
+  extra:
+    skin: omni
+
+
+- id: v_fs_D
+  desc: ""
+  id_dynamics: SE2_rb_v
+  sensors:
+    - id_sensor: s_fs_D
+  radius: 0.5
+  extra:
+    skin: omni
+
+
 - id: v_rf_A
   desc: ""
   id_dynamics: SE2_rb_v
