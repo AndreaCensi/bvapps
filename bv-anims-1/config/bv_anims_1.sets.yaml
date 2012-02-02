@@ -8,7 +8,7 @@
         num_episodes: 8
         num_episodes_videos: 8
         explorer: canonical
-        max_episode_len:5
+        max_episode_len: 5
         videos: [trace, tracesb, pdfz0sb]
 
 

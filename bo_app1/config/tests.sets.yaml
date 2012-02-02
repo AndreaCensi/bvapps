@@ -1,7 +1,7 @@
 - id: servo_test
   desc: ""
   code:
-  - bootstrapping_olympics.programs.manager.experiments_utils.experiment_explore_learn_compmake
+  - bootstrapping_olympics.batch_jobs1
   - robots: [ r_rf_A_n1 ]
     agents: [embed, BDSAgent_C1, EstStats]
     explorer: expswitch_t1
@@ -15,7 +15,7 @@
 - id: bgds_test
   desc: "Test of BGDS agent"
   code:
-  - bootstrapping_olympics.programs.manager.experiments_utils.experiment_explore_learn_compmake
+  - bootstrapping_olympics.batch_jobs1
   - robots: [r_cam_A, r_rf_A, r_fs_B]
     agents: [BGDSAgent_C1]
     explorer: expswitch_t1
@@ -30,7 +30,7 @@
 - id: embed_test
   desc: "Test of Embed agent; same robot with different nuisances."
   code:
-  - bootstrapping_olympics.programs.manager.experiments_utils.experiment_explore_learn_compmake
+  - bootstrapping_olympics.batch_jobs1
   - robots: [r_cam_A, r_rf_A, r_cam_A_n1, r_cam_A_n2]
     agents: [embed]
     explorer: expswitch_t1

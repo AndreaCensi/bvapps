@@ -2,6 +2,8 @@ max_processes=8
 bom=boot_olympics_manager 
 bom_params=--seterr=raise
 #bom_params=--contracts --seterr=raise
+# Default targets for compmake
+targets=not video*
 
 nice=nice -n 15
 nose=nosetests --with-id #--processes=16 --process-timeout=30 --process-restartworker
@@ -24,15 +26,16 @@ boot-tests:
 	BO_TEST_CONFIG=default:$(PWD)/config/ VEHICLES_TEST_CONFIG=default:$(PWD)/config/ $(nose) bootstrapping_olympics $(NOSE_PARAMS) 
 
 
+	
 vehicles-tests:
 	VEHICLES_TEST_CONFIG=default:$(PWD)/config/ $(nose) vehicles  $(NOSE_PARAMS) 
 
 
 %-set-all:
-	$(nice) $(bom) $(bom_params) batch $* --command "parmake n=$(max_processes)"
+	$(nice) $(bom) $(bom_params) batch $* --command "parmake n=$(max_processes) $(targets)"
 
 %-set-try:
-	-$(bom) $(bom_params) batch $* --command "parmake n=$(max_processes)"
+	-$(bom) $(bom_params) batch $* --command "parmake n=$(max_processes) $(targets)"
 
 %-set-clean-videos:
 	-rm -rf sets/$*/videos/
