@@ -1,7 +1,7 @@
 - id: bo_hidden1
   desc: ''
   code:
-  - bootstrapping_olympics.programs.manager.experiments_utils.experiment_explore_learn_compmake
+  - bootstrapping_olympics.batch_jobs1
   - robots: [r_turret, r_turret_rf]
     agents: [embed, BDSAgent_C1, EstStats]
     explore:
@@ -23,7 +23,7 @@
 - id: bo_hidden1_light
   desc: ''
   code:
-  - bootstrapping_olympics.programs.manager.experiments_utils.experiment_explore_learn_compmake
+  - bootstrapping_olympics.batch_jobs1
   - robots: [r_turret]
     agents: [canonical, BDSAgent_C1]
     explore:

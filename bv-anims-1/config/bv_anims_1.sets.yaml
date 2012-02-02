@@ -4,16 +4,12 @@
   - bootstrapping_olympics.batch_jobs1
   - robots: [r_brai_blind]
     agents: [expswitch_t1]
-    episode_len: 5
-    explorer: canonical
-    num_ep_expl: 8
-    num_ep_expl_v: 8
-    expl_videos: [trace, tracesb, pdfz0sb]
-    # No servo
-    num_ep_serv: 0
-    num_ep_serv_v: 0
-    servo_max_episode_len: 10
-    servo_displacement: 0.5
+    explore:
+        num_episodes: 8
+        num_episodes_videos: 8
+        explorer: canonical
+        max_episode_len:5
+        videos: [trace, tracesb, pdfz0sb]
 
 
 - id: bv_anims_1_cars
@@ -22,18 +18,11 @@
   - bootstrapping_olympics.batch_jobs1
   - robots: ["d_SE2_car_v_w-cam360-empty"]
     agents: [expswitch_t1]
-    episode_len: 5
-    explorer: canonical
-    num_ep_expl: 8
-    num_ep_expl_v: 8
-    expl_videos: [pdfz0sb]
-    # No servo
-    num_ep_serv: 0
-    num_ep_serv_v: 0
-    servo_max_episode_len: 10
-    servo_displacement: 0.5
-
-
-
+    explore:
+        num_episodes: 8
+        num_episodes_videos: 8
+        explorer: canonical
+        max_episode_len: 5
+        videos: [pdfz0sb]
 
 

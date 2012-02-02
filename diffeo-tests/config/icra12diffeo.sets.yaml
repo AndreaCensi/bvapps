@@ -4,14 +4,8 @@
   - bootstrapping_olympics.batch_jobs1
   - robots: ['r-d_SE2_dd_v2-rf360-pc', 'r-d_SE2_car_v-rf360-pc']
     agents: ['icra12-diffeo-vehicles_c']
-    episode_len: 10
-    explorer: expswitch_t1
-    num_ep_expl: 10
-    num_ep_expl_v: 1
-    #expl_videos: [trace, tracesb, pdfz0sb]
-    # No servo
-    num_ep_serv: 0
-    num_ep_serv_v: 0
-    servo_max_episode_len: 10
-    servo_displacement: 0.5
-
+    explore:
+        num_episodes: 10
+        num_episodes_videos: 1
+        explorer: expswitch_t1
+        max_episode_len: 10

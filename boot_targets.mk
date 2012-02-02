@@ -3,7 +3,7 @@ bom=boot_olympics_manager
 bom_params=--seterr=raise
 #bom_params=--contracts --seterr=raise
 
-
+nice=nice -n 15
 nose=nosetests --with-id #--processes=16 --process-timeout=30 --process-restartworker
 
 #--processes=8
@@ -29,7 +29,7 @@ vehicles-tests:
 
 
 %-set-all:
-	$(bom) $(bom_params) batch $* --command "parmake n=$(max_processes)"
+	$(nice) $(bom) $(bom_params) batch $* --command "parmake n=$(max_processes)"
 
 %-set-try:
 	-$(bom) $(bom_params) batch $* --command "parmake n=$(max_processes)"
