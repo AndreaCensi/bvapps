@@ -1,0 +1,20 @@
+
+- id: expswitch_t1
+  desc: Switches randomly between commands with an exponential switching time.
+  code:
+      - boot_agents.ExpSwitcher
+      - beta: 1
+
+- id: fixed_1s
+  desc: basic motions
+  code:
+  - bootstrapping_olympics.examples.agents.TestAgent
+  - cmd: '[0.2, 0.2*np.cos(t)]'
+  # - cmd: '[0.2, 1]'
+
+
+- id: fixed_10s
+  desc: "" 
+  code:
+    - bootstrapping_olympics.examples.agents.TestAgent
+    - cmd: '[0.2, 0, 0.1*np.cos(t)]'

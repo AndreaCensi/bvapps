@@ -1,0 +1,17 @@
+
+- id: "rsim-${vehicle}"
+  desc: ""
+  code:
+     - vehicles_boot.BOVehicleSimulation
+     - dt: 0.033
+       id_vehicle: "${vehicle}"
+       id_world: SBox2_10a # XXX to change 
+
+
+- id: "rsimfixed-${vehicle}"
+  desc: "TODO: make something move"
+  code:
+    - vehicles_boot.BOVehicleSimulation
+    - dt: 0.033
+      id_vehicle: "${vehicle}"
+      id_world: SBox2_10a #XXX empty_fixed_obstacles

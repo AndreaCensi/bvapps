@@ -1,0 +1,73 @@
+- id: close_data_no
+  desc: ''
+  code:  
+  - boot_log2movie_cairo_avi
+  - 'plotter.display_sidebar': 0
+    'plotter.width': 512
+    'plotter.height': 512
+    'plotter.plotting_params':
+        show_world: False
+        show_sensor_data: True
+        show_sensor_data_compact: True
+        grid: 1
+        first_person: true
+        zoom: 0.7
+    
+- id: close_data_sb
+  desc: ''
+  code:  
+  - boot_log2movie_cairo_avi
+  - 'plotter.display_sidebar': 1
+    'plotter.width': 512
+    'plotter.height': 512
+    'plotter.sidebar_width': 320
+    'plotter.sidebar_params':
+        show_observations: True
+        show_commands: False
+        show_annotations: False
+    'plotter.plotting_params':
+        show_world: False
+        show_sensor_data: True
+        show_sensor_data_compact: True
+        grid: 1
+        first_person: true
+        zoom: 0.7
+
+    
+- id: close_nodata_sbu
+  desc: 'Shows the commands on the right'
+  code:  
+  - boot_log2movie_cairo_avi
+  - 'plotter.display_sidebar': 1
+    'plotter.width': 512
+    'plotter.height': 512
+    'plotter.sidebar_width': 320
+    'plotter.sidebar_params':
+        show_observations: False
+        show_commands: True
+        show_annotations: False
+    'plotter.plotting_params':
+        show_world: False
+        show_sensor_data: False
+        #show_sensor_data_compact: True
+        grid: 1
+        first_person: true
+        zoom: 0.7
+
+
+- id: close_nodata_no
+  desc: ''
+  code:  
+  - boot_log2movie_cairo_avi
+  - 'plotter.display_sidebar': 0
+    'plotter.width': 512
+    'plotter.height': 512
+    'plotter.plotting_params':
+        show_world: False
+        show_sensor_data: False
+        # show_sensor_data_compact: True
+        grid: 1
+        first_person: true
+        zoom: 0.7
+    
+    

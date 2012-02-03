@@ -5,6 +5,7 @@ from geometry import (SE3, se3, SE3_from_SE2, angle_from_SE2,
 from vehicles_dynamics import CircleVel, Dynamics, SE2Dynamics
 import numpy as np
 
+
 class BaseTopDynamics(Dynamics):
 
     last_turret_angle = 0.0
@@ -27,7 +28,10 @@ class BaseTopDynamics(Dynamics):
 
     @contract(pose='SE3')
     def pose2state(self, pose):
-        ''' Returns the state that best approximates the given pose (in SE3).'''
+        ''' 
+            Returns the state that best approximates 
+            the given pose (in SE3).
+        '''
         # random_angle = SO2.convert_to(SE3, SO2.sample_uniform()) # XXX
 #        random_angle = SE3_from_SE2(SE2_from_SO2(SO2.sample_uniform()))
 
@@ -67,12 +71,6 @@ class BaseTopDynamics(Dynamics):
     def compose_state(self, base, top):
         return dict(base=base, top=top)
 
-#    def print_state(self, state):
-#        state1, state2 = state
-#        s = ' body: %s ' % (describe_value(state1))
-#        s += '\n turr: %s ' % (describe_value(state2))
-#        return s
-
     def state_to_yaml(self, state):
         ''' Converts the state to a YAML representation.'''
         base_state = self.base_state_from_big_state(state)
@@ -106,9 +104,7 @@ class BaseTopDynamics(Dynamics):
             raise ValueError('No such joint %d.' % joint)
 
 
-
 class Turret(BaseTopDynamics):
-
 
     @contract(max_linear_velocity='seq[2](>=0)',
               max_angular_velocity='>=0',)

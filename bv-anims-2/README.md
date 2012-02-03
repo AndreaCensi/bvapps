@@ -1,0 +1,3 @@
+- add fixed field sampler
+- make dynamic worlds for fixed sensors
+- zoomed plot for hokuyo?

@@ -1,0 +1,62 @@
+
+- id: bv-anims-2a
+  desc: 'car like'
+  code:
+  - bootstrapping_olympics.batch_jobs1
+  - robots: [
+      "rsim-d_SE2_car_v-cam360",
+      "rsim-d_SE2_car_v-rf360",
+# TODO
+#      "rsim-d_SE2_car_v-cam180",
+#      "rsim-d_SE2_car_v-rf180",
+      "rsim-d_SE2_car_v_w-cam360",
+      "rsim-landroid-4cam",
+      "rsim-landroid-hokuyo",
+      "rsim-landroid-hokuyo-4cam"
+    ]
+    agents: [expswitch_t1]
+    explore:
+        num_episodes: 1
+        num_episodes_videos: 1
+        explorer: fixed_1s
+        max_episode_len: 5
+        videos: [close_data_no, close_nodata_no, close_nodata_sbu]
+
+
+- id: bv-anims-2c
+  desc: 'omnidirectional (different agent)'
+  code:
+  - bootstrapping_olympics.batch_jobs1
+  - robots: [
+      "rsim-d_SE2_rb_v-cam180",
+      "rsim-d_SE2_rb_v-cam180-stereo",
+      "rsim-d_SE2_rb_v-fs_rand144",
+      "rsim-d_SE2_rb_v-rf360",
+    ]
+    agents: [expswitch_t1]
+    explore:
+        num_episodes: 1
+        num_episodes_videos: 1
+        explorer: fixed_10s
+        max_episode_len: 5
+        videos: [close_data_no, close_nodata_no, close_nodata_sbu]
+
+
+- id: bv-anims-2b
+  desc: 'Fixed sensors (to display sensels)'
+  code:
+  - bootstrapping_olympics.batch_jobs1
+  - robots: [
+      "rsimfixed-d_fixed-cam360",
+      "rsimfixed-d_fixed-rf360"
+      # TODO: add 180 version
+    ]
+    agents: [expswitch_t1]
+    explore:
+        num_episodes: 1
+        num_episodes_videos: 1
+        explorer: fixed_1s
+        max_episode_len: 10
+        videos: [close_data_no, close_data_sb]
+
+

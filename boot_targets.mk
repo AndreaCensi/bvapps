@@ -94,3 +94,10 @@ try: sets-try subdirs-try
 clean-compmake: sets-clean-compmake subdirs-clean-compmake
 distclean: sets-distclean subdirs-distclean
 
+
+video-set-%.mp4: $(shell find sets/$*/ -type f -name '*.mp4')
+	@python ../join.py $@ $^
+
+video-all.mp4: $(shell find sets/ -type f -name '*.mp4')
+	@python ../join.py $@ $^
+
