@@ -16,7 +16,10 @@
   - 'plotter.display_sidebar': True
     'plotter.width': 256
     'plotter.height': 256
-    'plotter.sidebar_width': 128
+    'plotter.sidebar_width': 200
     'plotter.plotting_params':
         zoom: 0
+    'plotter.sidebar_params':
+        show_observations: False
+    
         

@@ -1,18 +1,9 @@
 
-- id: d_SE2_car_v_w-cam360-empty
+- id: "r-${vehicle}"
   desc: ""
   code:
      - vehicles_boot.BOVehicleSimulation
      - dt: 0.033
-       id_vehicle: d_SE2_car_v_w-cam360
+       id_vehicle: ${vehicle}
        id_world: empty_fixed_5
 
-
-
-- id: r_brai_blind
-  desc: ""
-  code:
-     - vehicles_boot.BOVehicleSimulation
-     - dt: 0.033
-       id_vehicle: v_brai_blind
-       id_world: empty_fixed_5

@@ -1,28 +1,26 @@
-- id: bv_anims_1_brai_blind
+- id: anims2c
   desc: ''
   code:
   - bootstrapping_olympics.batch_jobs1
-  - robots: [r_brai_blind]
+  - robots: ['r-d_SE2_dd_v2-cam360', 'r-d_SE2_car_v_w-cam360']
     agents: [expswitch_t1]
     explore:
-        num_episodes: 8
-        num_episodes_videos: 8
+        num_episodes: 9
+        num_episodes_videos: 9
         explorer: canonical
-        max_episode_len: 5
-        videos: [trace, tracesb, pdfz0sb]
+        max_episode_len: 8
+        videos: [trace, tracesb]
 
-
-- id: bv_anims_1_cars
+- id: anims3c
   desc: ''
   code:
   - bootstrapping_olympics.batch_jobs1
-  - robots: ["d_SE2_car_v_w-cam360-empty"]
+  - robots: ['r-d_SE2_rb_v-cam360']
     agents: [expswitch_t1]
     explore:
-        num_episodes: 8
-        num_episodes_videos: 8
+        num_episodes: 27
+        num_episodes_videos: 27
         explorer: canonical
         max_episode_len: 5
-        videos: [pdfz0sb]
-
+        videos: [trace, tracesb]
 

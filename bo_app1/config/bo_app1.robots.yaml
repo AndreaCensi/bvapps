@@ -65,6 +65,14 @@
        id_world: SBox3_10scale05
 
 - id: r_rf_A_n1
+  desc: "Range-finder with permutation perturbation."
+  code:
+    - bootstrapping_olympics.examples.EquivRobot
+    - robot: r_rf_A
+      obs_nuisance: n_rpermA
+      cmd_nuisance: []
+
+- id: r_rf_A_n2
   desc: "Range-finder with scaling perturbation."
   code:
      - bootstrapping_olympics.examples.EquivRobot
@@ -72,11 +80,4 @@
        obs_nuisance: n_rscaleA
        cmd_nuisance: []
 
-- id: r_rf_A_n2
-  desc: "Range-finder with permutation perturbation."
-  code:
-     - bootstrapping_olympics.examples.EquivRobot
-     - robot: r_rf_A
-       obs_nuisance: n_rpermA
-       cmd_nuisance: []
 

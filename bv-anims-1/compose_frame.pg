@@ -1,0 +1,63 @@
+#!/usr/bin/env pg
+--- model compose_frame
+config set 
+config robot
+config video = trace 
+config out
+# ./sets/bv_anims_1_brai_blind/videos/r_brai_blind/canonical/r_brai_blind-canonical-ep_expl_canonical_00000-trace.mp4
+
+
+|m0:compose_frame_dec| --> v0
+|m1:compose_frame_dec| --> v1
+|m2:compose_frame_dec| --> v2
+|m3:compose_frame_dec| --> v3
+|m4:compose_frame_dec| --> v4
+|m5:compose_frame_dec| --> v5
+|m6:compose_frame_dec| --> v6
+|m7:compose_frame_dec| --> v7
+|m8:compose_frame_dec| --> v8
+
+m0.file = "sets/${set}/videos/${robot}/canonical/${robot}-canonical-ep_expl_canonical_00000-${video}.mp4"
+m1.file = "sets/${set}/videos/${robot}/canonical/${robot}-canonical-ep_expl_canonical_00001-${video}.mp4"
+m2.file = "sets/${set}/videos/${robot}/canonical/${robot}-canonical-ep_expl_canonical_00002-${video}.mp4"
+m3.file = "sets/${set}/videos/${robot}/canonical/${robot}-canonical-ep_expl_canonical_00003-${video}.mp4"
+m4.file = "sets/${set}/videos/${robot}/canonical/${robot}-canonical-ep_expl_canonical_00004-${video}.mp4"
+m5.file = "sets/${set}/videos/${robot}/canonical/${robot}-canonical-ep_expl_canonical_00005-${video}.mp4"
+m6.file = "sets/${set}/videos/${robot}/canonical/${robot}-canonical-ep_expl_canonical_00006-${video}.mp4"
+m7.file = "sets/${set}/videos/${robot}/canonical/${robot}-canonical-ep_expl_canonical_00007-${video}.mp4"
+m8.file = "sets/${set}/videos/${robot}/canonical/${robot}-canonical-ep_expl_canonical_00008-${video}.mp4" 
+
+
+
+# BO:canonical(d_SE2_car_v_w-cam360-empty):cmd 0  [-1.0, -1.0]                           
+# BO:canonical(d_SE2_car_v_w-cam360-empty):cmd 1  [-1.0, 0.0]                            
+# BO:canonical(d_SE2_car_v_w-cam360-empty):cmd 2  [-1.0, 1.0]                            
+# BO:canonical(d_SE2_car_v_w-cam360-empty):cmd 3  [0.0, -1.0]                            
+# BO:canonical(d_SE2_car_v_w-cam360-empty):cmd 4  [0, 0]                                 
+# BO:canonical(d_SE2_car_v_w-cam360-empty):cmd 5  [0.0, 1.0]                             
+# BO:canonical(d_SE2_car_v_w-cam360-empty):cmd 6  [1.0, -1.0]                            
+# BO:canonical(d_SE2_car_v_w-cam360-empty):cmd 7  [1.0, 0.0]                             
+# BO:canonical(d_SE2_car_v_w-cam360-empty):cmd 8  [1.0, 1.0]
+# +1    -1,+1   0,+1   1,1
+#  0    -1,0     0,0   1,0
+# -1    -1,-1    0,-1  1,-1
+#        -1      0    +1
+#
+# +1     2       5     8
+#  0     1       4     7
+# -1     0       3     6
+#        -1      0    +1
+
+
+v2,v5,v8,v1,v4,v7,v0,v3,v6 --> |sync| --> |grid cols=3| --> rgb
+
+
+rgb --> |mencoder file=$out| 
+
+
+--- model compose_frame_dec
+config file
+output rgb
+
+|mplayer file=$file| --> |border left=1 right=1 top=1 bottom=1| --> |output name=rgb|
+
