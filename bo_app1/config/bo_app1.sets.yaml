@@ -3,7 +3,7 @@
   code:
   - bootstrapping_olympics.batch_jobs1
   - robots: [r_cam_A, r_rf_A, r_fs_A]
-    agents: [embed, BDSAgent_C1, EstStats]
+    agents: [BDSAgent_C1, BDSAgent_C2]
     explore:
         num_episodes: 200
         num_episodes_videos: 5
@@ -11,7 +11,7 @@
         max_episode_len: 30
     servo:
         num_episodes: 20
-        num_episodes_videos: 20
+        num_episodes_videos: 5
         max_episode_len: 10
         displacement: 2
     servonav:

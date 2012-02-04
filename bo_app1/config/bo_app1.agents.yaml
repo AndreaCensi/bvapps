@@ -24,7 +24,21 @@
       - boot_agents.BDSAgent
       - beta: 1
         change_fraction: 0.5
+        servo:
+            strategy: S1
+            gain: 0.1
 
+- id: BDSAgent_C2
+  desc: "BDS agent"
+  code:
+      - boot_agents.BDSAgent
+      - beta: 1
+        change_fraction: 0.5
+        servo:
+            strategy: S2
+            gain: 0.1
+            
+            
 - id: BGDSAgent_C1
   desc: "BDS agent"
   code:

@@ -16,11 +16,10 @@ for b in range(nbatches):
     f1 = maxperbatch * b
     f2 = min(maxperbatch * (b + 1), len(files))
     fbatch = files[f1:f2]
-    cmd = ['MP4Box']
-    print(fbatch)
+    cmd = ['MP4Box'] 
     for f in fbatch:
         cmd.append('-cat')
         cmd.append(f)
     cmd.append(output)
-    print cmd
+    # print cmd
     subprocess.check_call(cmd)

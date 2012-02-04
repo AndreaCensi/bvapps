@@ -11,7 +11,8 @@
         show_sensor_data_compact: True
         grid: 1
         first_person: true
-        zoom: 0.7
+        zoom: 1.5
+        zoom_scale_radius: true
     
 - id: close_data_sb
   desc: ''
@@ -31,7 +32,8 @@
         show_sensor_data_compact: True
         grid: 1
         first_person: true
-        zoom: 0.7
+        zoom: 1.5
+        zoom_scale_radius: true
 
     
 - id: close_nodata_sbu
@@ -52,7 +54,8 @@
         #show_sensor_data_compact: True
         grid: 1
         first_person: true
-        zoom: 0.7
+        zoom: 1.5
+        zoom_scale_radius: true
 
 
 - id: close_nodata_no
@@ -68,6 +71,7 @@
         # show_sensor_data_compact: True
         grid: 1
         first_person: true
-        zoom: 0.7
+        zoom: 1.5
+        zoom_scale_radius: true
     
     

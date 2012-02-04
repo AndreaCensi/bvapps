@@ -2,8 +2,7 @@ sets=bv-anims-2a bv-anims-2b bv-anims-2c
 subdirs=
 
 include ../boot_targets.mk
-
-# other: video-set-bv-anims-2a.mp4
+ 
 
 allofthem:
 	bom batch bv-anims-2a --command 'parmake'		
@@ -11,16 +10,15 @@ allofthem:
 	bom batch bv-anims-2c --command 'parmake'	
 	
 
-clean-videos:
-	bom batch bv-anims-2a --command 'clean video*'		
-	bom batch bv-anims-2b --command 'clean video*'	
-	bom batch bv-anims-2c --command 'clean video*'		
+remake-videos:
+	bom batch bv-anims-2a --command 'clean video*; parmake'		
+	bom batch bv-anims-2b --command 'clean video*; parmake'	
+	bom batch bv-anims-2c --command 'clean video*; parmake'		
 
 
 join=python ../join.py
 
 other: kind-close_data_sb.mp4  kind-close_data_no.mp4 kind-close_nodata_no.mp4 kind-close_nodata_sbu.mp4
-
 
 
 kind-%.mp4: 
