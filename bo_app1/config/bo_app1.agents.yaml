@@ -9,7 +9,8 @@
   code:
       - boot_agents.Embed
       - beta: 1
-
+        statistic: y_corr
+        scale_score: False
 
 - id: EstStats
   desc: Estimates some observations statistics.

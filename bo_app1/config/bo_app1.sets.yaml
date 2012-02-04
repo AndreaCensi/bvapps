@@ -49,4 +49,17 @@
         resolution: 0.25
         fail_if_not_working: false
         
+- id: bo_app1_stats
+  desc: "Statistics for different nuisances."
+  code:
+  - bootstrapping_olympics.batch_jobs1
+  - robots: [r_cam_A,  r_cam_A_n1, r_cam_A_n2,
+             r_rf_A, r_rf_A_n1, r_rf_A_n2]
+    agents: [embed, EstStats]
+
+    explore:
+        num_episodes: 100
+        num_episodes_videos: 0
+        explorer: expswitch_t1
+        max_episode_len: 10
 
