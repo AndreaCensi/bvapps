@@ -15,9 +15,11 @@ set=anims2c
 	
 	
 
-robots=r-d_SE2_dd_v2-cam360 r-d_SE2_car_v_w-cam360
+robots2c=r-d_SE2_dd_v2-cam360 r-d_SE2_car_v_w-cam360 rn-d_SE2_dd_v2-cam360
 
-animations:  $(addsuffix -trace.mp4,$(robots)) $(addsuffix -tracesb.mp4,$(robots))
+animations-trace:  $(addsuffix -trace.mp4,$(robots2c))
+animations-tracesb:  $(addsuffix -tracesb.mp4,$(robots2c))
+animations:   animations-tracesb animations-trace
 	
 	
 demo: 

@@ -9,11 +9,13 @@
         num_episodes_videos: 5
         explorer: expswitch_t1
         max_episode_len: 30
+
     servo:
         num_episodes: 20
         num_episodes_videos: 5
-        max_episode_len: 10
-        displacement: 2
+        max_episode_len: 30
+        displacement: 1
+        
     servonav:
         num_episodes: 20
         num_episodes_videos: 20
@@ -39,7 +41,7 @@
     servo:
         num_episodes: 20
         num_episodes_videos: 20
-        max_episode_len: 10
+        max_episode_len: 40
         displacement: 2
         
     servonav:

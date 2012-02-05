@@ -7,3 +7,13 @@
        id_vehicle: ${vehicle}
        id_world: empty_fixed_5
 
+
+- id: "rn-${vehicle}"
+  desc: ""
+  code:
+    - bootstrapping_olympics.examples.EquivRobot
+    - robot: "r-${vehicle}"
+      cmd_nuisance: [n_GLa]
+      obs_nuisance: []
+          
+          

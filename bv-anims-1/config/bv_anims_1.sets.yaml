@@ -2,13 +2,13 @@
   desc: ''
   code:
   - bootstrapping_olympics.batch_jobs1
-  - robots: ['r-d_SE2_dd_v2-cam360', 'r-d_SE2_car_v_w-cam360']
+  - robots: ['r-d_SE2_dd_v2-cam360', 'rn-d_SE2_dd_v2-cam360','r-d_SE2_car_v_w-cam360']
     agents: [expswitch_t1]
     explore:
         num_episodes: 9
         num_episodes_videos: 9
         explorer: canonical
-        max_episode_len: 8
+        max_episode_len: 7
         videos: [trace, tracesb]
 
 - id: anims3c

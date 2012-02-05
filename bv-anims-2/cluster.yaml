@@ -1,0 +1,7 @@
+# Simplest cluster configuration for compmake
+hosts:
+    localhost:
+        processors: 10
+        username: andrea
+        # compmake: ./compmake
+        
