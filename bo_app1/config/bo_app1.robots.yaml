@@ -13,7 +13,7 @@
      - vehicles_boot.BOVehicleSimulation
      - dt: 0.033
        id_vehicle: v_cam_A
-       id_world: SBox3_10scale05
+       id_world: SBox2_10a
 
 - id: r_fs_B
   desc: "Field sampler with square disposition"
@@ -62,7 +62,7 @@
      - vehicles_boot.BOVehicleSimulation
      - dt: 0.033
        id_vehicle: v_rf_A
-       id_world: SBox3_10scale05
+       id_world: SBox2_10a
 
 - id: r_rf_A_n1
   desc: "Range-finder with permutation perturbation."

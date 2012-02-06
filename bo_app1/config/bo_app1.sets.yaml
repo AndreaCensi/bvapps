@@ -13,7 +13,7 @@
     servo:
         num_episodes: 20
         num_episodes_videos: 5
-        max_episode_len: 30
+        max_episode_len: 60
         displacement: 1
         
     servonav:
