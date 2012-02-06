@@ -3,7 +3,7 @@
   code:
   - bootstrapping_olympics.batch_jobs1
   - robots: [r_cam_A, r_rf_A, r_fs_A]
-    agents: [BDSAgent_C1, BDSAgent_C2]
+    agents: [BDSAgent_C1, BDSAgent_C2, BDSAgent_C3]
     explore:
         num_episodes: 200
         num_episodes_videos: 5
@@ -30,7 +30,7 @@
   - robots: [r_cam_A, r_rf_A, r_fs_A, 
              r_fs_B, r_fs_C, r_fs_D, r_rf_A_n1, 
              r_rf_A_n2, r_cam_A_n1, r_cam_A_n2]
-    agents: [embed, BDSAgent_C1, EstStats]
+    agents: [BDSAgent_C1, BDSAgent_C2, BDSAgent_C3, EstStats]
 
     explore:
         num_episodes: 300
@@ -47,7 +47,7 @@
     servonav:
         num_episodes: 20
         num_episodes_videos: 20
-        max_episode_len: 600
+        max_episode_len: 10000 # no limitations
         resolution: 0.25
         fail_if_not_working: false
         
@@ -56,7 +56,8 @@
   code:
   - bootstrapping_olympics.batch_jobs1
   - robots: [r_cam_A,  r_cam_A_n1, r_cam_A_n2,
-             r_rf_A, r_rf_A_n1, r_rf_A_n2]
+             r_rf_A, r_rf_A_n1, r_rf_A_n2,
+             r_fs_A, r_fs_B, r_fs_C, r_fs_D]
     agents: [embed, EstStats]
 
     explore:
