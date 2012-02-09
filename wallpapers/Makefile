@@ -3,11 +3,18 @@ subdirs=
 
 include ../boot_targets.mk
 
+joined: $(foreach set,$(sets),joined-$(set).mp4)
 
-files=$(shell find sets/wallpapers1 -type f -name '*.mp4')
-
-join: joined.mp4 sets/joined-opt.gif
-
+joined-%.mp4: $(shell find sets/$*/ -type f -name '*.mp4')
+	# XXX: not sure what's going on
+	# echo ----	# 
+		# find sets/$* -type f -name '*.mp4'
+		# echo ----
+		# echo $(shell find sets/$*/ -type f -name '*.mp4')
+	python ../join.py $@ $(shell find sets/$*/ -type f -name '*.mp4')
+	
+	
+# experimental
 sets/joined.gif: joined.mp4
 	# note: joined-huge is huge!
 	ffmpeg -y -i $< -pix_fmt rgb24 sets/joined-huge.gif
@@ -16,6 +23,3 @@ sets/joined.gif: joined.mp4
 
 %-opt.gif: %.gif
 	convert $< -layers optimize $@
-
-joined.mp4:
-	MP4Box $(foreach var,$(files),-cat $(var)) $@

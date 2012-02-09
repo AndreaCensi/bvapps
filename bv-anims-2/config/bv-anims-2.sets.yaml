@@ -20,7 +20,8 @@
         num_episodes_videos: 1
         explorer: fixed_1s
         max_episode_len: 5
-        videos: [close_data_no, close_nodata_no, close_nodata_sbu]
+        videos: [close_data_no, close_nodata_no, close_nodata_sbu,
+        close_onlydata_no]
 
 
 - id: bv-anims-2c
@@ -31,6 +32,7 @@
       "rsim-d_SE2_rb_v-cam180",
       "rsim-d_SE2_rb_v-cam180-stereo",
       "rsim-d_SE2_rb_v-fs_rand144",
+      "rsim-d_fixed-fs_05_12x12",
       "rsim-d_SE2_rb_v-rf360",
     ]
     agents: [expswitch_t1]
@@ -39,7 +41,8 @@
         num_episodes_videos: 1
         explorer: fixed_10s
         max_episode_len: 5
-        videos: [close_data_no, close_nodata_no, close_nodata_sbu]
+        videos: [close_data_no, close_nodata_no, close_nodata_sbu,
+                close_onlydata_no]
 
 
 - id: bv-anims-2b
@@ -48,8 +51,11 @@
   - bootstrapping_olympics.batch_jobs1
   - robots: [
       "rsimfixed-d_fixed-cam360",
-      "rsimfixed-d_fixed-rf360"
-      # TODO: add 180 version
+      "rsimfixed-d_fixed-rf360",
+      "rsimfixed-d_fixed-cam180",
+      "rsimfixed-d_fixed-rf180",
+      "rsimfixed-d_fixed-fs_05_12x12",
+      "rsimfixed-d_fixed-fs_05_rand144",
     ]
     agents: [expswitch_t1]
     explore:
@@ -57,6 +63,29 @@
         num_episodes_videos: 1
         explorer: fixed_1s
         max_episode_len: 10
-        videos: [close_data_no, close_data_sb]
+        videos: [close_data_no, close_data_sb,
+        close_onlydata_no]
 
+
+- id: bv-anims-2d
+  desc: 'Orbs (S1 dynamics)'
+  code:
+  - bootstrapping_olympics.batch_jobs1
+  - robots: [
+      "rsim-d_S1_rb_v-cam180",
+      "rsim-d_S1_rb_v-rf180",
+    ]
+    agents: [expswitch_t1]
+    explore:
+        num_episodes: 1
+        num_episodes_videos: 1
+        explorer: expswitch_t1
+        max_episode_len: 20
+        videos: [close_data_no_z1, close_data_no, close_data_sb, close_nodata_sbu,
+        close_onlydata_no]
+
+
+
+
+        
 

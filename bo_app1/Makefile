@@ -1,5 +1,6 @@
 subdirs=
-sets=bo_app1a  bgds_test servo_test embed_test
+sets=bo_app1a bo_app1_stats bgds_test servo_test embed_test 
+sets+=bo_app1b
 # heavy: bo_app1b
 
 

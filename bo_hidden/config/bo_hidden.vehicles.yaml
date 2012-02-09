@@ -11,17 +11,7 @@
   sensors:
       - pose: [0,0,0]
         joint: 1
-        sensor:         
-            id: cam_f180_s90
-            desc: A camera with 180fov.
-            code: 
-              - vehicles.sensors.PhotoreceptorsSmoothUniform
-              - num_sensels: 90
-                fov_deg:     180                
-                spatial_sigma_deg: 5
-                noise: 
-                - vehicles.sensors.AdditiveGaussian
-                - std_dev: 0.05
+        id_sensor: cam_f360_n180_s
   radius: 0.5
   extra:
       skin: omni_turret 
@@ -39,16 +29,7 @@
   sensors:
       - pose: [0,0,0]
         joint: 1
-        sensor:         
-            id: cam_f180_s90
-            desc: A camera with 180fov.
-            code: 
-              - vehicles.sensors.PhotoreceptorsUniform
-              - num_sensels: 90
-                fov_deg:     180                
-                noise: 
-                - vehicles.sensors.AdditiveGaussian
-                - std_dev: 0.05
+        id_sensor: rf360
   extra:
-     skin: omni
+     skin: omni_turret
   radius: 0.5

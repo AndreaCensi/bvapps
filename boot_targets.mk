@@ -5,9 +5,9 @@ bom_params=--seterr=raise
 command=parmake
 #bom_params=--contracts --seterr=raise
 # Default targets for compmake
-# targets=not video*
-targets=
-nice=nice -n 15
+targets=not video*
+# targets=
+nice=nice -n 20
 nose=nosetests --with-id #--processes=16 --process-timeout=30 --process-restartworker
 
 #--processes=8
@@ -32,10 +32,13 @@ boot-tests:
 vehicles-tests:
 	VEHICLES_TEST_CONFIG=default:$(PWD)/config/ $(nose) vehicles  $(NOSE_PARAMS) 
 
-
-
-%-set-all:
+%-set-all: sets/display_vehicles
 	$(nice) $(bom) $(bom_params) batch $* --command "$(command) $(targets)"
+
+
+sets/display_vehicles:
+	vehicles_display_demo_vehicles -g 0 -d default:. -o $@
+
 
 %-set-try:
 	-$(bom) $(bom_params) batch $* --command "$(command) $(targets)"
@@ -104,3 +107,10 @@ video-set-%.mp4: $(shell find sets/$*/ -type f -name '*.mp4')
 video-all.mp4: $(shell find sets/ -type f -name '*.mp4')
 	@python ../join.py $@ $^
 
+
+video_summaries: $(foreach video,$(videos),videos/video-summary-$(video).mp4) 
+	
+videos/video-summary-%.mp4: 
+	mkdir -p videos
+	$(join) $@ $(shell find sets/ -type f -name '*$*.mp4')
+	

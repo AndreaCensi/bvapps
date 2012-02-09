@@ -3,29 +3,49 @@
   code:
   - bootstrapping_olympics.batch_jobs1
   - robots: [r_turret, r_turret_rf]
-    agents: [embed, BDSAgent_C1, EstStats]
+    agents: [embed, BDSAgent_C1, BDSAgent_C2, EstStats]
+    
     explore:
-        num_episodes: 100
+        num_episodes: 200
         num_episodes_videos: 5
         explorer: expswitch_t1
         max_episode_len: 30
+
     servo:
-        num_episodes:  100
-        num_episodes_videos:  10
-        max_episode_len: 10
-        displacement: 0.5
+        num_episodes: 20
+        num_episodes_videos: 5
+        max_episode_len: 60
+        displacement: 1
+        
     servonav:
-        num_episodes:  100
-        num_episodes_videos:  10
-        max_episode_len: 10
-        resolution: 0.5
+        num_episodes: 20
+        num_episodes_videos: 20
+        max_episode_len: 600
+        resolution: 0.25
+        fail_if_not_working: false
+        # 
+        # explore:
+        #     num_episodes: 100
+        #     num_episodes_videos: 5
+        #     explorer: expswitch_t1
+        #     max_episode_len: 30
+        # servo:
+        #     num_episodes:  100
+        #     num_episodes_videos:  10
+        #     max_episode_len: 10
+        #     displacement: 0.5
+        # servonav:
+        #     num_episodes:  100
+        #     num_episodes_videos:  10
+        #     max_episode_len: 10
+        #     resolution: 0.5
 
 - id: bo_hidden1_light
   desc: ''
   code:
   - bootstrapping_olympics.batch_jobs1
   - robots: [r_turret]
-    agents: [canonical, BDSAgent_C1]
+    agents: [canonical, BDSAgent_C1, BDSAgent_C2]
     explore:
         num_episodes: 5
         num_episodes_videos: 1

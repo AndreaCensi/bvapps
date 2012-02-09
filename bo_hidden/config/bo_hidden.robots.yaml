@@ -3,7 +3,7 @@
   desc: Robot with turret
   code:
      - vehicles_boot.BOVehicleSimulation
-     - dt: 0.1
+     - dt: 0.033
        id_vehicle: turret
        id_world: stochastic_box_10
 
@@ -12,6 +12,6 @@
   desc: Robot with turret
   code:
      - vehicles_boot.BOVehicleSimulation
-     - dt: 0.1
+     - dt: 0.033
        id_vehicle: turret_rf
        id_world: stochastic_box_10

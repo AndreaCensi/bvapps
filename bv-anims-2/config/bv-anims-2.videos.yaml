@@ -14,6 +14,44 @@
         zoom: 1.5
         zoom_scale_radius: true
     
+- id: close_data_no_z1
+  desc: ''
+  code:  
+  - boot_log2movie_cairo_avi
+  - 'plotter.display_sidebar': 0
+    'plotter.width': 256
+    'plotter.height': 256
+    'plotter.plotting_params':
+        show_world: False
+        show_sensor_data: True
+        show_sensor_data_compact: True
+        grid: 1
+        first_person: false
+        zoom: 0.8
+        zoom_scale_radius: true
+    
+
+    
+- id: close_onlydata_no
+  desc: 'Plot only data and sensor (no robot body)'
+  code:  
+  - boot_log2movie_cairo_avi
+  - 'plotter.display_sidebar': 0
+    'plotter.width': 512
+    'plotter.height': 512
+    'plotter.plotting_params':
+        show_world: False
+        show_robot_body: False
+        show_sensor_data: True
+        show_sensor_data_compact: True
+        grid: 0
+        first_person: true
+        zoom: 1.5
+        zoom_scale_radius: true
+    
+
+    
+    
 - id: close_data_sb
   desc: ''
   code:  
