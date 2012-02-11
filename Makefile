@@ -1,4 +1,4 @@
-subdirs=bo_app1 bv-anims-1 bo_hidden wallpapers
+subdirs=bo_app1 bv-anims-1 bv-anims-2 bo_hidden wallpapers diffeo-tests icra12-fault roslog_test
 
 # roslog_test  needs logs
 
@@ -6,3 +6,9 @@ subdirs=bo_app1 bv-anims-1 bo_hidden wallpapers
 
 
 include boot_targets.mk
+
+
+
+
+
+

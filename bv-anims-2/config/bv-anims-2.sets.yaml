@@ -6,10 +6,10 @@
   - robots: [
       "rsim-d_SE2_car_v-cam360",
       "rsim-d_SE2_car_v-rf360",
-# TODO
-#      "rsim-d_SE2_car_v-cam180",
-#      "rsim-d_SE2_car_v-rf180",
-      "rsim-d_SE2_car_v_w-cam360",
+      "rsim-d_SE2_car_v-cam180", 
+      "rsim-d_SE2_car_v-rf180", 
+      "rsim-d_SE2_car_v-fs_05_rand144", 
+      "rsim-d_SE2_car_v-fs_05_12x12", 
       "rsim-landroid-4cam",
       "rsim-landroid-hokuyo",
       "rsim-landroid-hokuyo-4cam"
@@ -31,8 +31,8 @@
   - robots: [
       "rsim-d_SE2_rb_v-cam180",
       "rsim-d_SE2_rb_v-cam180-stereo",
-      "rsim-d_SE2_rb_v-fs_rand144",
-      "rsim-d_fixed-fs_05_12x12",
+      "rsim-d_SE2_rb_v-fs_05_rand144", 
+      "rsim-d_SE2_rb_v-fs_05_12x12", 
       "rsim-d_SE2_rb_v-rf360",
     ]
     agents: [expswitch_t1]
@@ -64,7 +64,9 @@
         explorer: fixed_1s
         max_episode_len: 10
         videos: [close_data_no, close_data_sb,
-        close_onlydata_no]
+        close_onlydata_no] 
+        # Not working yet
+        #, close_data_no_z1_tran]
 
 
 - id: bv-anims-2d

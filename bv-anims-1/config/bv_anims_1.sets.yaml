@@ -2,7 +2,7 @@
   desc: ''
   code:
   - bootstrapping_olympics.batch_jobs1
-  - robots: ['r-d_SE2_dd_v2-cam360', 'rn-d_SE2_dd_v2-cam360','r-d_SE2_car_v_w-cam360']
+  - robots: ['r-d_SE2_dd_v2-cam360', 'rn-d_SE2_dd_v2-cam360','r-d_SE2_car_v-cam360']
     agents: [expswitch_t1]
     explore:
         num_episodes: 9

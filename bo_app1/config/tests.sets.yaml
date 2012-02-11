@@ -1,43 +1,44 @@
-- id: servo_test
-  desc: ""
-  code:
-  - bootstrapping_olympics.batch_jobs1
-  - robots: [ r_rf_A_n1 ]
-    agents: [embed, BDSAgent_C1, EstStats]
-    explorer: expswitch_t1
-    episode_len: 30
-    num_ep_expl: 10
-    num_ep_expl_v: 4
-    num_ep_serv: 10
-    num_ep_serv_v: 5
-    servo_max_episode_len: 10
-    
-- id: bgds_test
-  desc: "Test of BGDS agent"
-  code:
-  - bootstrapping_olympics.batch_jobs1
-  - robots: [r_cam_A, r_rf_A, r_fs_B]
-    agents: [BGDSAgent_C1]
-    explorer: expswitch_t1
-    episode_len: 30
-    num_ep_expl: 100
-    num_ep_expl_v: 0
-    num_ep_serv: 0
-    num_ep_serv_v: 0
-    servo_max_episode_len: 10
-    servo_displacement: 1
-
-- id: embed_test
-  desc: "Test of Embed agent; same robot with different nuisances."
-  code:
-  - bootstrapping_olympics.batch_jobs1
-  - robots: [r_cam_A, r_rf_A, r_cam_A_n1, r_cam_A_n2]
-    agents: [embed]
-    explorer: expswitch_t1
-    episode_len: 30
-    num_ep_expl: 100
-    num_ep_expl_v: 0
-    num_ep_serv: 0
-    num_ep_serv_v: 0
-
- 
+# - id: servo_test
+#   desc: ""
+#   code:
+#   - bootstrapping_olympics.batch_jobs1
+#   - robots: [ r_rf_A_n1 ]
+#     agents: [embed, BDSAgent_C1, EstStats]
+#     explore:
+#     explorer: expswitch_t1
+#     episode_len: 30
+#     num_ep_expl: 10
+#     num_ep_expl_v: 4
+#     num_ep_serv: 10
+#     num_ep_serv_v: 5
+#     servo_max_episode_len: 10
+#     
+# - id: bgds_test
+#   desc: "Test of BGDS agent"
+#   code:
+#   - bootstrapping_olympics.batch_jobs1
+#   - robots: [r_cam_A, r_rf_A, r_fs_B]
+#     agents: [BGDSAgent_C1]
+#     explorer: expswitch_t1
+#     episode_len: 30
+#     num_ep_expl: 100
+#     num_ep_expl_v: 0
+#     num_ep_serv: 0
+#     num_ep_serv_v: 0
+#     servo_max_episode_len: 10
+#     servo_displacement: 1
+# 
+# - id: embed_test
+#   desc: "Test of Embed agent; same robot with different nuisances."
+#   code:
+#   - bootstrapping_olympics.batch_jobs1
+#   - robots: [r_cam_A, r_rf_A, r_cam_A_n1, r_cam_A_n2]
+#     agents: [embed]
+#     explorer: expswitch_t1
+#     episode_len: 30
+#     num_ep_expl: 100
+#     num_ep_expl_v: 0
+#     num_ep_serv: 0
+#     num_ep_serv_v: 0
+# 
+#  

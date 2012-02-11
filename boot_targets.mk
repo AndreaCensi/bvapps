@@ -5,7 +5,9 @@ bom_params=--seterr=raise
 command=parmake
 #bom_params=--contracts --seterr=raise
 # Default targets for compmake
-targets=not video*
+targets_all=not video*
+targets_complete=all
+
 # targets=
 nice=nice -n 20
 nose=nosetests --with-id #--processes=16 --process-timeout=30 --process-restartworker
@@ -33,7 +35,10 @@ vehicles-tests:
 	VEHICLES_TEST_CONFIG=default:$(PWD)/config/ $(nose) vehicles  $(NOSE_PARAMS) 
 
 %-set-all: sets/display_vehicles
-	$(nice) $(bom) $(bom_params) batch $* --command "$(command) $(targets)"
+	$(nice) $(bom) $(bom_params) batch $* --command "$(command) $(targets_all)"
+
+%-set-complete: sets/display_vehicles
+		$(nice) $(bom) $(bom_params) batch $* --command "$(command) $(targets_complete)"
 
 
 sets/display_vehicles:
@@ -41,7 +46,7 @@ sets/display_vehicles:
 
 
 %-set-try:
-	-$(bom) $(bom_params) batch $* --command "$(command) $(targets)"
+	-$(bom) $(bom_params) batch $* --command "$(command) $(targets_all)"
 
 %-set-clean-videos:
 	-rm -rf sets/$*/videos/
@@ -59,6 +64,8 @@ sets-clean-videos: $(addsuffix -set-clean-videos,$(sets))
 subdirs-clean-videos: $(addsuffix -subdir-clean-videos,$(subdirs))
 
 
+sets-complete: $(addsuffix -set-complete,$(sets))
+subdirs-complete: $(addsuffix -subdir-complete,$(subdirs))
 
 sets-all: $(addsuffix -set-all,$(sets))
 subdirs-all: $(addsuffix -subdir-all,$(subdirs))
@@ -82,6 +89,8 @@ subdirs-distclean: $(addsuffix -subdir-distclean,$(subdirs))
 
 %-subdir-all:
 	$(MAKE) -C $* all
+%-subdir-complete:
+	$(MAKE) -C $* all
 %-subdir-test:
 	$(MAKE) -C $* test
 %-subdir-status:
@@ -94,21 +103,21 @@ subdirs-distclean: $(addsuffix -subdir-distclean,$(subdirs))
 	$(MAKE) -C $* distclean
 
 ###
-
+complete: sets-complete subdirs-complete
 status: sets-status subdirs-status
 try: sets-try subdirs-try
 clean-compmake: sets-clean-compmake subdirs-clean-compmake
 distclean: sets-distclean subdirs-distclean
 
 
-video-set-%.mp4: $(shell find sets/$*/ -type f -name '*.mp4')
+videos/video-set-%.mp4: $(shell find sets/$*/ -type f -name '*.mp4')
 	@python ../join.py $@ $^
 
-video-all.mp4: $(shell find sets/ -type f -name '*.mp4')
+videos/video-all.mp4: $(shell find sets/ -type f -name '*.mp4')
 	@python ../join.py $@ $^
 
-
-video_summaries: $(foreach video,$(videos),videos/video-summary-$(video).mp4) 
+# Summary by type
+video-summaries: $(foreach video,$(videos),videos/video-summary-$(video).mp4) 
 	
 videos/video-summary-%.mp4: 
 	mkdir -p videos

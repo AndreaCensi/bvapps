@@ -1,8 +1,7 @@
 subdirs=
-sets=bo_app1a bo_app1_stats bgds_test servo_test embed_test 
+sets=bo_app1a bo_app1_stats 
 sets+=bo_app1b
-# heavy: bo_app1b
-
+# bgds_test servo_test embed_test 
 
 include ../boot_targets.mk
 

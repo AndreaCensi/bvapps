@@ -4,7 +4,7 @@
   code:
   - bootstrapping_olympics.batch_jobs1
   - robots: ["rsim-d_SE2_rb_v-cam180-stereo-wp1",
-             "rsim-d_SE2_car_v_w-cam360-wp1",
+             "rsim-d_SE2_car_v-cam360-wp1",
              "rsim-d_SE2_car_v-rf360-wp1"
              #"rsim-d_SE2_rb_v-fs_rand144-wp1"
              ]
