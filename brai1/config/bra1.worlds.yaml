@@ -1,0 +1,24 @@
+- id: empty_light
+  desc: Empty room with a light at the origin
+  code: 
+  - vehicles.library.LightBox
+  - start_poses: 
+      - [1.2,-2,90]
+      - [0.5,-2,90]
+      - [0.1,-2,90]
+    bounds: [[-1,+2.5],[-2.5,+0.3],[0,+5]]
+    primitives:
+    - type: Circle
+      center: [0,0]
+      radius: 0.1
+      solid: 1
+      texture:
+          - vehicles.library.ConstantTexture
+          - value: 1
+    
+    # - type: PolyLine
+    #    points: [ [5,0], [0, 5] ]
+    #    texture:
+    #      - vehicles.library.ConstantTexture
+    #      - value: 0
+    #   

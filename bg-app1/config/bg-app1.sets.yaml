@@ -1,0 +1,49 @@
+- id: bg-app1a
+  desc: 'Difference between BDS and BGDS agent (camera)'
+  code:
+  - bootstrapping_olympics.batch_jobs1
+  - robots: [r_cam_A]
+    agents: [BDSAgent_C2, BGDSAgent_C1] 
+    explore:
+        num_episodes: 200
+        num_episodes_videos: 5
+        explorer: expswitch_t1
+        max_episode_len: 30
+
+    servo:
+        num_episodes: 20
+        num_episodes_videos: 5
+        max_episode_len: 60
+        displacement: 1        
+        
+    servonav:
+        num_episodes: 5
+        num_episodes_videos: 5
+        max_episode_len: 600
+        resolution: 0.25
+        fail_if_not_working: false
+
+- id: bg-app1b
+  desc: 'Difference between BDS and BGDS agent (range-finder)'
+  code:
+  - bootstrapping_olympics.batch_jobs1
+  - robots: [r_rf_A]
+    agents: [BDSAgent_C2, BGDSAgent_C1] 
+    explore:
+        num_episodes: 200
+        num_episodes_videos: 5
+        explorer: expswitch_t1
+        max_episode_len: 30
+
+    servo:
+        num_episodes: 20
+        num_episodes_videos: 5
+        max_episode_len: 60
+        displacement: 1
+        
+    servonav:
+        num_episodes: 5
+        num_episodes_videos: 5
+        max_episode_len: 600
+        resolution: 0.25
+        fail_if_not_working: false

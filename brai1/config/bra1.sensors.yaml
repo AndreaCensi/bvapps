@@ -1,0 +1,9 @@
+- id: fuzzy-eye
+  desc: A very fuzzy single sensel
+  code:
+  - vehicles.library.PhotoreceptorsSmooth
+  - spatial_sigma_deg: 25
+    upsample: 100
+    directions: [0]
+    invalid: 0
+    noise:

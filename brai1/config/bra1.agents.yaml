@@ -1,0 +1,19 @@
+- id: expswitch_t1
+  desc: Switches randomly between commands with an exponential switching time.
+  code:
+      - boot_agents.ExpSwitcher
+      - beta: 1
+
+- id: simple-away
+  desc: "Moves towards the light"
+  code:
+  - bootstrapping_olympics.library.TestAgent
+  - cmd: '[np.sign(y[0]-y[1]), 0.5]'
+  
+- id: simple-towards
+  desc: "Moves towards the light"
+  code:
+    - bootstrapping_olympics.library.TestAgent
+    - cmd: '[-np.sign(y[0]-y[1]), 0.5]'
+  
+  

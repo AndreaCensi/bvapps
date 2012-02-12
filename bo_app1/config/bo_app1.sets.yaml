@@ -69,3 +69,61 @@
 # TODO: Add one with cars
 # TODO: Add one with cars
 
+
+- id: bo_app1c
+  desc: 'Differential drive.'
+  code:
+  - bootstrapping_olympics.batch_jobs1
+  - robots: ["rsim-d_SE2_dd_v-cam360", 
+             "rsim-d_SE2_dd_v-rf360", 
+             "rsim-d_SE2_dd_v-fs_05_rand144", 
+             "rsim-d_SE2_dd_v-fs_05_12x12", 
+             ]
+    agents: [BDSAgent_C1, BDSAgent_C2] #, BDSAgent_C3]
+    explore:
+        num_episodes: 200
+        num_episodes_videos: 5
+        explorer: expswitch_t1
+        max_episode_len: 30
+
+    servo:
+        num_episodes: 20
+        num_episodes_videos: 5
+        max_episode_len: 60
+        displacement: 1
+        
+    servonav:
+        num_episodes: 20
+        num_episodes_videos: 20
+        max_episode_len: 600
+        resolution: 0.25
+        fail_if_not_working: false
+
+- id: bo_app1d
+  desc: 'Experiments with car-like.'
+  code:
+  - bootstrapping_olympics.batch_jobs1
+  - robots: ["rsim-d_SE2_car_v-cam360", 
+             "rsim-d_SE2_car_v-rf360", 
+             "rsim-d_SE2_car_v-fs_05_rand144", 
+             "rsim-d_SE2_car_v-fs_05_12x12", 
+             ]
+    agents: [BDSAgent_C1, BDSAgent_C2] #, BDSAgent_C3]
+    explore:
+        num_episodes: 200
+        num_episodes_videos: 5
+        explorer: expswitch_t1
+        max_episode_len: 30
+
+    servo:
+        num_episodes: 20
+        num_episodes_videos: 5
+        max_episode_len: 60
+        displacement: 1
+        
+    servonav:
+        num_episodes: 20
+        num_episodes_videos: 20
+        max_episode_len: 600
+        resolution: 0.25
+        fail_if_not_working: false

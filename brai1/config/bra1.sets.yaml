@@ -1,0 +1,29 @@
+- id: brai1a
+  desc: ''
+  code:
+  - bootstrapping_olympics.batch_jobs1
+  - robots: ['r-brai_2eyes']
+    agents: [expswitch_t1]
+    explore:
+        num_episodes: 3
+        num_episodes_videos: 3
+        explorer: simple-away
+        max_episode_len: 10
+        episodes_per_tranche: 10
+        videos: [mp4z0sb, empty]
+
+- id: brai1b
+  desc: ''
+  code:
+  - bootstrapping_olympics.batch_jobs1
+  - robots: ['r-brai_2eyes']
+    agents: [expswitch_t1]
+    explore:
+        num_episodes: 3
+        num_episodes_videos: 3
+        explorer: simple-towards
+        max_episode_len: 10
+        episodes_per_tranche: 10
+        videos: [mp4z0sb, empty]
+        
+

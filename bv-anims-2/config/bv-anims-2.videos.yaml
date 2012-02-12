@@ -70,6 +70,7 @@
         first_person: true
         zoom: 0.8
         zoom_scale_radius: true
+    'mencoder.crop': True
     
     
 - id: close_data_sb

@@ -1,0 +1,13 @@
+- id: empty
+  desc: ''
+  code: 
+  - boot_log2movie_cairo_avi
+  - 'plotter.display_sidebar': false
+    'plotter.plotting_params':
+        first_person: false
+        zoom: 0
+        grid: 0
+        show_sensor_data_compact: True
+        show_robot_sensors: False
+        show_textures: False
+    'mencoder.crop': True

@@ -1,6 +1,6 @@
 
 - id: bv-anims-2a
-  desc: 'car like'
+  desc: 'car like and differential drive'
   code:
   - bootstrapping_olympics.batch_jobs1
   - robots: [
@@ -10,6 +10,12 @@
       "rsim-d_SE2_car_v-rf180", 
       "rsim-d_SE2_car_v-fs_05_rand144", 
       "rsim-d_SE2_car_v-fs_05_12x12", 
+      "rsim-d_SE2_dd_v-cam360",
+      "rsim-d_SE2_dd_v-rf360",
+      "rsim-d_SE2_dd_v-cam180", 
+      "rsim-d_SE2_dd_v-rf180", 
+      "rsim-d_SE2_dd_v-fs_05_rand144", 
+      "rsim-d_SE2_dd_v-fs_05_12x12", 
       "rsim-landroid-4cam",
       "rsim-landroid-hokuyo",
       "rsim-landroid-hokuyo-4cam"
@@ -30,9 +36,11 @@
   - bootstrapping_olympics.batch_jobs1
   - robots: [
       "rsim-d_SE2_rb_v-cam180",
+      "rsim-d_SE2_rb_v-cam360",
       "rsim-d_SE2_rb_v-cam180-stereo",
       "rsim-d_SE2_rb_v-fs_05_rand144", 
       "rsim-d_SE2_rb_v-fs_05_12x12", 
+      "rsim-d_SE2_rb_v-rf180",
       "rsim-d_SE2_rb_v-rf360",
     ]
     agents: [expswitch_t1]
