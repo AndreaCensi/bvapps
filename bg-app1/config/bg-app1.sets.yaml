@@ -3,10 +3,11 @@
   code:
   - bootstrapping_olympics.batch_jobs1
   - robots: [r_cam_A]
-    agents: [BDSAgent_C2, BGDSAgent_C1] 
+    agents: [#BDSAgent_C2, 
+            BGDSAgent_C1] 
     explore:
         num_episodes: 200
-        num_episodes_videos: 5
+        num_episodes_videos: 0
         explorer: expswitch_t1
         max_episode_len: 30
 
@@ -28,10 +29,11 @@
   code:
   - bootstrapping_olympics.batch_jobs1
   - robots: [r_rf_A]
-    agents: [BDSAgent_C2, BGDSAgent_C1] 
+    agents: [#BDSAgent_C2,
+             BGDSAgent_C1] 
     explore:
         num_episodes: 200
-        num_episodes_videos: 5
+        num_episodes_videos: 0
         explorer: expswitch_t1
         max_episode_len: 30
 

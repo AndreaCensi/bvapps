@@ -1,0 +1,7 @@
+
+- id: n_afew
+  desc: Selects a few sensels
+  code:
+    - bootstrapping_olympics.library.Select
+    - which: [0, 8, 16, 24, 32, 40, 48, 54]
+    

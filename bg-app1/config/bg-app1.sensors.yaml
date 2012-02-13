@@ -5,7 +5,7 @@
     # So it can fit inside radius 0.5
     - radius: 0.38  
       n: 144
-      normalize: True
+      normalize: False
       noise: 
         - vehicles.sensors.AdditiveGaussian
         - std_dev: 0.05
@@ -16,7 +16,7 @@
     - vehicles.sensors.FieldSamplerUniform
     - sides: [0.45,0.45]
       shape: [12,12]
-      normalize: True
+      normalize: False
       noise: 
         - vehicles.sensors.AdditiveGaussian
         - std_dev: 0.05

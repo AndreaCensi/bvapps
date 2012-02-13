@@ -2,20 +2,18 @@
   desc: 'Simple example without nuisances.'
   code:
   - bootstrapping_olympics.batch_jobs1
-  - robots: [r_cam_A, r_rf_A, r_fs_A]
+  - robots: [r_cam_A, r_rf_A, r_fs_A, r_fs_B_f]
     agents: [BDSAgent_C1, BDSAgent_C2] #, BDSAgent_C3]
     explore:
         num_episodes: 200
         num_episodes_videos: 5
         explorer: expswitch_t1
         max_episode_len: 30
-
     servo:
         num_episodes: 20
         num_episodes_videos: 5
         max_episode_len: 60
         displacement: 1
-        
     servonav:
         num_episodes: 20
         num_episodes_videos: 20
@@ -28,13 +26,13 @@
   code:
   - bootstrapping_olympics.batch_jobs1
   - robots: [r_cam_A, r_rf_A, r_fs_A, 
-             r_fs_B, r_fs_C, r_fs_D, r_rf_A_n1, 
+             r_fs_B_f, r_fs_C, r_fs_D_f, r_rf_A_n1, 
              r_rf_A_n2, r_cam_A_n1, r_cam_A_n2]
     agents: [BDSAgent_C1, BDSAgent_C2, EstStats]
 
     explore:
         num_episodes: 200
-        num_episodes_videos: 5
+        num_episodes_videos: 1
         explorer: expswitch_t1
         max_episode_len: 30
 
@@ -57,7 +55,7 @@
   - bootstrapping_olympics.batch_jobs1
   - robots: [r_cam_A,  r_cam_A_n1, r_cam_A_n2,
              r_rf_A, r_rf_A_n1, r_rf_A_n2,
-             r_fs_A, r_fs_B, r_fs_C, r_fs_D]
+             r_fs_A, r_fs_B_f, r_fs_C, r_fs_D_f]
     agents: [embed, EstStats]
 
     explore:
@@ -82,7 +80,7 @@
     agents: [BDSAgent_C1, BDSAgent_C2] #, BDSAgent_C3]
     explore:
         num_episodes: 200
-        num_episodes_videos: 5
+        num_episodes_videos: 1
         explorer: expswitch_t1
         max_episode_len: 30
 
@@ -111,7 +109,7 @@
     agents: [BDSAgent_C1, BDSAgent_C2] #, BDSAgent_C3]
     explore:
         num_episodes: 200
-        num_episodes_videos: 5
+        num_episodes_videos: 1
         explorer: expswitch_t1
         max_episode_len: 30
 

@@ -31,6 +31,15 @@
        id_world: SBox2_10a # Need SBox2 for sources
 
 
+- id: "${robot}_f"
+  desc: "Flattened version of ${robot}"
+  code:
+  - bootstrapping_olympics.examples.EquivRobot
+  - robot: "${robot}"
+    obs_nuisance: n_flatten
+    cmd_nuisance: []
+    
+
 - id: r_fs_C
   desc: "Field sampler with square disposition"
   code:

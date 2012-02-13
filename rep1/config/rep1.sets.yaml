@@ -1,0 +1,18 @@
+- id: rep1a
+  desc: 'Showing the different representations'
+  code:
+  - bootstrapping_olympics.batch_jobs1
+  - robots: [
+      "rsim-d_SE2_dd_v-cam360-afew",
+      "rsim-d_SE2_dd_v-cam360-afew-d32",
+      "rsim-d_SE2_dd_v-cam360-afew-d32-bits",
+      "rsim-d_SE2_dd_v-cam360-afew-d32-bits-flatten-shuffle",
+      ]
+    agents: [EstStats] 
+    explore:
+       num_episodes: 1
+       num_episodes_videos: 1
+       episodes_per_tranche: 1
+       explorer: expswitch_t1
+       max_episode_len: 30
+       videos: [mp4z2sb]
