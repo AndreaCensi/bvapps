@@ -3,16 +3,23 @@
   code:
   - bootstrapping_olympics.batch_jobs1
   - robots: [
-      "rsim-d_SE2_dd_v-cam360-afew",
-      "rsim-d_SE2_dd_v-cam360-afew-d32",
-      "rsim-d_SE2_dd_v-cam360-afew-d32-bits",
-      "rsim-d_SE2_dd_v-cam360-afew-d32-bits-flatten-shuffle",
-      ]
+      "d_SE2_dd_v-cam360-rsim",
+      "d_SE2_dd_v-cam360-rsim-afew",
+      "d_SE2_dd_v-cam360-rsim-afew-d32",
+      "d_SE2_dd_v-cam360-rsim-afew-d32-gray",
+      "d_SE2_dd_v-cam360-rsim-afew-d32-gray-flatten",
+      "d_SE2_dd_v-cam360-rsim-afew-d32-gray-flatten-shuffle",
+      "d_SE2_dd_v-cam360-rsim-afew-d32-gray-flatten-shuffle-crypt",
+      "d_SE2_dd_v-cam360-rsim-afew-d32-bits",
+      "d_SE2_dd_v-cam360-rsim-afew-d32-bits-flatten",
+      "d_SE2_dd_v-cam360-rsim-afew-d32-bits-flatten-shuffle",
+      "d_SE2_dd_v-cam360-rsim-afew-d32-bits-flatten-shuffle-crypt",
+    ]
     agents: [EstStats] 
     explore:
        num_episodes: 1
        num_episodes_videos: 1
        episodes_per_tranche: 1
-       explorer: expswitch_t1
-       max_episode_len: 30
+       explorer: fixed_1s
+       max_episode_len: 10
        videos: [mp4z2sb]

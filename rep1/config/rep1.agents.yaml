@@ -10,3 +10,10 @@
     - boot_agents.EstStats
     - beta: 1
 
+
+- id: fixed_1s
+  desc: basic motions
+  code:
+  - bootstrapping_olympics.examples.agents.TestAgent
+  - cmd: '[0.2, 0.2*np.cos(t)]'
+  # - cmd: '[0.2, 1]'

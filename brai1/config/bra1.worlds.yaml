@@ -15,6 +15,15 @@
       texture:
           - vehicles.library.ConstantTexture
           - value: 1
+    - type: Circle
+      center: [0,0]
+      radius: 8
+      solid: 0
+      texture:
+        - vehicles.worlds.textures.RandomCheckerboard
+        - cell_width: 0.2
+          seed: 42
+      
     
     # - type: PolyLine
     #    points: [ [5,0], [0, 5] ]

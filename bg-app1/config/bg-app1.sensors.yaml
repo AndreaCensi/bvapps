@@ -8,7 +8,7 @@
       normalize: False
       noise: 
         - vehicles.sensors.AdditiveGaussian
-        - std_dev: 0.05
+        - std_dev: 0.015
 
 - id: s_fs_B
   desc: "Uniform disposition"
@@ -19,7 +19,7 @@
       normalize: False
       noise: 
         - vehicles.sensors.AdditiveGaussian
-        - std_dev: 0.05
+        - std_dev: 0.015
         
 - id: s_fs_C
   desc: "Random circular distribution, normalized"
@@ -30,7 +30,7 @@
       normalize: True
       noise: 
         - vehicles.sensors.AdditiveGaussian
-        - std_dev: 0.05
+        - std_dev: 0.015
 
 - id: s_fs_D
   desc: "Uniform 12x12 disposition, normalized."
@@ -41,7 +41,7 @@
       normalize: True
       noise: 
         - vehicles.sensors.AdditiveGaussian
-        - std_dev: 0.05
+        - std_dev: 0.015
         
 - id: s_cam_A
   desc: "An omnidirectional camera with 180 sensels, sigma = 4 deg"
@@ -63,6 +63,6 @@
         fov_deg:     360
         noise: 
             - vehicles.sensors.AdditiveGaussian
-            - std_dev: 0.1
+            - std_dev: 0.05
 
 

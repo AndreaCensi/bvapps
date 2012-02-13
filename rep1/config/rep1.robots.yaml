@@ -1,12 +1,13 @@
 
-- id: "rsim-${vehicle}"
+- id: "${vehicle}-rsim"
   desc: ""
   code:
      - vehicles_boot.BOVehicleSimulation
      - dt: 0.033
        id_vehicle: "${vehicle}"
-       id_world: rep1a_world
-
+       # id_world: rep1a_world
+       id_world: BigMama_r10s1_orig
+       
 - id: "${robot}-afew"
   desc: "Extracts a few sensels"
   code:
@@ -23,6 +24,15 @@
     cmd_nuisance: []
     obs_nuisance: [n_int2bits]
           
+- id: "${robot}-gray"
+  desc: "Converts to gray code"
+  code:
+  - bootstrapping_olympics.examples.EquivRobot
+  - robot: "${robot}"
+    cmd_nuisance: []
+    obs_nuisance: [n_int2gray]
+          
+
 - id: "${robot}-d32"
   desc: "Discretizes to 32 levels"
   code:
@@ -48,6 +58,18 @@
   - robot: "${robot}"
     cmd_nuisance: []
     obs_nuisance: [n_flatten]
+    
+      
+          
+          
+- id: "${robot}-crypt"
+  desc: "Encrypts the bits."
+  code:
+  - bootstrapping_olympics.examples.EquivRobot
+  - robot: "${robot}"
+    cmd_nuisance: []
+    obs_nuisance: [n_encrypt1]
+          
           
           
           
