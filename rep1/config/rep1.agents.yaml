@@ -11,6 +11,17 @@
     - beta: 1
 
 
+- id: BDSAgent_C1
+  desc: "BDS agent (servo strategy S1)"
+  code:
+      - boot_agents.BDSAgent
+      - beta: 1
+        change_fraction: 0.01
+        servo:
+            strategy: S1
+            gain: 0.1
+
+
 - id: fixed_1s
   desc: basic motions
   code:

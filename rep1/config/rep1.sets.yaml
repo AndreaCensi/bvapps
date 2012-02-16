@@ -22,4 +22,29 @@
        episodes_per_tranche: 1
        explorer: fixed_1s
        max_episode_len: 10
-       videos: [mp4z2sb]
+       videos: [mp4z2sb, mp4sensels]
+
+- id: rep1b
+  desc: 'Showing some statistics'
+  code:
+  - bootstrapping_olympics.batch_jobs1
+  - robots: [
+     "d_SE2_dd_v-cam360-rsim2",
+     "d_SE2_dd_v-cam360-rsim2-afew",
+     "d_SE2_dd_v-cam360-rsim2-afew-d32",
+     "d_SE2_dd_v-cam360-rsim2-afew-d32-gray",
+     "d_SE2_dd_v-cam360-rsim2-afew-d32-gray-flatten",
+     "d_SE2_dd_v-cam360-rsim2-afew-d32-gray-flatten-shuffle",
+     "d_SE2_dd_v-cam360-rsim2-afew-d32-gray-flatten-shuffle-crypt",
+     "d_SE2_dd_v-cam360-rsim2-afew-d32-bits",
+     "d_SE2_dd_v-cam360-rsim2-afew-d32-bits-flatten",
+     "d_SE2_dd_v-cam360-rsim2-afew-d32-bits-flatten-shuffle",
+     "d_SE2_dd_v-cam360-rsim2-afew-d32-bits-flatten-shuffle-crypt",
+     ]
+    agents: [EstStats, BDSAgent_C1] 
+    explore:
+      num_episodes: 100
+      num_episodes_videos: 0
+      explorer: expswitch_t1
+      max_episode_len: 10
+      videos: [mp4z2sb]

@@ -18,3 +18,16 @@
   code:
     - bootstrapping_olympics.examples.agents.TestAgent
     - cmd: '[0.2, 0, 0.1*np.cos(t)]'
+
+
+- id: fixed_10
+  desc: "Turn left" 
+  code:
+    - bootstrapping_olympics.examples.agents.TestAgent
+    - cmd: '[1,0]'
+
+- id: fixed_01
+  desc: "Go straight" 
+  code:
+    - bootstrapping_olympics.examples.agents.TestAgent
+    - cmd: '[0,0.5]'

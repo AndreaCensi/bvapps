@@ -1,4 +1,4 @@
-sets=bv-anims-2a  bv-anims-2c bv-anims-2d bv-anims-2b
+sets=bv-anims-2a bv-anims-2c bv-anims-2d bv-anims-2b bv-anims-2e
 subdirs=
 videos=close_onlydata_no close_data_sb close_data_no close_nodata_sbu
 

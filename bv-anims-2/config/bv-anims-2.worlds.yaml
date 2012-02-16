@@ -20,3 +20,66 @@
   code: 
     - vehicles.worlds.EmptyFixed
     - bounds: [[-10,10],[-10,10],[-10,10]]
+
+
+
+- id: simple-world-column
+  desc: Empty room with a column at the origin
+  code: 
+  - vehicles.library.LightBox
+  - start_poses: 
+      - [+1.0,-1.5,75]
+      - [-1.0,-1.5,105]
+    bounds: [[-2.5,+2.5],[-2.5,+0.3],[0,+5]]
+    primitives:
+    - type: Circle
+      center: [0,2]
+      radius: 0.5
+      solid: False
+      texture:
+          - vehicles.library.ConstantTexture
+          - value: 1
+    - type: Circle
+      center: [0,0]
+      radius: 8.0
+      solid: False
+      texture:
+      - vehicles.library.ConstantTexture
+      - value: 0
+        # - vehicles.worlds.textures.RandomCheckerboard
+        # - cell_width: 0.2
+        #   seed: 42
+      
+
+
+- id: simple-wall
+  desc: A simple wall 
+  code: 
+  - vehicles.library.LightBox
+  - start_poses: 
+      - [0,0,0]
+    bounds: [[-0.25,+2.5],[-0.4,+0.4],[0,+5]]
+    primitives:
+    # - type: PolyLine
+    #   points: [[1.2,-0.4],[1.2,+0.4]]
+    #   texture:
+    #    - vehicles.worlds.textures.RandomCheckerboard
+    #    - cell_width: 0.1
+    #      seed: 42
+
+    - type: Circle
+      center: [0,0]
+      radius: 0.8
+      solid: False
+      texture:
+         - vehicles.worlds.textures.RandomCheckerboard
+         - cell_width: 0.2
+           seed: 42
+    - type: Circle
+      center: [0,0]
+      radius: 8.0
+      solid: False
+      texture:
+      - vehicles.library.ConstantTexture
+      - value: 0
+     

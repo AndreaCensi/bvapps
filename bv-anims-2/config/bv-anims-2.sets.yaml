@@ -95,6 +95,42 @@
         close_onlydata_no]
 
 
+- id: bv-anims-2e
+  desc: 'Simple animations of forward motion for camera and range-finder.'
+  code:
+  - bootstrapping_olympics.batch_jobs1
+  - robots: [
+      "rsimf-d_SE2_dd_v-cam180",
+      "rsimf-d_SE2_dd_v-rf180",
+      "rsimf-d_SE2_dd_v-cam360",
+      "rsimf-d_SE2_dd_v-rf360",
+    ]
+    agents: [expswitch_t1]
+    explore:
+        num_episodes: 2
+        num_episodes_videos: 2
+        explorer: fixed_01
+        max_episode_len: 3
+        videos: ["for-bv-anims-2e", "mp4sensels_plot", "mp4z0sb"]
+
+
+
+- id: bv-anims-2f
+  desc: 'Camera in front of a wall'
+  code:
+  - bootstrapping_olympics.batch_jobs1
+  - robots: [
+            "rsimw-d_S1_rb_v-cam180"
+    ]
+    agents: [expswitch_t1]
+    explore:
+        num_episodes: 1
+        num_episodes_videos: 1
+        explorer: expswitch_t1
+        max_episode_len: 3
+        videos: [mp4z0no, "for-bv-anims-2f"]
+
+
 
 
         

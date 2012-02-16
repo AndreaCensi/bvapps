@@ -134,3 +134,40 @@
         zoom_scale_radius: true
     'mencoder.crop': True
     
+    
+- id: for-bv-anims-2e
+  desc: 'No grid, compact data'
+  code:  
+  - boot_log2movie_cairo_avi
+  - 'plotter.display_sidebar': 0
+    'plotter.width': 800
+    'plotter.height': 800
+    'plotter.plotting_params':
+        show_world: True
+        show_sensor_data: True
+        show_textures: False
+        show_sensor_data_compact: True
+        grid: 0
+        zoom: 0
+        zoom_scale_radius: true
+    'mencoder.crop': True
+
+
+    
+- id: for-bv-anims-2f
+  desc: 'No grid, compact data'
+  code:  
+  - boot_log2movie_cairo_avi
+  - 'plotter.display_sidebar': 0
+    'plotter.width': 1024
+    'plotter.height': 1024
+    'plotter.plotting_params':
+        show_world: True
+        show_sensor_data: True
+        show_textures: True
+        show_sensor_data_compact: True
+        grid: 0
+        zoom: 0
+        first_person: false
+        zoom_scale_radius: false
+    'mencoder.crop': True
