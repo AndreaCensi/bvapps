@@ -5,22 +5,22 @@
     # So it can fit inside radius 0.5
     - radius: 0.38  
       n: 144
-      normalize: True
+      normalize: False
       noise: 
         - vehicles.sensors.AdditiveGaussian
-        - std_dev: 0.05
-
+        - std_dev: 0
+        
 - id: s_fs_B
   desc: "Uniform disposition"
   code: 
     - vehicles.sensors.FieldSamplerUniform
-    - sides: [0.45,0.45]
+    - sides: [0.22,0.22]
       shape: [12,12]
-      normalize: True
+      normalize: False
       noise: 
         - vehicles.sensors.AdditiveGaussian
-        - std_dev: 0.05
-        
+        - std_dev: 0
+                
 - id: s_fs_C
   desc: "Random circular distribution, normalized"
   code: 
@@ -30,19 +30,19 @@
       normalize: True
       noise: 
         - vehicles.sensors.AdditiveGaussian
-        - std_dev: 0.05
+        - std_dev: 0
 
 - id: s_fs_D
   desc: "Uniform 12x12 disposition, normalized."
   code: 
     - vehicles.sensors.FieldSamplerUniform
-    - sides: [0.45,0.45]
+    - sides: [0.22,0.22]
       shape: [12,12]
       normalize: True
       noise: 
         - vehicles.sensors.AdditiveGaussian
-        - std_dev: 0.05
-        
+        - std_dev: 0
+                
 - id: s_cam_A
   desc: "An omnidirectional camera with 180 sensels, sigma = 4 deg"
   code: 

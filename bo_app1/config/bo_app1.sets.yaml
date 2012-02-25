@@ -2,13 +2,41 @@
   desc: 'Simple example without nuisances.'
   code:
   - bootstrapping_olympics.batch_jobs1
-  - robots: [r_cam_A, r_rf_A, r_fs_A, r_fs_B_f]
+  - robots: [r_cam_A, r_rf_A]
     agents: [BDSAgent_C1, BDSAgent_C2] #, BDSAgent_C3]
     explore:
         num_episodes: 200
         num_episodes_videos: 5
         explorer: expswitch_t1
         max_episode_len: 30
+        videos: [exz1sb, exz1no]
+    servo:
+        num_episodes: 20
+        num_episodes_videos: 5
+        max_episode_len: 60
+        displacement: 1
+    servonav:
+        num_episodes: 20
+        num_episodes_videos: 20
+        max_episode_len: 600
+        resolution: 0.25
+        fail_if_not_working: false
+
+- id: bo_app1a_fs
+  desc: 'Simple example without nuisances.'
+  code:
+  - bootstrapping_olympics.batch_jobs1
+  - robots: [r_fs_A, r_fs_B_f,
+             r_fs_A_nn, r_fs_B_f_nn,
+             r_fs_A_mn, r_fs_B_f_mn,
+             r_fs_A_on, r_fs_B_f_on]
+    agents: [BDSAgent_C1, BDSAgent_C2, BDSAgent_C4] #, BDSAgent_C3]
+    explore:
+        num_episodes: 200
+        num_episodes_videos: 5
+        explorer: expswitch_t1
+        max_episode_len: 30
+        videos: [exz1sb, exz1no]
     servo:
         num_episodes: 20
         num_episodes_videos: 5
@@ -25,7 +53,7 @@
   desc: "This is to show the effect of simple nuisances."
   code:
   - bootstrapping_olympics.batch_jobs1
-  - robots: [r_cam_A, r_rf_A, r_fs_A, 
+  - robots: [r_cam_A,  r_rf_A, r_fs_A, 
              r_fs_B_f, r_fs_C, r_fs_D_f, r_rf_A_n1, 
              r_rf_A_n2, r_cam_A_n1, r_cam_A_n2]
     agents: [BDSAgent_C1, BDSAgent_C2, EstStats]
@@ -80,9 +108,10 @@
     agents: [BDSAgent_C1, BDSAgent_C2] #, BDSAgent_C3]
     explore:
         num_episodes: 200
-        num_episodes_videos: 1
+        num_episodes_videos: 5
         explorer: expswitch_t1
         max_episode_len: 30
+        videos: [exz1sb, exz1no]
 
     servo:
         num_episodes: 20
@@ -109,9 +138,10 @@
     agents: [BDSAgent_C1, BDSAgent_C2] #, BDSAgent_C3]
     explore:
         num_episodes: 200
-        num_episodes_videos: 1
+        num_episodes_videos: 5
         explorer: expswitch_t1
         max_episode_len: 30
+        videos: [exz1sb, exz1no]
 
     servo:
         num_episodes: 20

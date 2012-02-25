@@ -1,0 +1,30 @@
+
+- id: exz1no
+  desc: ''
+  code: 
+  - boot_log2movie_cairo_avi
+  - 'plotter.width': 500
+    'plotter.height': 500
+    'plotter.display_sidebar': False
+    'plotter.plotting_params':
+        first_person: False
+        zoom: 1.5
+        show_sensor_data_compact: True
+
+
+- id: exz1sb
+  desc: ''
+  code: 
+  - boot_log2movie_cairo_avi
+  - 'plotter.width': 500
+    'plotter.height': 500
+    'plotter.sidebar_width': 250
+    'plotter.display_sidebar': True
+    'plotter.plotting_params':
+        first_person: False
+        zoom: 1.5
+        show_sensor_data_compact: True
+    'plotter.sidebar_params':
+        show_annotations: False
+    
+

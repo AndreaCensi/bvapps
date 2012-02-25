@@ -40,6 +40,34 @@
     cmd_nuisance: []
     
 
+
+- id: "${robot}_nn"
+  desc: "Normalized (n_normalize_mean) observations version of ${robot}"
+  code:
+  - bootstrapping_olympics.examples.EquivRobot
+  - robot: "${robot}"
+    obs_nuisance: n_normalize_mean
+    cmd_nuisance: []
+
+- id: "${robot}_mn"
+  desc: "Normalized (n_normalize_mmax) version of ${robot}"
+  code:
+  - bootstrapping_olympics.examples.EquivRobot
+  - robot: "${robot}"
+    obs_nuisance: n_normalize_mmax
+    cmd_nuisance: []
+
+
+- id: "${robot}_on"
+  desc: "Normalized (n_normalize_min) version of ${robot}"
+  code:
+  - bootstrapping_olympics.examples.EquivRobot
+  - robot: "${robot}"
+    obs_nuisance: n_normalize_min
+    cmd_nuisance: []
+
+
+
 - id: r_fs_C
   desc: "Field sampler with square disposition"
   code:

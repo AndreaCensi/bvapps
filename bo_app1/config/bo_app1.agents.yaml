@@ -38,7 +38,18 @@
         servo:
             strategy: S2
             gain: 0.1
-            
+
+# 
+# - id: BDSAgent_C2i
+#   desc: "BDS agent (servo strategy S2, negated)"
+#   code:
+#       - boot_agents.BDSAgent
+#       - beta: 1
+#         change_fraction: 0.5
+#         servo:
+#             strategy: S2
+#             gain: -0.1
+# 
 
 - id: BDSAgent_C3
   desc: "BDS agent (servo strategy S1n)"
@@ -50,7 +61,17 @@
             strategy: S1n
             gain: 0.1
 
-            
+
+- id: BDSAgent_C4
+  desc: "BDS agent (servo strategy S2d)"
+  code:
+      - boot_agents.BDSAgent
+      - beta: 1
+        change_fraction: 0.5
+        servo:
+            strategy: S2d
+            gain: 0.1
+
 - id: BGDSAgent_C1
   desc: "BDS agent"
   code:
