@@ -1,7 +1,7 @@
 - id: random
   desc: ""
   code: 
-    - vehicles.worlds.StochasticBox2
+    - vehicles.library.worlds.StochasticBox2
     - width: 10
       length: 10
       num_sources: 10
@@ -11,14 +11,14 @@
 - id: myempty
   desc: An empty world (no obstacles at all); robot starts from same pose.
   code: 
-    - vehicles.worlds.EmptyFixed
+    - vehicles.library.worlds.EmptyFixed
     - bounds: [[-10,10],[-10,10],[-10,10]]
 
 
 - id: empty_fixed_obstacles
   desc: "TODO: add obstacles"
   code: 
-    - vehicles.worlds.EmptyFixed
+    - vehicles.library.worlds.EmptyFixed
     - bounds: [[-10,10],[-10,10],[-10,10]]
 
 
@@ -26,7 +26,7 @@
 - id: simple-world-column
   desc: Empty room with a column at the origin
   code: 
-  - vehicles.library.LightBox
+  - vehicles.library.worlds.LightBox
   - start_poses: 
       - [+1.0,-1.5,75]
       - [-1.0,-1.5,105]
@@ -46,7 +46,7 @@
       texture:
       - vehicles.library.ConstantTexture
       - value: 0
-        # - vehicles.worlds.textures.RandomCheckerboard
+        # - vehicles.library.textures.RandomCheckerboard
         # - cell_width: 0.2
         #   seed: 42
       
@@ -55,7 +55,7 @@
 - id: simple-wall
   desc: A simple wall 
   code: 
-  - vehicles.library.LightBox
+  - vehicles.library.worlds.LightBox
   - start_poses: 
       - [0,0,0]
     bounds: [[-0.25,+2.5],[-0.4,+0.4],[0,+5]]
@@ -63,7 +63,7 @@
     # - type: PolyLine
     #   points: [[1.2,-0.4],[1.2,+0.4]]
     #   texture:
-    #    - vehicles.worlds.textures.RandomCheckerboard
+    #    - vehicles.library.textures.RandomCheckerboard
     #    - cell_width: 0.1
     #      seed: 42
 
@@ -72,7 +72,7 @@
       radius: 0.8
       solid: False
       texture:
-         - vehicles.worlds.textures.RandomCheckerboard
+         - vehicles.library.textures.RandomCheckerboard
          - cell_width: 0.2
            seed: 42
     - type: Circle

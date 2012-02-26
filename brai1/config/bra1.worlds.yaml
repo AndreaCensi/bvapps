@@ -1,7 +1,7 @@
 - id: empty_light
   desc: Empty room with a light at the origin
   code: 
-  - vehicles.library.LightBox
+  - vehicles.library.worlds.LightBox
   - start_poses: 
       - [1.2,-2,90]
       - [0.5,-2,90]
@@ -13,14 +13,14 @@
       radius: 0.1
       solid: 1
       texture:
-          - vehicles.library.ConstantTexture
+          - vehicles.library.textures.ConstantTexture
           - value: 1
     - type: Circle
       center: [0,0]
       radius: 8
       solid: 0
       texture:
-        - vehicles.worlds.textures.RandomCheckerboard
+        - vehicles.library.textures.RandomCheckerboard
         - cell_width: 0.2
           seed: 42
       

@@ -1,7 +1,7 @@
 - id: empty_fixed_5
   desc: An empty world (no obstacles at all)
   code: 
-      - vehicles.worlds.EmptyFixed
+      - vehicles.library.worlds.EmptyFixed
       - bounds: [[-1.5,1.5],[-1.5,1.5],[-10,10]]
         start_pose: [0,0,90]      
 
