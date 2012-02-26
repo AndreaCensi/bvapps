@@ -50,7 +50,7 @@
 - id: r_cam_A_n1
   desc: "Camera with permutation perturbation."
   code:
-     - bootstrapping_olympics.examples.EquivRobot
+     - bootstrapping_olympics.library.robots.EquivRobot
      - robot: r_cam_A
        obs_nuisance: n_rpermA
        cmd_nuisance: []
@@ -58,7 +58,7 @@
 - id: r_cam_A_n2
   desc: "Camera with scaling perturbation."
   code:
-     - bootstrapping_olympics.examples.EquivRobot
+     - bootstrapping_olympics.library.robots.EquivRobot
      - robot: r_cam_A
        obs_nuisance: n_rscaleA
        cmd_nuisance: []
@@ -74,7 +74,7 @@
 - id: r_rf_A_n1
   desc: "Range-finder with permutation perturbation."
   code:
-    - bootstrapping_olympics.examples.EquivRobot
+    - bootstrapping_olympics.library.robots.EquivRobot
     - robot: r_rf_A
       obs_nuisance: n_rpermA
       cmd_nuisance: []
@@ -82,7 +82,7 @@
 - id: r_rf_A_n2
   desc: "Range-finder with scaling perturbation."
   code:
-     - bootstrapping_olympics.examples.EquivRobot
+     - bootstrapping_olympics.library.robots.EquivRobot
      - robot: r_rf_A
        obs_nuisance: n_rscaleA
        cmd_nuisance: []

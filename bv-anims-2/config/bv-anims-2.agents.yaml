@@ -8,7 +8,7 @@
 - id: fixed_1s
   desc: basic motions
   code:
-  - bootstrapping_olympics.examples.agents.TestAgent
+  - bootstrapping_olympics.library.agents.TestAgent
   - cmd: '[0.2, 0.2*np.cos(t)]'
   # - cmd: '[0.2, 1]'
 
@@ -16,18 +16,18 @@
 - id: fixed_10s
   desc: "" 
   code:
-    - bootstrapping_olympics.examples.agents.TestAgent
+    - bootstrapping_olympics.library.agents.TestAgent
     - cmd: '[0.2, 0, 0.1*np.cos(t)]'
 
 
 - id: fixed_10
   desc: "Turn left" 
   code:
-    - bootstrapping_olympics.examples.agents.TestAgent
+    - bootstrapping_olympics.library.agents.TestAgent
     - cmd: '[1,0]'
 
 - id: fixed_01
   desc: "Go straight" 
   code:
-    - bootstrapping_olympics.examples.agents.TestAgent
+    - bootstrapping_olympics.library.agents.TestAgent
     - cmd: '[0,0.5]'

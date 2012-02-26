@@ -30,7 +30,7 @@
 - id: r-d_SE2_car_v-rf360-pc
   desc: ""
   code:
-  - bootstrapping_olympics.examples.EquivRobot
+  - bootstrapping_olympics.library.robots.EquivRobot
   - robot: r-d_SE2_car_v-rf360
     cmd_nuisance: []
     obs_nuisance: [n_popcode128]
@@ -38,7 +38,7 @@
 - id: r-d_SE2_dd_v2-rf360-pc
   desc: ""
   code:
-  - bootstrapping_olympics.examples.EquivRobot
+  - bootstrapping_olympics.library.robots.EquivRobot
   - robot: r-d_SE2_dd_v2-rf360
     cmd_nuisance: []
     obs_nuisance: [n_popcode128]
@@ -46,7 +46,7 @@
 - id: r-d_SE2_dd_v-rf360-pc
   desc: ""
   code:
-  - bootstrapping_olympics.examples.EquivRobot
+  - bootstrapping_olympics.library.robots.EquivRobot
   - robot: r-d_SE2_dd_v-rf360
     cmd_nuisance: []
     obs_nuisance: [n_popcode128]

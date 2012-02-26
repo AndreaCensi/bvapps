@@ -11,7 +11,7 @@
 - id: "rn-${vehicle}"
   desc: ""
   code:
-    - bootstrapping_olympics.examples.EquivRobot
+    - bootstrapping_olympics.library.robots.EquivRobot
     - robot: "r-${vehicle}"
       cmd_nuisance: [n_GLa]
       obs_nuisance: []

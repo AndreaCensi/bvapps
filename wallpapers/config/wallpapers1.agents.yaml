@@ -2,7 +2,7 @@
 - id: fixed_10
   desc: basic motions
   code:
-    - bootstrapping_olympics.examples.agents.TestAgent
+    - bootstrapping_olympics.library.agents.TestAgent
     - cmd: [1,0]
     
 
@@ -10,7 +10,7 @@
 - id: fixed_s1
   desc: basic motions
   code:
-    - bootstrapping_olympics.examples.agents.TestAgent
+    - bootstrapping_olympics.library.agents.TestAgent
     - cmd: '[0.1*np.cos(2*t),1]'
 
 
@@ -18,7 +18,7 @@
 - id: fixed_m1
   desc: basic motions
   code:
-    - bootstrapping_olympics.examples.agents.TestAgent
+    - bootstrapping_olympics.library.agents.TestAgent
     - cmd: '[-1,1]'
 
     
@@ -27,18 +27,18 @@
 - id: fixed_01
   desc: basic motions
   code:
-    - bootstrapping_olympics.examples.agents.TestAgent
+    - bootstrapping_olympics.library.agents.TestAgent
     - cmd: [0, 1]
 
 
 - id: fixed_1s
   desc: basic motions
   code:
-    - bootstrapping_olympics.examples.agents.TestAgent
+    - bootstrapping_olympics.library.agents.TestAgent
     - cmd: '[1, np.cos(t)]'
 
 - id: fixed_1ss
   desc: basic motions
   code:
-    - bootstrapping_olympics.examples.agents.TestAgent
+    - bootstrapping_olympics.library.agents.TestAgent
     - cmd: '[0.9+0.1*np.cos(5*t), 0.1*np.cos(5*t), 0.1*np.sin(t)]'
