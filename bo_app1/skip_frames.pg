@@ -1,0 +1,7 @@
+#!/usr/bin/env pg
+--- model skip_frames
+config file
+config out
+config n = 10
+
+|mplayer file=$file| --> |sieve n=$n| --> |mencoder file=$out timestamps=0|

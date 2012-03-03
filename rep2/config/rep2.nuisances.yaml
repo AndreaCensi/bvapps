@@ -1,0 +1,6 @@
+# - id: n_s2
+#   desc: Selects 2 sensels
+#   code:
+#     - bootstrapping_olympics.library.nuisances.Select
+#     - which: [0, 1]
+#     

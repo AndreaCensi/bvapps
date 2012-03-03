@@ -44,7 +44,7 @@
     agents: [EstStats, BDSAgent_C1] 
     explore:
       num_episodes: 100
-      num_episodes_videos: 0
+      num_episodes_videos: 1 # otherwise the script gets confused
       explorer: expswitch_t1
       max_episode_len: 10
       videos: [mp4z2sb]

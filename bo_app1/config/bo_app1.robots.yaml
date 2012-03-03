@@ -36,7 +36,7 @@
   code:
   - bootstrapping_olympics.library.robots.EquivRobot
   - robot: "${robot}"
-    obs_nuisance: n_flatten
+    obs_nuisance: flatten
     cmd_nuisance: []
     
 
@@ -46,7 +46,7 @@
   code:
   - bootstrapping_olympics.library.robots.EquivRobot
   - robot: "${robot}"
-    obs_nuisance: n_normalize_mean
+    obs_nuisance: normalize_mean
     cmd_nuisance: []
 
 - id: "${robot}_mn"
@@ -54,7 +54,7 @@
   code:
   - bootstrapping_olympics.library.robots.EquivRobot
   - robot: "${robot}"
-    obs_nuisance: n_normalize_mmax
+    obs_nuisance: normalize_mmax
     cmd_nuisance: []
 
 
@@ -63,7 +63,7 @@
   code:
   - bootstrapping_olympics.library.robots.EquivRobot
   - robot: "${robot}"
-    obs_nuisance: n_normalize_min
+    obs_nuisance: normalize_min
     cmd_nuisance: []
 
 
@@ -89,7 +89,7 @@
   code:
      - bootstrapping_olympics.library.robots.EquivRobot
      - robot: r_cam_A
-       obs_nuisance: n_rpermA
+       obs_nuisance: rpermA
        cmd_nuisance: []
 
 - id: r_cam_A_n2
@@ -97,7 +97,7 @@
   code:
      - bootstrapping_olympics.library.robots.EquivRobot
      - robot: r_cam_A
-       obs_nuisance: n_rscaleA
+       obs_nuisance: rscaleA
        cmd_nuisance: []
 
 - id: r_rf_A
@@ -113,7 +113,7 @@
   code:
     - bootstrapping_olympics.library.robots.EquivRobot
     - robot: r_rf_A
-      obs_nuisance: n_rpermA
+      obs_nuisance: rpermA
       cmd_nuisance: []
 
 - id: r_rf_A_n2
@@ -121,7 +121,7 @@
   code:
      - bootstrapping_olympics.library.robots.EquivRobot
      - robot: r_rf_A
-       obs_nuisance: n_rscaleA
+       obs_nuisance: rscaleA
        cmd_nuisance: []
 
 

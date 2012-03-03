@@ -1,3 +1,11 @@
+- id: "rsim-${vehicle}"
+  desc: ""
+  code:
+     - vehicles_boot.BOVehicleSimulation
+     - dt: 0.033
+       id_vehicle: "${vehicle}"
+       id_world: SBox2_10a # Need SBox2 for sources
+
 
 - id: r_turret
   desc: Robot with turret

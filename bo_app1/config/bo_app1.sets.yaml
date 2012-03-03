@@ -16,8 +16,8 @@
         max_episode_len: 60
         displacement: 1
     servonav:
-        num_episodes: 20
-        num_episodes_videos: 20
+        num_episodes: 10
+        num_episodes_videos: 10
         max_episode_len: 600
         resolution: 0.25
         fail_if_not_working: false
@@ -43,8 +43,8 @@
         max_episode_len: 60
         displacement: 1
     servonav:
-        num_episodes: 20
-        num_episodes_videos: 20
+        num_episodes: 10
+        num_episodes_videos: 10
         max_episode_len: 600
         resolution: 0.25
         fail_if_not_working: false
@@ -120,8 +120,8 @@
         displacement: 1
         
     servonav:
-        num_episodes: 20
-        num_episodes_videos: 20
+        num_episodes: 10
+        num_episodes_videos: 10
         max_episode_len: 600
         resolution: 0.25
         fail_if_not_working: false
@@ -150,8 +150,8 @@
         displacement: 1
         
     servonav:
-        num_episodes: 20
-        num_episodes_videos: 20
+        num_episodes: 10
+        num_episodes_videos: 10
         max_episode_len: 600
         resolution: 0.25
         fail_if_not_working: false

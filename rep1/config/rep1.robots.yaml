@@ -26,60 +26,6 @@
       cmd_nuisance: []
       obs_nuisance: [n_afew]
 
-- id: "${robot}-bits"
-  desc: "Converts to bits"
-  code:
-  - bootstrapping_olympics.library.robots.EquivRobot
-  - robot: "${robot}"
-    cmd_nuisance: []
-    obs_nuisance: [n_int2bits]
-          
-- id: "${robot}-gray"
-  desc: "Converts to gray code"
-  code:
-  - bootstrapping_olympics.library.robots.EquivRobot
-  - robot: "${robot}"
-    cmd_nuisance: []
-    obs_nuisance: [n_int2gray]
-          
-
-- id: "${robot}-d32"
-  desc: "Discretizes to 32 levels"
-  code:
-  - bootstrapping_olympics.library.robots.EquivRobot
-  - robot: "${robot}"
-    cmd_nuisance: []
-    obs_nuisance: [n_discretize_32]
-          
-          
-- id: "${robot}-shuffle"
-  desc: "Shuffles the sensels"
-  code:
-  - bootstrapping_olympics.library.robots.EquivRobot
-  - robot: "${robot}"
-    cmd_nuisance: []
-    obs_nuisance: [n_rpermA]
-          
-          
-- id: "${robot}-flatten"
-  desc: "Flattens to 1D array"
-  code:
-  - bootstrapping_olympics.library.robots.EquivRobot
-  - robot: "${robot}"
-    cmd_nuisance: []
-    obs_nuisance: [n_flatten]
-    
-      
-          
-          
-- id: "${robot}-crypt"
-  desc: "Encrypts the bits."
-  code:
-  - bootstrapping_olympics.library.robots.EquivRobot
-  - robot: "${robot}"
-    cmd_nuisance: []
-    obs_nuisance: [n_encrypt1]
-          
           
           
           
