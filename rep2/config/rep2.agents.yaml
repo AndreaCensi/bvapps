@@ -15,6 +15,17 @@
   code:
   - boot_agents.SymbolsStats
   - beta: 1
+    window: 4
+  
+
+- id: SymbolsStats10
+  desc: Estimates symbols statistics.
+  code:
+  - boot_agents.SymbolsStats
+  - beta: 1
+    window: 10
+
+
 
 
 

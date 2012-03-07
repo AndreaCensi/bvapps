@@ -1,0 +1,14 @@
+#!/usr/bin/env pg
+--- model movie_diff
+config file1 "First movie"
+config file2 "Second movie"
+config out "Result"
+
+|mplayer file=$file1| --> |astype dtype=float32| --> rgb1 
+|mplayer file=$file2| --> |astype dtype=float32| --> rgb2
+
+rgb1,rgb2-->|sync|-->|-|->|abs|-->|sum_axis axis=2| --> diff
+
+#diff -> |max| --> |print|
+
+diff -> |scale min_value=0 max_value=255| -> |mencoder file=$out timestamps=0|

@@ -1,0 +1,10 @@
+#!/usr/bin/env pg
+--- model movie_smooth
+""" Simple smoothing of a video. """
+config file "Input movie"
+config out "Output movie"
+config every = 1 "Movie time downsample"
+import utils
+
+|mplayer stats=1 file=$file| --> |sieve n=$every| --> |blur_image n=20| -->|mencoder timestamps=0 file=$out|
+

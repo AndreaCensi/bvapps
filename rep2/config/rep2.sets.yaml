@@ -7,10 +7,10 @@
       # "n_sel01-rsim-d_SE2_dd_v-cam_f60_n45",
       # "n_d16-n_sel01-rsim-d_SE2_dd_v-cam_f60_n45",
       # "n_flatten-n_int2gray-n_d16-n_sel01-rsim-d_SE2_dd_v-cam_f60_n45", "n_rpermA-n_flatten-n_int2gray-n_d16-n_sel01-rsim-d_SE2_dd_v-cam_f60_n45",
-       "onev-n_rpermA-n_flatten-n_int2gray-n_d256-n_sel0-rsim-d_SE2_dd_v-cam_f60_n45",
+      "onev-n_rpermA-n_flatten-n_int2gray-n_d16-sinsystem2", "onev-n_rpermA-n_flatten-n_int2gray-n_d256-n_sel0-rsim-d_SE2_dd_v-cam_f60_n45",
 "onev-n_rpermA-n_flatten-n_int2gray-n_d16-n_sel01-rsim-d_SE2_dd_v-cam_f60_n45",
     ]
-    agents: [EstStats, SymbolsStats] 
+    agents: [EstStats, SymbolsStats, SymbolsStats10] 
     explore:
        num_episodes: 1000
        num_episodes_videos: 1
