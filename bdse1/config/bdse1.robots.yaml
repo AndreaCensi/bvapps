@@ -1,0 +1,144 @@
+- id: "rsim-${vehicle}"
+  desc: ""
+  code:
+     - vehicles_boot.BOVehicleSimulation
+     - dt: 0.033
+       id_vehicle: "${vehicle}"
+       id_world: SBox2_10a # Need SBox2 for sources
+
+- id: r_fs_A
+  desc: ""
+  code:
+     - vehicles_boot.BOVehicleSimulation
+     - dt: 0.033
+       id_vehicle: v_fs_A
+       id_world: SBox2_10a # Need SBox2 for sources
+
+- id: r_cam_A
+  desc: ""
+  code:
+     - vehicles_boot.BOVehicleSimulation
+     - dt: 0.033
+       id_vehicle: v_cam_A
+       id_world: SBox3_10scale1
+
+- id: r_cam_B
+  desc: ""
+  code:
+     - vehicles_boot.BOVehicleSimulation
+     - dt: 0.033
+       id_vehicle: v_cam_A
+       id_world: SBox3_10scale05
+
+- id: r_fs_B
+  desc: "Field sampler with square disposition"
+  code:
+     - vehicles_boot.BOVehicleSimulation
+     - dt: 0.033
+       id_vehicle: v_fs_B
+       id_world: SBox2_10a # Need SBox2 for sources
+
+
+- id: "${robot}_f"
+  desc: "Flattened version of ${robot}"
+  code:
+  - bootstrapping_olympics.library.robots.EquivRobot
+  - robot: "${robot}"
+    obs_nuisance: flatten
+    cmd_nuisance: []
+    
+
+
+- id: "${robot}_nn"
+  desc: "Normalized (n_normalize_mean) observations version of ${robot}"
+  code:
+  - bootstrapping_olympics.library.robots.EquivRobot
+  - robot: "${robot}"
+    obs_nuisance: normalize_mean
+    cmd_nuisance: []
+
+- id: "${robot}_mn"
+  desc: "Normalized (n_normalize_mmax) version of ${robot}"
+  code:
+  - bootstrapping_olympics.library.robots.EquivRobot
+  - robot: "${robot}"
+    obs_nuisance: normalize_mmax
+    cmd_nuisance: []
+
+
+- id: "${robot}_on"
+  desc: "Normalized (n_normalize_min) version of ${robot}"
+  code:
+  - bootstrapping_olympics.library.robots.EquivRobot
+  - robot: "${robot}"
+    obs_nuisance: normalize_min
+    cmd_nuisance: []
+
+
+
+- id: r_fs_C
+  desc: "Field sampler with square disposition"
+  code:
+    - vehicles_boot.BOVehicleSimulation
+    - dt: 0.033
+      id_vehicle: v_fs_C
+      id_world: SBox2_10a # Need SBox2 for sources
+
+- id: r_fs_D
+  desc: "Field sampler with square disposition"
+  code:
+      - vehicles_boot.BOVehicleSimulation
+      - dt: 0.033
+        id_vehicle: v_fs_D
+        id_world: SBox2_10a # Need SBox2 for sources
+
+- id: r_cam_A_n1
+  desc: "Camera with permutation perturbation."
+  code:
+     - bootstrapping_olympics.library.robots.EquivRobot
+     - robot: r_cam_A
+       obs_nuisance: rpermA
+       cmd_nuisance: []
+
+- id: r_cam_A_n2
+  desc: "Camera with scaling perturbation."
+  code:
+     - bootstrapping_olympics.library.robots.EquivRobot
+     - robot: r_cam_A
+       obs_nuisance: rscaleA
+       cmd_nuisance: []
+
+- id: r_rf_A
+  desc: ""
+  code:
+     - vehicles_boot.BOVehicleSimulation
+     - dt: 0.033
+       id_vehicle: v_rf_A
+       id_world: SBox3_10scale1
+
+- id: r_rf_B
+  desc: ""
+  code:
+     - vehicles_boot.BOVehicleSimulation
+     - dt: 0.033
+       id_vehicle: v_rf_A
+       id_world: SBox3_10scale05
+
+
+- id: r_rf_A_n1
+  desc: "Range-finder with permutation perturbation."
+  code:
+    - bootstrapping_olympics.library.robots.EquivRobot
+    - robot: r_rf_A
+      obs_nuisance: rpermA
+      cmd_nuisance: []
+
+- id: r_rf_A_n2
+  desc: "Range-finder with scaling perturbation."
+  code:
+     - bootstrapping_olympics.library.robots.EquivRobot
+     - robot: r_rf_A
+       obs_nuisance: rscaleA
+       cmd_nuisance: []
+
+

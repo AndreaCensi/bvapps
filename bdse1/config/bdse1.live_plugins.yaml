@@ -1,0 +1,18 @@
+
+- id: dummy
+  desc: 'Dummy plugin to check the interface'
+  code: 
+  - 'bootstrapping_olympics.library.live_plugins.Dummy'
+  - 'param': 'value'
+
+
+
+- id: live_bridge_sensels
+  desc: 'Test of running procgraph'
+  code: 
+  - 'bootstrapping_olympics.library.live_plugins.ProcgraphBridge'
+  - procgraph_code: 
+    - live_bridge_sensels
+    - {} # - extra_param: 42
+    procgraph_extra_modules: ['procgraph_vehicles']
+    suffix: sensels

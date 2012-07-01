@@ -1,0 +1,22 @@
+- id: expswitch_t1
+  desc: Switches randomly between commands with an exponential switching time.
+  code:
+      - boot_agents.ExpSwitcher
+      - beta: 1
+
+
+- id: BDSEAgent_C1
+  desc: "BDSE agent "
+  code:
+      - boot_agents.BDSEAgent
+      - change_fraction: 0.5
+        explorer: expswitch_t1
+        rcond: 0.000000001
+
+- id: BDSEAgent_C2
+  desc: "BDSE agent (higher rcond)"
+  code:
+      - boot_agents.BDSEAgent
+      - change_fraction: 0.5
+        explorer: expswitch_t1
+        rcond: 0.001

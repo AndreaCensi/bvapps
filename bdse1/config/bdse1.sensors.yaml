@@ -1,0 +1,68 @@
+- id: s_fs_A
+  desc: "Random circular distribution"
+  code: 
+    - vehicles.library.sensors.FieldSamplerRandCircle
+    # So it can fit inside radius 0.5
+    - radius: 0.38  
+      n: 144
+      normalize: False
+      noise: 
+        - vehicles.library.noises.AdditiveGaussian
+        - std_dev: 0
+        
+- id: s_fs_B
+  desc: "Uniform disposition"
+  code: 
+    - vehicles.library.sensors.FieldSamplerUniform
+    - sides: [0.22,0.22]
+      shape: [12,12]
+      normalize: False
+      noise: 
+        - vehicles.library.noises.AdditiveGaussian
+        - std_dev: 0
+                
+- id: s_fs_C
+  desc: "Random circular distribution, normalized"
+  code: 
+    - vehicles.library.sensors.FieldSamplerRandCircle
+    - radius: 0.38 # So it can fit inside radius 0.5
+      n: 144
+      normalize: True
+      noise: 
+        - vehicles.library.noises.AdditiveGaussian
+        - std_dev: 0
+
+- id: s_fs_D
+  desc: "Uniform 12x12 disposition, normalized."
+  code: 
+    - vehicles.library.sensors.FieldSamplerUniform
+    - sides: [0.22,0.22]
+      shape: [12,12]
+      normalize: True
+      noise: 
+        - vehicles.library.noises.AdditiveGaussian
+        - std_dev: 0
+                
+- id: s_cam_A
+  desc: "An omnidirectional camera with 180 sensels, sigma = 4 deg"
+  code: 
+      - vehicles.library.sensors.PhotoreceptorsSmoothUniform
+      - num_sensels: 180
+        fov_deg:     360
+        spatial_sigma_deg: 4
+        upsample: 15
+        noise: 
+            - vehicles.library.noises.AdditiveGaussian
+            - std_dev: 0.01  
+  
+- id: s_rf_A
+  desc: A range finder with 360def
+  code: 
+      - vehicles.library.sensors.RangefinderUniform
+      - num_sensels: 180
+        fov_deg:     360
+        noise: 
+            - vehicles.library.noises.AdditiveGaussian
+            - std_dev: 0.1
+
+

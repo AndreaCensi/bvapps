@@ -1,0 +1,23 @@
+- id: bdse1a
+  desc: ''
+  code:
+  - bootstrapping_olympics.batch_jobs1
+  - robots: [r_cam_A, r_cam_B, r_rf_A, r_rf_B]
+    agents: [BDSEAgent_C1, BDSEAgent_C2]
+    explore:
+        num_episodes: 200
+        num_episodes_videos: 5
+        explorer: expswitch_t1
+        max_episode_len: 30
+        videos: [exz1sb, exz1no]
+    servo:
+        num_episodes: 20
+        num_episodes_videos: 5
+        max_episode_len: 60
+        displacement: 1
+    servonav:
+        num_episodes: 10
+        num_episodes_videos: 10
+        max_episode_len: 600
+        resolution: 0.25
+        fail_if_not_working: false
