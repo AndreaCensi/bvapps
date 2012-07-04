@@ -1,0 +1,70 @@
+# - id: n0
+#   desc: The identity nuisance
+#   code:
+#   - bootstrapping_olympics.library.nuisances.Identity
+#   - {}
+
+- id: rp1
+  desc: Random permutation
+  code:
+  - bootstrapping_olympics.library.nuisances.RandomPermutation
+  - seed: 100
+
+- id: rp2
+  desc: A different random permutation
+  code:
+  - bootstrapping_olympics.library.nuisances.RandomPermutation
+  - seed: 200
+
+- id: rs1
+  desc: Random scaling
+  code:
+  - bootstrapping_olympics.library.nuisances.RandomScaling
+  - seed: 200
+
+- id: rs2
+  desc: A different random scaling 
+  code:
+  - bootstrapping_olympics.library.nuisances.RandomScaling
+  - seed: 300
+
+- id: rl1
+  desc: A generic random linear transform
+  code:
+  - bootstrapping_olympics.library.nuisances.RandomLinear
+  - seed: 200
+
+- id: rl2
+  desc: A generic random linear transform
+  code:
+  - bootstrapping_olympics.library.nuisances.RandomLinear
+  - seed: 300
+    
+
+- id: nl1
+  desc: Nonlinear transform  
+  code:
+  - bootstrapping_olympics.library.nuisances.Power
+  - alpha: 2 # XXX
+
+- id: nl2
+  desc: Stronger nonlinear transform  
+  code:
+  - bootstrapping_olympics.library.nuisances.Power
+  - alpha: 5 # XXX
+
+
+
+
+
+- id: gn1
+  desc: Gaussian noise
+  code:
+  - bootstrapping_olympics.library.nuisances.Gaussian
+  - sigma: 0.01
+
+- id: gn2
+  desc: Gaussian noise (stronger)
+  code:
+  - bootstrapping_olympics.library.nuisances.Gaussian
+  - sigma: 0.05

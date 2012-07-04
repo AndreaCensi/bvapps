@@ -1,128 +1,85 @@
-- id: "rsim-${vehicle}"
-  desc: ""
-  code:
-     - vehicles_boot.BOVehicleSimulation
-     - dt: 0.033
-       id_vehicle: "${vehicle}"
-       id_world: SBox2_10a # Need SBox2 for sources
 
-- id: r_fs_A
-  desc: ""
-  code:
-     - vehicles_boot.BOVehicleSimulation
-     - dt: 0.033
-       id_vehicle: v_fs_A
-       id_world: SBox2_10a # Need SBox2 for sources
-
-- id: r_cam_A
-  desc: ""
-  code:
-     - vehicles_boot.BOVehicleSimulation
-     - dt: 0.033
-       id_vehicle: v_cam_A
-       id_world: SBox3_10scale1
-
-- id: r_cam_B
-  desc: ""
-  code:
-     - vehicles_boot.BOVehicleSimulation
-     - dt: 0.033
-       id_vehicle: v_cam_A
-       id_world: SBox3_10scale05
-
-- id: r_fs_B
-  desc: "Field sampler with square disposition"
-  code:
-     - vehicles_boot.BOVehicleSimulation
-     - dt: 0.033
-       id_vehicle: v_fs_B
-       id_world: SBox2_10a # Need SBox2 for sources
-
-
-- id: "${robot}_f"
-  desc: "Flattened version of ${robot}"
+- id: "Y${id_nuisance}${robot}"
+  desc: "Applies ${id_nuisance} to observations of ${robot}"
   code:
   - bootstrapping_olympics.library.robots.EquivRobot
   - robot: "${robot}"
-    obs_nuisance: flatten
+    obs_nuisance: "${id_nuisance}"
     cmd_nuisance: []
-    
 
-
-- id: "${robot}_nn"
-  desc: "Normalized (n_normalize_mean) observations version of ${robot}"
+- id: "U${id_nuisance}${robot}"
+  desc: "Applies ${id_nuisance} to the commands of ${robot}"
   code:
   - bootstrapping_olympics.library.robots.EquivRobot
   - robot: "${robot}"
-    obs_nuisance: normalize_mean
-    cmd_nuisance: []
-
-- id: "${robot}_mn"
-  desc: "Normalized (n_normalize_mmax) version of ${robot}"
-  code:
-  - bootstrapping_olympics.library.robots.EquivRobot
-  - robot: "${robot}"
-    obs_nuisance: normalize_mmax
-    cmd_nuisance: []
+    obs_nuisance: []
+    cmd_nuisance: "${id_nuisance}"
 
 
-- id: "${robot}_on"
-  desc: "Normalized (n_normalize_min) version of ${robot}"
-  code:
-  - bootstrapping_olympics.library.robots.EquivRobot
-  - robot: "${robot}"
-    obs_nuisance: normalize_min
-    cmd_nuisance: []
+ 
 
-
-
-- id: r_fs_C
-  desc: "Field sampler with square disposition"
-  code:
-    - vehicles_boot.BOVehicleSimulation
-    - dt: 0.033
-      id_vehicle: v_fs_C
-      id_world: SBox2_10a # Need SBox2 for sources
-
-- id: r_fs_D
-  desc: "Field sampler with square disposition"
-  code:
-      - vehicles_boot.BOVehicleSimulation
-      - dt: 0.033
-        id_vehicle: v_fs_D
-        id_world: SBox2_10a # Need SBox2 for sources
-
-- id: r_cam_A_n1
-  desc: "Camera with permutation perturbation."
-  code:
-     - bootstrapping_olympics.library.robots.EquivRobot
-     - robot: r_cam_A
-       obs_nuisance: rpermA
-       cmd_nuisance: []
-
-- id: r_cam_A_n2
-  desc: "Camera with scaling perturbation."
-  code:
-     - bootstrapping_olympics.library.robots.EquivRobot
-     - robot: r_cam_A
-       obs_nuisance: rscaleA
-       cmd_nuisance: []
-
-- id: r_rf_A
+- id: "r_v${vehicle}_w${world}"
   desc: ""
   code:
      - vehicles_boot.BOVehicleSimulation
-     - dt: 0.033
-       id_vehicle: v_rf_A
-       id_world: SBox3_10scale1
-
-- id: r_rf_B
-  desc: ""
-  code:
-     - vehicles_boot.BOVehicleSimulation
-     - dt: 0.033
-       id_vehicle: v_rf_A
-       id_world: SBox3_10scale05
+     - dt: 0.033 
+       id_vehicle: |
+          ${vehicle|
+            rcunA=v_cA_rf_f180n180dU_n0;
+            rcuoA=v_cA_rf_f180n180dU_n1;
+            rcupA=v_cA_rf_f180n180dU_n2;
+            rounA=v_cA_rf_f360n180dU_n0;
+            rouoA=v_cA_rf_f360n180dU_n1;
+            roupA=v_cA_rf_f360n180dU_n2;
+            rornA=v_cA_rf_f360n180dR_n0;
+            roroA=v_cA_rf_f360n180dR_n1;
+            rorpA=v_cA_rf_f360n180dR_n2;
+            ccunA=v_cA_cam_f180n180dUs4_n0;
+            ccuoA=v_cA_cam_f180n180dUs4_n1;
+            ccupA=v_cA_cam_f180n180dUs4_n2;
+            counA=v_cA_cam_f360n180dUs4_n0;
+            couoA=v_cA_cam_f360n180dUs4_n1;
+            coupA=v_cA_cam_f360n180dUs4_n2;
+            counA=v_cA_cam_f360n180dRs4_n0;
+            couoA=v_cA_cam_f360n180dRs4_n1;
+            coupA=v_cA_cam_f360n180dRs4_n2;
+            ccunA=v_cB_rf_f180n180dU_n0;
+            ccunA=v_cB_rf_f180n180dU_n1;
+            ccunA=v_cB_rf_f180n180dU_n2;
+            ccunA=v_cB_rf_f360n180dU_n0;
+            ccunA=v_cB_rf_f360n180dU_n1;
+            ccunA=v_cB_rf_f360n180dU_n2;
+            ccunA=v_cB_rf_f360n180dR_n0;
+            ccunA=v_cB_rf_f360n180dR_n1;
+            ccunA=v_cB_rf_f360n180dR_n2;
+            C000A=v_cB_cam_f180n180dUs4_n0;
+            C000A=v_cB_cam_f180n180dUs4_n1;
+            C000A=v_cB_cam_f180n180dUs4_n2;
+            C000A=v_cB_cam_f360n180dUs4_n0;
+            C000A=v_cB_cam_f360n180dUs4_n1;
+            C000A=v_cB_cam_f360n180dUs4_n2;
+            C000A=v_cB_cam_f360n180dRs4_n0;
+            C000A=v_cB_cam_f360n180dRs4_n1;
+            C000A=v_cB_cam_f360n180dRs4_n2;
+            C000A=v_cC_rf_f180n180dU_n0;
+            C000A=v_cC_rf_f180n180dU_n1;
+            C000A=v_cC_rf_f180n180dU_n2;
+            C000A=v_cC_rf_f360n180dU_n0;
+            C000A=v_cC_rf_f360n180dU_n1;
+            C000A=v_cC_rf_f360n180dU_n2;
+            C000A=v_cC_rf_f360n180dR_n0;
+            C000A=v_cC_rf_f360n180dR_n1;
+            C000A=v_cC_rf_f360n180dR_n2;
+            C000A=v_cC_cam_f180n180dUs4_n0;
+            C000A=v_cC_cam_f180n180dUs4_n1;
+            C000A=v_cC_cam_f180n180dUs4_n2;
+            C000A=v_cC_cam_f360n180dUs4_n0;
+            C000A=v_cC_cam_f360n180dUs4_n1;
+            C000A=v_cC_cam_f360n180dUs4_n2;
+            C000A=v_cC_cam_f360n180dRs4_n0;
+            C000A=v_cC_cam_f360n180dRs4_n1;
+            C000A=v_cC_cam_f360n180dRs4_n2}
+       id_world: "${world|A=SBox3_10scale1;B=SBox3_10scale05}"
 
 
 - id: r_rf_A_n1
@@ -141,4 +98,12 @@
        obs_nuisance: rscaleA
        cmd_nuisance: []
 
+
+- id: "Se${world}V${vehicle}"
+  desc: ""
+  code:
+     - vehicles_boot.BOVehicleSimulation
+     - dt: 0.033
+       id_vehicle: "${vehicle}"
+       id_world: "${world|0=SBox3_10scale1;1=SBox3_10scale05}"
 

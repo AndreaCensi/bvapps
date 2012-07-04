@@ -1,0 +1,251 @@
+#LyX 2.0 created this file. For more info see http://www.lyx.org/
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_amsmath 1
+\use_esint 1
+\use_mhchem 1
+\use_mathdots 1
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Subsection
+List of sensor layouts
+\end_layout
+
+\begin_layout Standard
+sq1 12x12 sensels in a grid of size 0.22x0.22
+\end_layout
+
+\begin_layout Standard
+sc1 
+\end_layout
+
+\begin_layout Standard
+c
+\end_layout
+
+\begin_layout Standard
+o
+\end_layout
+
+\begin_layout Subsection
+List of sensors
+\end_layout
+
+\begin_layout Description
+fsq1 square
+\end_layout
+
+\begin_layout Description
+ifsc1 irregular sampling of circle 
+\end_layout
+
+\begin_layout Description
+ro
+\end_layout
+
+\begin_layout Description
+rc 180 deg
+\end_layout
+
+\begin_layout Description
+rh 90 deg
+\end_layout
+
+\begin_layout Description
+rq 45 deg
+\end_layout
+
+\begin_layout Description
+co
+\end_layout
+
+\begin_layout Description
+cc
+\end_layout
+
+\begin_layout Description
+ico
+\end_layout
+
+\begin_layout Description
+s4cc
+\end_layout
+
+\begin_layout Description
+s4co
+\end_layout
+
+\begin_layout Subsubsection
+List of noise models
+\end_layout
+
+\begin_layout Description
+n0<sensor> 
+\end_layout
+
+\begin_layout Description
+n1<sensor>
+\end_layout
+
+\begin_layout Description
+n2<sensor>
+\end_layout
+
+\begin_layout Subsection
+List of robots
+\end_layout
+
+\begin_layout Description
+Vrbro
+\end_layout
+
+\begin_layout Description
+Vrbco
+\end_layout
+
+\begin_layout Description
+Vrbfsq1
+\end_layout
+
+\begin_layout Description
+Vrbifs1
+\end_layout
+
+\begin_layout Description
+Vrbro
+\end_layout
+
+\begin_layout Description
+Vrbrc
+\end_layout
+
+\begin_layout Description
+Vrbco
+\end_layout
+
+\begin_layout Description
+Vrbcc
+\end_layout
+
+\begin_layout Description
+Vrbico
+\end_layout
+
+\begin_layout Description
+Vrbs4cc
+\end_layout
+
+\begin_layout Description
+Vrbs4co
+\end_layout
+
+\begin_layout Subsection
+Nuisances
+\end_layout
+
+\begin_layout Description
+Y<nuis><bb> Nuisance on observations
+\end_layout
+
+\begin_layout Description
+U<nuis><bb> Nuisance on commands
+\end_layout
+
+\begin_layout Standard
+Here's a list of nuisances:
+\end_layout
+
+\begin_layout Description
+rp1 A random permutation
+\end_layout
+
+\begin_layout Description
+rp2 (different seed)
+\end_layout
+
+\begin_layout Description
+rs1 A random diagonal scaling
+\end_layout
+
+\begin_layout Description
+rs2 (different seed)
+\end_layout
+
+\begin_layout Description
+rl1 A random linear transformations (gaussian elements)
+\end_layout
+
+\begin_layout Description
+rl2 (different seed)
+\end_layout
+
+\begin_layout Description
+nl1 A random linear transformations (gaussian elements)
+\end_layout
+
+\begin_layout Description
+nl2 (different seed)
+\end_layout
+
+\begin_layout Subsection
+List of Worlds
+\end_layout
+
+\begin_layout Description
+w0 A simple basic world
+\end_layout
+
+\end_body
+\end_document

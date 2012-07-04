@@ -1,55 +1,94 @@
-- id: v_fs_A
+- id: "rb1${sensor}"
   desc: ""
-  id_dynamics: SE2_rb_v
+  id_dynamics: rb1
   sensors:
-    - id_sensor: s_fs_A
+    - id_sensor: "${sensor}"
   radius: 0.5
   extra:
     skin: omni
 
-- id: v_fs_B
-  desc: "Omnidirectional, square field sampler."
-  id_dynamics: SE2_rb_v
-  sensors:
-    - id_sensor: s_fs_B
-  radius: 0.5
-  extra:
-    skin: omni
-
-- id: v_fs_C
-  desc: "Omnidirectional, square field sampler."
-  id_dynamics: SE2_rb_v
-  sensors:
-    - id_sensor: s_fs_C
-  radius: 0.5
-  extra:
-    skin: omni
-
-
-- id: v_fs_D
+- id: "rb2${sensor}"
   desc: ""
-  id_dynamics: SE2_rb_v
+  id_dynamics: rb2
   sensors:
-    - id_sensor: s_fs_D
+    - id_sensor: "${sensor}"
   radius: 0.5
   extra:
     skin: omni
 
-
-- id: v_rf_A
+- id: "rb1Mr1${sensor}"
   desc: ""
-  id_dynamics: SE2_rb_v
+  id_dynamics: rb1
   sensors:
-    - id_sensor: s_rf_A
+    - id_sensor: "${sensor}"
+      pose: [0,0,45]
+  radius: 0.5
+  extra:
+    skin: omni
+  
+- id: "rb1Mx1${sensor}"
+  desc: ""
+  id_dynamics: rb1
+  sensors:
+    - id_sensor: "${sensor}"
+      pose: [0.1,0,0]
   radius: 0.5
   extra:
     skin: omni
 
-- id: v_cam_A
+- id: "rb1My1${sensor}"
   desc: ""
-  id_dynamics: SE2_rb_v
+  id_dynamics: rb1
   sensors:
-    - id_sensor: s_cam_A
+    - id_sensor: "${sensor}"
+      pose: [0,0.1,0]
   radius: 0.5
   extra:
     skin: omni
+
+- id: "d1rb1${sensor}"
+  desc: ""
+  id_dynamics: d1rb1
+  sensors:
+    - id_sensor: "${sensor}"
+  radius: 0.5
+  extra:
+    skin: omni
+
+- id: "d2rb1${sensor}"
+  desc: ""
+  id_dynamics: d2rb1
+  sensors:
+    - id_sensor: "${sensor}"
+  radius: 0.5
+  extra:
+    skin: omni
+
+- id: "rb1Proco"
+  desc: "Vehicle with both sensors"
+  id_dynamics: d2rb1
+  sensors:
+    - id_sensor: ro
+    - id_sensor: co
+  radius: 0.5
+  extra:
+    skin: omni
+
+
+
+
+
+
+# # Three configurations
+
+# - id: "v_c${conf}_${sensor}"
+#   desc: "Vehicle with the sensor ${sensor} mounted at conf ${conf}."
+#   id_dynamics: SE2_rb_v
+#   sensors:
+#     - id_sensor: "${sensor}"
+#       pose: "${conf|A=[0,0,0];B=[0.25,0,0];C=[0.25,0,0]}"
+#   radius: 0.5
+#   extra:
+#     skin: omni
+
+ 
