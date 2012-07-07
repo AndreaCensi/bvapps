@@ -7,6 +7,26 @@
   extra:
     skin: omni
 
+- id: "cl1${sensor}"
+  desc: ""
+  id_dynamics: cl1
+  sensors:
+    - id_sensor: "${sensor}"
+  radius: 0.5
+  extra:
+    skin: car_with_wheels
+
+
+- id: "dd1${sensor}"
+  desc: ""
+  id_dynamics: dd1
+  sensors:
+    - id_sensor: "${sensor}"
+  radius: 0.5
+  extra:
+    skin: ddrive
+
+
 - id: "rb2${sensor}"
   desc: ""
   id_dynamics: rb2

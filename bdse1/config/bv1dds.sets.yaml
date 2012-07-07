@@ -1,0 +1,28 @@
+- id: bv1dds1
+  desc: 'Main experiments for the DDS chapter'
+  code:
+  - bootstrapping_olympics.batch_jobs1
+  - robots: [
+        # Base cases
+        Ypc1Se0Vrb1ro,  # Need to add 1d -> 2d for popcode
+        Yrsh1Se0Vrb1co,  # Need to add 1d -> 2d for 1D camera
+        Se0Vrb1fsq1,
+    ]
+    agents: [dds7, dds8, dds9, dds10]
+    explore:
+        num_episodes: 10 # XXX
+        num_episodes_videos: 5
+        explorer: expsw1
+        max_episode_len: 30
+        videos: [exz1sb, exz1no]
+    servo:
+        num_episodes: 20
+        num_episodes_videos: 5
+        max_episode_len: 60
+        displacement: 1
+    servonav:
+        num_episodes: 10
+        num_episodes_videos: 10
+        max_episode_len: 600
+        resolution: 0.25
+        fail_if_not_working: false

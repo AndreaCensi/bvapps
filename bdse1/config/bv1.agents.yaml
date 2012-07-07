@@ -1,0 +1,34 @@
+# The simple explorer used in most cases
+- id: expsw1
+  desc: Switches randomly between commands with an exponential switching time.
+  code:
+      - boot_agents.ExpSwitcher
+      - beta: 1
+
+# BDS and variations
+
+- id: bdse1
+  desc: "BDSE agent "
+  code:
+      - boot_agents.BDSEAgent
+      - change_fraction: 0.5
+        explorer: expsw1
+        rcond: 0.000000001
+
+- id: bdse2
+  desc: "BDSE agent (higher rcond)"
+  code:
+      - boot_agents.BDSEAgent
+      - change_fraction: 0.5
+        explorer: expsw1
+        rcond: 0.001
+
+# BGDS and variations
+
+- id: bgds1
+  desc: "BGDS agent"
+  code:
+      - boot_agents.BGDSAgent
+      - beta: 1
+
+# DDS and variations

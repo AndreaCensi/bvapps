@@ -5,9 +5,16 @@
     - sides: [0.22,0.22]
       shape: [12,12]
       normalize: False
-      noise: 
-        - vehicles.library.noises.AdditiveGaussian
-        - std_dev: 0
+
+- id: fo1
+  desc: "Circular disposition"
+  code: 
+    - vehicles.library.sensors.FieldSamplerCircle
+    - radius: 0.38
+      n: 144
+      fov_deg: 360
+      normalize: False
+
 
 - id: ifsc1
   desc: "Random circular distribution"

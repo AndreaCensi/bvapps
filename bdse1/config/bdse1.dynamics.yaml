@@ -6,6 +6,23 @@
     max_angular_velocity: 1
     #noise_drift: [0.05, 0.05, 0.05]
 
+- id: cl1
+  desc: 'Simple car-like dynamics (with wheels joints)'
+  code: 
+      - vehicles.library.dynamics.CarWithWheels
+      - max_linear_velocity: 1
+        max_steering_angle: 0.52359877 # 30deg
+        L: 0.5
+        axis_dist: 0.7
+
+- id: dd1
+  desc: 'Differential drive robot on SE2'
+  code: 
+  - vehicles.library.dynamics.DifferentialDrive
+  - max_linear_velocity: 1.0
+    max_angular_velocity: 1.0
+
+
 - id: rb2
   desc: 'Planar robot on SE2 (twice as fast)'
   code: 

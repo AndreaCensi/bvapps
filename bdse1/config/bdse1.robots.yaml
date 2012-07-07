@@ -16,6 +16,15 @@
     cmd_nuisance: "${id_nuisance}"
 
 
+- id: "S${id_environment}V${vehicle}"
+  desc: ""
+  code:
+     - vehicles_boot.BOVehicleSimulation
+     - dt: 0.033
+       id_vehicle: "${vehicle}"
+       id_world: "${id_environment}"
+
+
  
 
 - id: "r_v${vehicle}_w${world}"
@@ -98,12 +107,4 @@
        obs_nuisance: rscaleA
        cmd_nuisance: []
 
-
-- id: "Se${world}V${vehicle}"
-  desc: ""
-  code:
-     - vehicles_boot.BOVehicleSimulation
-     - dt: 0.033
-       id_vehicle: "${vehicle}"
-       id_world: "${world|0=SBox3_10scale1;1=SBox3_10scale05}"
 

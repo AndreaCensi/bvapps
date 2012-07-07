@@ -54,9 +54,6 @@
   - alpha: 5 # XXX
 
 
-
-
-
 - id: gn1
   desc: Gaussian noise
   code:

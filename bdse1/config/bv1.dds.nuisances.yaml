@@ -1,0 +1,12 @@
+ 
+- id: pc1
+  desc: Population code with resolution = 127
+  code:
+  - bootstrapping_olympics.library.nuisances.PopCode
+  - resolution: 128
+
+- id: rsh1
+  desc: Reshape 1D to 2D by replicating the lines
+  code:
+  - bootstrapping_olympics.library.nuisances.To2Dm
+  - rows: 16

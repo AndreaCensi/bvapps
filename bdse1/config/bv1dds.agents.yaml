@@ -1,0 +1,48 @@
+- id: dds7
+  desc: "was: icra12-diffeo_agent_2d-er1-video0_c"
+  code:
+      - boot_agents.DiffeoAgent2Db
+      - rate: 1 
+        # Exploration (not used)
+        delta: 0.5
+        resize_method: PIL
+        match_method: continuous
+        target_resolution: [120, 160]
+        ratios: [0.05, 0.20]
+
+- id: dds8
+  desc: "was: icra12-diffeo-vehicles"
+  code:
+      - boot_agents.DiffeoAgent2Db
+      - rate: 1 # Exploration (not used)
+        delta: 0.5
+        resize_method: PIL
+        match_method: continuous
+        target_resolution: [120, 160]
+        ratios: [0.05, 0.20]
+
+- id: dds9
+  desc: |
+    Dev. version (real) (larger); note: add double rejection.
+    was: icra12-diffeo-ldr13
+  code:
+      - boot_agents.DiffeoAgent2Db
+      - rate: 1
+        delta: 0.19
+        resize_method: raw
+        match_method: binary
+        target_resolution: [90, 180]
+        ratios: [0.4, 0.05]     
+
+- id: dds10
+  desc: "was: icra12-diffeo-vehicles_c"
+  code:
+      - boot_agents.DiffeoAgent2Db
+      - rate: 1 
+        # Exploration (not used)
+        delta: 0.35
+        resize_method: PIL_both
+        match_method: continuous
+        target_resolution: [90, 90]
+        # the first is yres 
+        ratios: [0.2, 0.13]

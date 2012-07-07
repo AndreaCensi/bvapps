@@ -1,0 +1,45 @@
+
+- id: box0
+  desc: "A box with stochastic content, smoothed textures, scale=1m"
+  code: 
+      - vehicles.library.worlds.StochasticBox3
+      - width: 10
+        length: 10
+        scale: 1
+        sigma: 0.5
+
+- id: box1
+  desc: "A box with stochastic content, smoothed textures, scale=0.5m"
+  code: 
+      - vehicles.library.worlds.StochasticBox3
+      - width: 10
+        length: 10
+        scale: 0.5
+        sigma: 0.25
+
+
+- id: ssources1
+  desc: StochasticSources
+  code: 
+      - vehicles.library.worlds.StochasticSources
+      - width: 10
+        length: 10
+        num_sources: 20
+        scale: 2
+
+- id: e0
+  desc: ""
+  code: 
+      - vehicles.library.worlds.Join
+      - id_worlds: 
+        - box0
+        - ssources1
+
+- id: e1
+  desc: ""
+  code: 
+      - vehicles.library.worlds.Join
+      - id_worlds: 
+        - box1
+        - ssources1
+        
