@@ -56,6 +56,18 @@
   extra:
     skin: omni
 
+- id: "rb1PMy2ccMy1cc"
+  desc: "Vehicle with stereo camera"
+  id_dynamics: rb1
+  sensors:
+    - id_sensor: "cc"
+      pose: [0,-0.1,0]
+    - id_sensor: "cc"
+      pose: [0,+0.1,0]
+  radius: 0.5
+  extra:
+    skin: omni
+
 - id: "rb1My1${sensor}"
   desc: ""
   id_dynamics: rb1

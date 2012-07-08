@@ -27,6 +27,9 @@
         Se0Vrb1rc,
         Se0Vrb1rh,
         Se0Vrb1rq,
+        # Spatial smoothing
+        Se0Vrb1s4co,
+        Se0Vrb1s4cc,
         # Random linear transform
         Yrl1Se0Vrb1ro,
         Yrl2Se0Vrb1ro,
@@ -40,6 +43,7 @@
         Se0Vrb2ro,
         # Two sensors in parallel
         Se0Vrb1Proco,
+        Se0Vrb1PMy2ccMy1cc, # Stereo camera
         # Noise on the dynamics
         Ugn1Se0Vrb1co,
         Ugn2Se0Vrb1co,
@@ -50,11 +54,11 @@
         # Car-like
         Se0Vcl1ro
     ]
-    agents: [bdse1, bdse2, bgds1]
+    agents: [bdse1, bgds1]
     explore:
-        num_episodes: 200
+        num_episodes: 400
         num_episodes_videos: 5
-        explorer: expswitch_t1
+        explorer: expswitch_t1 #XXX change
         max_episode_len: 30
         videos: [exz1sb, exz1no]
     servo:

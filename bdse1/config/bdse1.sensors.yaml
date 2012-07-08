@@ -10,7 +10,7 @@
   desc: "Circular disposition"
   code: 
     - vehicles.library.sensors.FieldSamplerCircle
-    - radius: 0.38
+    - radius: 0.2
       n: 144
       fov_deg: 360
       normalize: False
@@ -76,7 +76,7 @@
       - vehicles.library.sensors.PhotoreceptorsSmoothUniform
       - num_sensels: 180
         fov_deg:     180
-        spatial_sigma_deg: 0
+        spatial_sigma_deg: 0.01 # XXX: should be 0
         upsample: 1
 
 - id: ro
