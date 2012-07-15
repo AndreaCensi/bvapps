@@ -65,3 +65,9 @@
   code:
   - bootstrapping_olympics.library.nuisances.Gaussian
   - sigma: 0.05
+
+- id: fl1
+  desc: Flatten to 1D
+  code:
+  - bootstrapping_olympics.library.nuisances.Flatten
+  - {}

@@ -6,6 +6,9 @@
         # Base cases
         Se0Vrb1ro,
         Se0Vrb1co,
+        Se0Vrb1fsq1,
+        Yfl1Se0Vrb1fsq1, # Square distribution, but flattened
+        Yfl1Se1Vrb1fsq1, # Square distribution, but flattened
         Se0Vrb1fo1,
         Se0Vrb1ifsc1,
         # Comparison for noise level
@@ -56,22 +59,58 @@
     ]
     agents: [bdse1, bgds1]
     explore:
-        num_episodes: 400
+        num_episodes: 1000
         num_episodes_videos: 5
         explorer: expswitch_t1 #XXX change
         max_episode_len: 30
         videos: [exz1sb, exz1no]
     servo:
-        num_episodes: 20
-        num_episodes_videos: 5
+        num_episodes: 0
+    servonav:
+        num_episodes: 0
+
+
+- id: servotests
+  desc: 'Main experiments for the BDS chapter'
+  code:
+  - bootstrapping_olympics.batch_jobs1
+  - robots: [
+        # Base cases
+        Se0Vrb1ro,
+        Se0Vrb1co,
+        Se0Vrb1fsq1,
+        Ygn1Se0Vrb1ro,
+        Ygn2Se0Vrb1ro,
+        Ygn1Se0Vrb1co,
+        Ygn2Se0Vrb1co,
+        # Only 16
+        Se0Vrb1n16ro,
+        # Underactuated
+        Se0Vdd1ro,
+        # Car-like
+        Se0Vcl1ro
+    ]
+    agents: [bdse1_scurr, bdse1_smid, bdse1_sgoal]
+    explore:
+        num_episodes: 400
+        num_episodes_videos: 0
+        explorer: expswitch_t1 #XXX change
+        max_episode_len: 30
+        videos: [exz1sb, exz1no]
+    servo:
+        num_episodes: 50
+        num_episodes_videos: 10
         max_episode_len: 60
         displacement: 1
+        videos: [mp4f2sr]
     servonav:
-        num_episodes: 10
-        num_episodes_videos: 10
+        num_episodes: 2
+        num_episodes_videos: 2
         max_episode_len: 600
         resolution: 0.25
         fail_if_not_working: false
+
+
 
 - id: bv1bds1_quick
   desc: 'Quick version of the bv1bds1 set'

@@ -91,7 +91,7 @@
   code: 
     - "vehicles.library.sensors.RangefinderUniform"
     - num_sensels: 16
-      fov_deg:     180
+      fov_deg:     360
 
 - id: rc
   desc:  ""
