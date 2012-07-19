@@ -71,3 +71,23 @@
   code:
   - bootstrapping_olympics.library.nuisances.Flatten
   - {}
+
+
+
+- id: no1
+  desc: Subtracts the mean from the data.
+  code:
+    - bootstrapping_olympics.library.nuisances.NormalizeMean
+    - {}
+
+- id: no2
+  desc: 'Normalizes the data in the [-1,1] range (instantaneously)'
+  code:
+    - bootstrapping_olympics.library.nuisances.NormalizeMinMax
+    - {}
+
+- id: no3
+  desc: 'Normalizes the data in the [0,1] range (instantaneously)'
+  code:
+    - bootstrapping_olympics.library.nuisances.NormalizeMin 
+    - {}

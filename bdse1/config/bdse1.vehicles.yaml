@@ -108,19 +108,29 @@
 
 
 
+- id: "t1${sensor}"
+  desc: ""
+  id_dynamics: t1
+  sensors:
+    - id_sensor: "${sensor}"
+  radius: 0.5
+  extra:
+    skin: S1
 
+- id: "tt1${sensor}"
+  desc: ""
+  id_dynamics: tt1
+  sensors:
+    - id_sensor: "${sensor}"
+  radius: 0.5
+  extra:
+    skin: S1
 
-
-# # Three configurations
-
-# - id: "v_c${conf}_${sensor}"
-#   desc: "Vehicle with the sensor ${sensor} mounted at conf ${conf}."
-#   id_dynamics: SE2_rb_v
-#   sensors:
-#     - id_sensor: "${sensor}"
-#       pose: "${conf|A=[0,0,0];B=[0.25,0,0];C=[0.25,0,0]}"
-#   radius: 0.5
-#   extra:
-#     skin: omni
-
- 
+- id: "ci1${sensor}"
+  desc: ""
+  id_dynamics: ci1
+  sensors:
+    - id_sensor: "${sensor}"
+  radius: 0.5
+  extra:
+    skin: S1
