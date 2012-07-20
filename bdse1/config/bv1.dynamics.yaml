@@ -1,0 +1,68 @@
+- id: rb1
+  desc: 'Planar robot on SE2'
+  code: 
+  - vehicles.library.dynamics.SE2Dynamics
+  - max_linear_velocity: [1,1]
+    max_angular_velocity: 1
+    #noise_drift: [0.05, 0.05, 0.05]
+
+- id: cl1
+  desc: 'Simple car-like dynamics (with wheels joints)'
+  code: 
+      - vehicles.library.dynamics.CarWithWheels
+      - max_linear_velocity: 1
+        max_steering_angle: 0.52359877 # 30deg
+        L: 0.5
+        axis_dist: 0.7
+
+- id: dd1
+  desc: 'Differential drive robot on SE2'
+  code: 
+  - vehicles.library.dynamics.DifferentialDrive
+  - max_linear_velocity: 1.0
+    max_angular_velocity: 1.0
+
+- id: rb2
+  desc: 'Planar robot on SE2 (twice as fast)'
+  code: 
+  - vehicles.library.dynamics.SE2Dynamics
+  - max_linear_velocity: [2,2]
+    max_angular_velocity: 2
+    #noise_drift: [0.05, 0.05, 0.05]
+
+- id: d1rb1
+  desc: 'Robot with some dynamics'
+  code: 
+  - vehicles.library.dynamics.SE2Force
+  - max_force: [1,1,1]
+    mass: 1
+    damping: 1
+
+- id: d2rb1
+  desc: 'Robot with some dynamics (double the mass)'
+  code: 
+  - vehicles.library.dynamics.SE2Force
+  - max_force: [1,1,1]
+    mass: 2
+    damping: 1
+
+- id: ci1
+  desc: 'A robot on SO(2) controlled in velocity'
+  code: 
+  - vehicles.library.dynamics.CircleVel
+  - max_velocity: 1
+
+- id: t1
+  desc: 'A particle on R^1 controlled in velocity'
+  code: 
+  - vehicles.library.dynamics.EuclideanVel
+  - ndim: 1
+    max_velocity: [1]
+
+- id: tt1
+  desc: 'A robot on R^2 controlled in velocity'
+  code: 
+  - vehicles.library.dynamics.EuclideanVel
+  - ndim: 2
+    max_velocity: [1,1]
+    

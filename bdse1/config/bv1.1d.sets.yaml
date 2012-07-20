@@ -1,0 +1,33 @@
+- id: bv1oned1
+  desc: 'Simple one-dimensional examples'
+  code:
+  - bootstrapping_olympics.batch_jobs1
+  - robots: [
+        # Base cases
+        #Se0Vt1cc, 
+        Se0Vci1cc,
+        Se0Vci1rc,
+        # Different environment
+        # Se1Vt1cc,
+        Se1Vci1cc,
+        Se1Vci1rc,
+        # With smoothing
+        Se0Vci1s1cc,
+        Se0Vci1s1cic, # irregular sampling
+        Se0Vci1s2cc,
+        Se0Vci1s4cc,
+        Se0Vci1s8cc
+    ]
+    agents: [bdse1]
+    predict: {}
+    #    live_plugins: [live_bridge_predict]
+    explore:
+        num_episodes: 100
+        num_episodes_videos: 5
+        explorer: expsw1 #XXX change
+        max_episode_len: 30
+        videos: [exz1sb, exz1no]
+    servo:
+        num_episodes: 0
+    servonav:
+        num_episodes: 0

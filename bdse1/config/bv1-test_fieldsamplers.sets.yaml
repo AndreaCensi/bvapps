@@ -1,0 +1,37 @@
+- id: bv1bdsfs1
+  desc: 'Some tests for field samplers'
+  code:
+  - bootstrapping_olympics.batch_jobs1
+  - robots: [
+        Yfl1Se0Vrb1fsq1, # Square distribution, but flattened
+        Yfl1Se1Vrb1fsq1, # Square distribution, but flattened
+        Se0Vrb1fo1, # circular
+        Se0Vrb1ifsc1, # irregular, circle
+        # Using no1
+        Yno1Yfl1Se0Vrb1fsq1, 
+        Yno1Se0Vrb1fo1, 
+        Yno1Se0Vrb1ifsc1, 
+        # Using no2
+        Yno2Yfl1Se0Vrb1fsq1, 
+        Yno2Se0Vrb1fo1, 
+        Yno2Se0Vrb1ifsc1, 
+        # Using no3
+        Yno3Yfl1Se0Vrb1fsq1, 
+        Yno3Se0Vrb1fo1, 
+        Yno3Se0Vrb1ifsc1, 
+    ]
+    agents: [bdse1]
+    predict: {}
+    #    live_plugins: [live_bridge_predict]
+    explore:
+        num_episodes: 500
+        num_episodes_videos: 0
+        episodes_per_tranche: 50
+        explorer: expsw1 #XXX change
+        max_episode_len: 30
+        videos: [exz1sb, exz1no]
+    servo:
+        num_episodes: 0
+    servonav:
+        num_episodes: 0
+
