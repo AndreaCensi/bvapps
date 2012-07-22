@@ -1,0 +1,75 @@
+
+# - id: "n0${sensor}"
+#   desc: ""
+#   code: 
+#       - vehicles.library.sensors.Filter
+#       - id_sensor: "${sensor}"
+#         code: 
+#           - vehicles.library.noises.AdditiveGaussian
+#           - std_dev: 0
+
+# - id: "n1${sensor}"
+#   desc: ""
+#   code: 
+#       - vehicles.library.sensors.Filter
+#       - id_sensor: "${sensor}"
+#         code: 
+#           - vehicles.library.noises.AdditiveGaussian
+#           - std_dev: 0.01
+
+# - id: "n2${sensor}"
+#   desc: ""
+#   code: 
+#       - vehicles.library.sensors.Filter
+#       - id_sensor: "${sensor}"
+#         code: 
+#           - vehicles.library.noises.AdditiveGaussian
+#           - std_dev: 0.05
+
+
+- id: "cam_f${fov}n${n}d${disp}s${smoothdeg}_n${noiselevel}"
+  desc: ""
+  code: 
+      - "vehicles.library.sensors.PhotoreceptorsSmooth${disp|U=Uniform;R=Random}"
+      - num_sensels: "${n}"
+        fov_deg:     "${fov}"
+        spatial_sigma_deg: "${smoothdeg}"
+        upsample: 15
+        noise: 
+            - vehicles.library.noises.AdditiveGaussian
+            - std_dev: "${noiselevel|0=0;1=0.01;2=0.05}"
+
+
+- id: "rf_f${fov}n${n}d${disp}_n${noiselevel}"
+  desc: |
+    Range-finder with ${n} rays with ${fov}deg field of view,
+    noise level ${noiselevel} (${noiselevel|0=0;1=0.1;2=0.5}},
+    and ${disp|U=uniform;R=random} disposition.
+  code: 
+      - "vehicles.library.sensors.Rangefinder${disp|U=Uniform;R=Random}"
+      - num_sensels: "${n}"
+        fov_deg:     "${fov}"
+        noise: 
+            - vehicles.library.noises.AdditiveGaussian
+            - std_dev: "${noiselevel|0=0;1=0.1;2=0.5}"
+
+
+- id: rf_f180n180dU_n0
+- id: rf_f180n180dU_n1
+- id: rf_f180n180dU_n2
+- id: rf_f360n180dU_n0
+- id: rf_f360n180dU_n1
+- id: rf_f360n180dU_n2
+- id: rf_f360n180dR_n0
+- id: rf_f360n180dR_n1
+- id: rf_f360n180dR_n2
+
+- id: cam_f180n180dUs4_n0
+- id: cam_f180n180dUs4_n1
+- id: cam_f180n180dUs4_n2
+- id: cam_f360n180dUs4_n0
+- id: cam_f360n180dUs4_n1
+- id: cam_f360n180dUs4_n2
+- id: cam_f360n180dRs4_n0
+- id: cam_f360n180dRs4_n1
+- id: cam_f360n180dRs4_n2

@@ -18,8 +18,6 @@
     suffix: sensels
 
 
-
-
 - id: live_bridge_predict
   desc: ''
   code: 
