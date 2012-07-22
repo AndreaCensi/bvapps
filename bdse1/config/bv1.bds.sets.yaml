@@ -50,7 +50,9 @@
         Se0Vrb1PMy2ccMy1cc, # Stereo camera
         # Noise on the dynamics
         Ugn1Se0Vrb1co,
-        Ugn2Se0Vrb1co,
+        Ugn2Se0Vrb1co, 
+        Ugn3Se0Vrb1co, # 0.25
+        Ugn4Se0Vrb1co, # 0.5
         # Only 16
         Se0Vrb1n16ro,
         # Underactuated

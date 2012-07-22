@@ -66,6 +66,19 @@
   - bootstrapping_olympics.library.nuisances.Gaussian
   - sigma: 0.05
 
+- id: gn3
+  desc: Gaussian noise (stronger)
+  code:
+  - bootstrapping_olympics.library.nuisances.Gaussian
+  - sigma: 0.25
+
+- id: gn4
+  desc: Gaussian noise (stronger)
+  code:
+  - bootstrapping_olympics.library.nuisances.Gaussian
+  - sigma: 0.5
+
+
 - id: fl1
   desc: Flatten to 1D
   code:
