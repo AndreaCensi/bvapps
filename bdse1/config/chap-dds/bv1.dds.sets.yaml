@@ -1,5 +1,5 @@
-- id: bv1dds1
-  desc: 'Main experiments for the DDS chapter'
+- id: bv1ddstest1
+  desc: 'First tests for the DDS chapter'
   code:
   - bootstrapping_olympics.batch_jobs1
   - robots: [
@@ -7,22 +7,43 @@
         Ypc1Se0Vrb1ro,  # Need to add 1d -> 2d for popcode
         Yrsh1Se0Vrb1co,  # Need to add 1d -> 2d for 1D camera
         Se0Vrb1fsq1,
+        Se0Vrb1fsq2, # 128 x 128
+        Ypc1Se0Vdd1ro,  # Need to add 1d -> 2d for popcode
+        Yrsh2Se0Vdd1co,  # Need to add 1d -> 2d for 1D camera
+        Se0Vdd1fsq1,
+        Se0Vdd1fsq2, # 128 x 128
     ]
-    agents: [dds7, dds8, dds9, dds10]
+    agents: [stats2, dds7, dds8, dds9, dds10]
     explore:
-        num_episodes: 10 # XXX
+        episodes_per_tranche: 5
+        num_episodes: 200 # XXX
         num_episodes_videos: 5
-        explorer: expsw1
+        explorer: expswcan1
         max_episode_len: 30
         videos: [exz1sb, exz1no]
     servo:
-        num_episodes: 20
-        num_episodes_videos: 5
-        max_episode_len: 60
-        displacement: 1
+        num_episodes: 0 # XXX
     servonav:
-        num_episodes: 10
-        num_episodes_videos: 10
-        max_episode_len: 600
-        resolution: 0.25
-        fail_if_not_working: false
+        num_episodes: 0  # XXX
+        
+- id: bv1ddstest2
+  desc: ''
+  code:
+  - bootstrapping_olympics.batch_jobs1
+  - robots: [
+        Ypc1Se0Vdd1ro2,  # Need to add 1d -> 2d for popcode
+        Yrsh2Se0Vdd1s1co2,  # Need to add 1d -> 2d for 1D camera
+    ]
+    agents: [stats2, dds3]
+    explore:
+        episodes_per_tranche: 5
+        num_episodes: 200 # XXX
+        num_episodes_videos: 5
+        explorer: expswcan1
+        max_episode_len: 30
+        videos: [exz1sb, exz1no]
+    servo:
+        num_episodes: 0 # XXX
+    servonav:
+        num_episodes: 0  # XXX
+        

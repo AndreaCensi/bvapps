@@ -6,6 +6,15 @@
       shape: [12,12]
       normalize: False
 
+- id: fsq2
+  desc: "Uniform disposition (128x128)"
+  code: 
+    - vehicles.library.sensors.FieldSamplerUniform
+    - sides: [0.22,0.22]
+      shape: [128,128]
+      normalize: False
+
+
 - id: fo1
   desc: "Circular disposition"
   code: 
@@ -50,6 +59,15 @@
         fov_deg:     360
         spatial_sigma_deg: 0.01
         upsample: 1
+
+- id: s1co2
+  desc: "128 sensels, 2 deg smooth"
+  code: 
+      - vehicles.library.sensors.PhotoreceptorsSmoothUniform
+      - num_sensels: 128
+        fov_deg:     360
+        spatial_sigma_deg: 0.01
+        upsample: 2
 
 - id: ico
   desc: "An omnidirectional camera with 180 sensels, irregularly sampled"
@@ -126,12 +144,21 @@
         spatial_sigma_deg: 0.01 # XXX: should be 0
         upsample: 1
 
+# FIXME: change to ro1
 - id: ro
   desc:  ""
   code: 
     - "vehicles.library.sensors.RangefinderUniform"
     - num_sensels: 360
       fov_deg:     360
+
+- id: ro2
+  desc:  "Range finder with 128 rays"
+  code: 
+    - "vehicles.library.sensors.RangefinderUniform"
+    - num_sensels: 128
+      fov_deg:     360
+
 
 - id: n16ro
   desc:  ""

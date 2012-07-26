@@ -100,7 +100,7 @@
     agents: [bdse3,
             # bdse1_smid, 
             bdse4]
-    predict: null
+    predict: {}
     explore:
         num_episodes: 500
         num_episodes_videos: 0

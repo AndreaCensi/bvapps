@@ -54,12 +54,11 @@
         explorer: expsw1
         rcond: 0.001
 
-# BGDS and variations
+# # BGDS and variations
 
-- id: bgds1
-  desc: "BGDS agent"
-  code:
-      - boot_agents.BGDSAgent
-      - beta: 1
-
-# DDS and variations
+# - id: bgds1
+#   desc: "BGDS agent"
+#   code:
+#       - boot_agents.BGDSAgent
+#       - beta: 1
+ 

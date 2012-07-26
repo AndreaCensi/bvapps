@@ -12,3 +12,22 @@
       - boot_agents.ExpSwitcher
       - beta: 1
 
+- id: expswcan1
+  desc: Switches randomly among canonical commands.
+  code:
+  - boot_agents.ExpSwitcherCanonical
+  - beta: 1
+
+
+
+- id: stats1
+  desc: Computes simple statistics (1D data)
+  code:
+  - boot_agents.EstStats
+  - beta: 1 # XXX
+
+- id: stats2
+  desc: Computes simple statistics (2D data)
+  code:
+  - boot_agents.EstStats2D
+  - beta: 1 # XXX

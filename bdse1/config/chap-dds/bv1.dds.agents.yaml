@@ -1,3 +1,43 @@
+
+- id: dds1
+  desc: "No resize, continuous"
+  code:
+      - boot_agents.DiffeoAgent2Db
+      - rate: 1 
+        # Exploration (not used)
+        delta: 0.5
+        resize_method: 
+        target_resolution: 
+        match_method: continuous
+        ratios: [0.1, 0.1]
+
+- id: dds2
+  desc: "No resize, binary"
+  code:
+      - boot_agents.DiffeoAgent2Db
+      - rate: 1 
+        # Exploration (not used)
+        delta: 0.5
+        resize_method: 
+        target_resolution: 
+        match_method: binary
+        ratios: [0.1, 0.1]
+
+
+- id: dds3
+  desc: "No resize, binary"
+  code:
+      - boot_agents.DiffeoAgent2Db
+      - rate: 1 
+        # Exploration (not used)
+        delta: 0.5
+        resize_method: 
+        target_resolution: 
+        match_method: binary
+        ratios: [0.15, 0.15]
+
+
+
 - id: dds7
   desc: "was: icra12-diffeo_agent_2d-er1-video0_c"
   code:

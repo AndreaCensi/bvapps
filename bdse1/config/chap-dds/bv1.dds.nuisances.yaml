@@ -6,7 +6,13 @@
   - resolution: 128
 
 - id: rsh1
-  desc: Reshape 1D to 2D by replicating the lines
+  desc: Reshape 1D to 2D by replicating the lines (16 rows)
   code:
-  - bootstrapping_olympics.library.nuisances.To2Dm
+  - bootstrapping_olympics.library.nuisances.ReplicateRows
   - rows: 16
+
+- id: rsh2
+  desc: Reshape 1D to 2D by replicating the lines (64 rows)
+  code:
+  - bootstrapping_olympics.library.nuisances.ReplicateRows
+  - rows: 128
