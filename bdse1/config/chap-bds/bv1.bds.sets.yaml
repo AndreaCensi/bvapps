@@ -133,7 +133,7 @@
         Se0Vrb1ro,
         Se0Vrb1co,
     ]
-    agents: [bdse1]
+    agents: [bdse1, bgds1]
     predict: {}
     explore:
         num_episodes: 10
@@ -161,7 +161,7 @@
         Se0Vrb1ro,
         Se0Vrb1co,
     ]
-    agents: [bdse1]
+    agents: [bdse1, bgds1]
     predict: {}
     explore:
         num_episodes: 100
