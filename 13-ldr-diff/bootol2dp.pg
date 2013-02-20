@@ -1,0 +1,17 @@
+#!/usr/bin/env pg
+--- model bootol2dp
+import bootstrapping_olympics
+import boot_agents.diffeo.pg
+
+config bag """ Output bag file """
+config id_robot 
+# = 'Ypc2LDR13'
+config logdir 
+config delta 
+
+|boot_log_reader logdir=$logdir id_robot=$id_robot read_extra=0| -> log
+
+log -> |pure_commands delta=$delta| -> tuples
+
+tuples -> |to_dp_log bag=$bag| 
+

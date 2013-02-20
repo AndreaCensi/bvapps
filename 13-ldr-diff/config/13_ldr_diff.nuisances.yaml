@@ -1,0 +1,29 @@
+- id: pc2
+  desc: Population code with resolution = 64
+  code:
+  - bootstrapping_olympics.library.nuisances.PopCode
+  - resolution: 64
+
+- id: pc128
+  desc: Population code with resolution = 64
+  code:
+  - bootstrapping_olympics.library.nuisances.PopCode
+  - resolution: 128
+
+- id: pc64
+  desc: Population code with resolution = 64
+  code:
+  - bootstrapping_olympics.library.nuisances.PopCode
+  - resolution: 64
+
+- id: rsa128
+  desc: Resamples a 2D signal to 128x128
+  code:
+  - bootstrapping_olympics.library.nuisances.Resample
+  - shape: [128, 128]
+
+- id: rsa64
+  desc: Resamples a 2D signal to 64x64
+  code:
+  - bootstrapping_olympics.library.nuisances.Resample
+  - shape: [64, 64]

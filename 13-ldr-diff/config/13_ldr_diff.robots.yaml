@@ -1,0 +1,28 @@
+
+- id: "Y${id_nuisance}${robot}"
+  desc: "Applies ${id_nuisance} to observations of ${robot}"
+  code:
+  - bootstrapping_olympics.library.robots.EquivRobot
+  - robot: "${robot}"
+    obs_nuisance: "${id_nuisance}"
+    cmd_nuisance: []
+
+          
+- id: "Y128LDR13"
+  desc: "128x128 maps"
+  code:
+  - bootstrapping_olympics.library.robots.EquivRobot
+  - robot: "LDR13"
+    cmd_nuisance: []
+    obs_nuisance: [pc128, rsa128]
+          
+          
+- id: "Y64LDR13"
+  desc: "64x64 maps"
+  code:
+  - bootstrapping_olympics.library.robots.EquivRobot
+  - robot: "LDR13"
+    cmd_nuisance: []
+    obs_nuisance: [pc64, rsa64]
+
+

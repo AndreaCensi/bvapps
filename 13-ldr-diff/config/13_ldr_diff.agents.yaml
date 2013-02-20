@@ -1,0 +1,23 @@
+- id: stats1
+  desc: Computes simple statistics (1D data)
+  code:
+  - boot_agents.EstStats
+  - beta: 1 # XXX
+
+
+- id: stats2
+  desc: Computes simple statistics (2D data)
+  code:
+  - boot_agents.EstStats2D
+  - beta: 1 # XXX
+
+- id: icra12-diffeo-ldr13
+  desc: "Dev. version (real) (larger); note: add double rejection"
+  code:
+  - boot_agents.DiffeoAgent2Db
+  - rate: 1
+    delta: 0.19
+    resize_method: raw
+    match_method: binary
+    target_resolution: [90, 180]
+    ratios: [0.4, 0.05]     
