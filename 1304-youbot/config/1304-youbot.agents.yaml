@@ -1,0 +1,28 @@
+- id: stats1
+  desc: Computes simple statistics (1D data)
+  code:
+  - boot_agents.EstStats
+  - beta: 1 # XXX
+
+- id: stats2
+  desc: Computes simple statistics (2D data)
+  code:
+  - boot_agents.EstStats2D
+  - beta: 1 # XXX
+
+- id: bdse1
+  desc: "BDSE agent"
+  code:
+      - boot_agents.BDSEAgent
+      - change_fraction: 0.5
+        explorer: expsw1
+        rcond: 0.000000001
+        servo:
+          gain: 0.1
+
+# The simple explorer used in most cases
+- id: expsw1
+  desc: Switches randomly between commands with an exponential switching time.
+  code:
+      - boot_agents.ExpSwitcher
+      - beta: 1

@@ -1,0 +1,18 @@
+
+- id: "uA_b1_tw_hlhr_sane"
+  desc: "Sanitized range data"
+  code:
+  - bootstrapping_olympics.library.robots.EquivRobot
+  - robot: uA_b1_tw_hlhr
+    obs_nuisance: unicornA_hlhr_sane
+    cmd_nuisance: []
+
+- id: "uA_b1_tw_hlhr_sane_s4"
+  desc: "Sanitized range data (subsampled 4x)"
+  code:
+  - bootstrapping_olympics.library.robots.EquivRobot
+  - robot: uA_b1_tw_hlhr
+    obs_nuisance: unicornA_hlhr_sane_s4
+    cmd_nuisance: []
+
+          
