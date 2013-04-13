@@ -1,0 +1,8 @@
+- id: twist_1_1
+  desc: '2D Twist'
+  code:
+  - rosstream2boot.TwistAdapter
+  - topic: /cmd_vel
+    topic_out: /youbot_safety/in_cmd_vel
+    max_lin_vel: 1.0
+    max_ang_vel: 1.0

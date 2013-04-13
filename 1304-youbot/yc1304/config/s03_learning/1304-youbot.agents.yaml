@@ -18,6 +18,7 @@
         explorer: expsw1
         rcond: 0.000000001
         servo:
+          strategy: S1n
           gain: 0.1
 
 # The simple explorer used in most cases

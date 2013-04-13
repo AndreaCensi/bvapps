@@ -1,0 +1,11 @@
+--- model join_two
+config video1 'video'
+config video2 'video'
+config out
+
+|mplayer file=$video1 quiet=1| --> rgb1
+|mplayer file=$video2 quiet=1| --> rgb2
+
+rgb1, rgb2 -> |sync| -> |grid cols=2| -> rgb
+
+rgb --> |mencoder quiet=1 file=$out|

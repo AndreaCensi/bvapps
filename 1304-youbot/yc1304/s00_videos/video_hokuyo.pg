@@ -1,0 +1,17 @@
+--- model video_hokuyo
+config bag    """.bag file to read""" 
+config topic  """topic to read""" 
+config out    "Output file" 
+
+import procgraph_ros
+import video_hokuyo_sup
+
+|bagread file=$bag topics=$topic| --> laserdata
+
+laserdata -> |ros_scan2python| -> |scan2image max_reading=6 resolution=120| -> \
+     |transpose| -> y
+
+y -> |scale| -> |resize width=320 height=240| -> rgb_y
+rgb_y -> |wait n=2| -> |mencoder file=$out|
+
+

@@ -1,0 +1,65 @@
+
+- id: uA_b1_tw_cf_nominal
+  desc: "Front camera"
+  code: 
+  - rosstream2boot.ConvertJob
+  - id_robot: uA_b1_tw_cf
+    adapter: unicornA_base1_tw_cf 
+    logs:
+    - unicornA_base1_2013-04-03-12-58-11
+    id_episode_prefix: nominal_
+
+
+- id: uA_b1_tw_hlhr_nominal
+  desc: "Two hokuyos"
+  code: 
+  - rosstream2boot.ConvertJob
+  - id_robot: uA_b1_tw_hlhr
+    adapter: unicornA_base1_tw_hlhr
+    logs:
+    - unicornA_base1_2013-04-03-13-30-28 #:  38m, nominal, ok
+    - unicornA_car1_2013-04-08-21-37-47  #:  ??m, nominal
+    #- unicornA_base1_2013-04-06-19-44-59 #:  people standing around; don't use for learning
+    - unicornA_tran1_2013-04-09-14-35-11 #:  ??min, nominal
+    #- unicornA_base1_2013-04-03-13-16-53 #:  7m, Crashes into curtains after 7 minutes; don't use for learning.
+    - unicornA_base1_2013-04-02-20-37-43 #:  37m, nominal, boxes
+    - unicornA_base1_2013-04-08-19-10-12 #:  15m, has occlusions for camera
+    - unicornA_base1_2013-04-03-12-58-11 # :  17m, nominal, boxes
+    - unicornA_base1_2013-04-08-16-43-10 #:  25m, gripper not properly placed
+    - unicornA_base1_2013-04-06-15-30-06 #:  6m, nominal
+    - unicornA_base1_2013-04-03-16-36-03 #:  17m, nominal, ends for under-voltage
+    id_episode_prefix: nominal_
+
+
+- id: uA_b1_tw_hlhr_s4_nominal
+  desc: "Two hokuyos, sanitized, subsampled 4x"
+  code: 
+  - rosstream2boot.ConvertJob
+  - id_robot: uA_b1_tw_hlhr_s4
+    adapter: unicornA_base1_tw_hlhr_sane_s4
+    logs:
+    - unicornA_base1_2013-04-03-13-30-28 #:  38m, nominal, ok
+    - unicornA_car1_2013-04-08-21-37-47  #:  ??m, nominal
+    #- unicornA_base1_2013-04-06-19-44-59 #:  people standing around; don't use for learning
+    - unicornA_tran1_2013-04-09-14-35-11 #:  ??min, nominal
+    #- unicornA_base1_2013-04-03-13-16-53 #:  7m, Crashes into curtains after 7 minutes; don't use for learning.
+    - unicornA_base1_2013-04-02-20-37-43 #:  37m, nominal, boxes
+    - unicornA_base1_2013-04-08-19-10-12 #:  15m, has occlusions for camera
+    - unicornA_base1_2013-04-03-12-58-11 # :  17m, nominal, boxes
+    - unicornA_base1_2013-04-08-16-43-10 #:  25m, gripper not properly placed
+    - unicornA_base1_2013-04-06-15-30-06 #:  6m, nominal
+    - unicornA_base1_2013-04-03-16-36-03 #:  17m, nominal, ends for under-voltage
+    id_episode_prefix: nominal_
+
+
+
+- id: campaign1_uA_tran
+  desc: "Only translation in a small corner of the lab"
+  code: 
+  - rosstream2boot.ConvertJob
+  - id_robot: uA_tran
+    adapter: unicornA_base1_tw_hlhr_sane_s4 
+    logs:
+    - unicornA_tran1_2013-04-11-23-21-36 
+    id_episode_prefix: nominal_
+
