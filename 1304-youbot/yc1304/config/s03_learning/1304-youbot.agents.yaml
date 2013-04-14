@@ -27,3 +27,16 @@
   code:
       - boot_agents.ExpSwitcher
       - beta: 1
+
+
+- id: exp04_bdse1
+  desc: "BDSE agent"
+  code:
+      - boot_agents.BDSEAgent
+      - change_fraction: 0.5
+        explorer: expsw1
+        rcond: 0.0001
+        servo:
+          linpoint: goal
+          strategy: S1n
+          gain: 0.1

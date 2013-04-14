@@ -51,9 +51,7 @@
     - unicornA_base1_2013-04-03-16-36-03 #:  17m, nominal, ends for under-voltage
     id_episode_prefix: nominal_
 
-
-
-- id: campaign1_uA_tran
+- id: exp01_uA_tran
   desc: "Only translation in a small corner of the lab"
   code: 
   - rosstream2boot.ConvertJob
@@ -61,5 +59,19 @@
     adapter: unicornA_base1_tw_hlhr_sane_s4 
     logs:
     - unicornA_tran1_2013-04-11-23-21-36 
+    id_episode_prefix: nominal_
+
+- id: exp03_uA_tran
+  desc: "Logs with good laser data"
+  code: 
+  - rosstream2boot.ConvertJob
+  - id_robot: exp03_uA_tran
+    adapter: unicornA_base1_tw_hlhr_sane_s4 
+    logs:
+    - unicornA_base1_2013-04-11-20-14-27
+    - unicornA_tran1_2013-04-11-23-21-36
+    - unicornA_tran1_2013-04-12-22-29-16
+    - unicornA_tran1_2013-04-12-22-40-02
+    - unicornA_tran1_2013-04-12-23-34-08
     id_episode_prefix: nominal_
 
