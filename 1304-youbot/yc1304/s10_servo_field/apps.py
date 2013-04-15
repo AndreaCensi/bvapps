@@ -1,7 +1,9 @@
 from . import process, read_pose_observations, report_raw_display
 from yc1304.campaign import CampaignCmd, campaign_sub
-from yc1304.s10_servo_field.show_field import compute_servo_action
-from yc1304.s10_servo_field.reports import report_distances, report_servo1
+from yc1304.s10_servo_field.show_field import compute_servo_action, \
+    remove_discontinuities, process_compute_distances
+from yc1304.s10_servo_field.reports import report_distances, report_servo1, \
+    report_servo_details
 
 
 @campaign_sub
@@ -24,7 +26,8 @@ class CreateField(CampaignCmd):
         data_central = self.get_data_central()
         
         all_data = context.comp(read_pose_observations, data_central, id_robot, id_episode)
-        processed = context.comp(process, all_data, min_dist)
+        _processed = context.comp(process, all_data, min_dist)
+        processed = context.comp(process_compute_distances, _processed)
         context.add_report(context.comp(report_raw_display, processed),
                            'raw_display', id_robot=id_robot, id_episode=id_episode)
         context.add_report(context.comp(report_distances, processed),
@@ -48,7 +51,6 @@ class ServoField(CampaignCmd):
         params.add_string('id_robot', help='', compulsory=True)
         params.add_string('id_episode', help='', compulsory=True)
         params.add_string('id_agent', help='', compulsory=True)
-#         params.add_string('id_robot_learn', help='', compulsory=True)
         params.add_string('variation', help='', compulsory=True)
         params.add_float('min_dist', help='Minimum distance for fake grid',
                          default=0.07)
@@ -59,7 +61,6 @@ class ServoField(CampaignCmd):
         id_agent = options.id_agent
         variation = options.variation
         id_robot = options.id_robot
-#         id_robot_learn = options.id_robot_learn
         
         id_episode = options.id_episode
         min_dist = options.min_dist
@@ -67,18 +68,22 @@ class ServoField(CampaignCmd):
         data_central = self.get_data_central()
         
         all_data = context.comp(read_pose_observations, data_central, id_robot, id_episode)
-        processed = context.comp(process, all_data, min_dist)
-        processed2 = context.comp(compute_servo_action, processed, data_central,
+        _processed = context.comp(process, all_data, min_dist)
+        _processed = context.comp(remove_discontinuities, _processed, threshold=0.2)
+        _processed = context.comp(compute_servo_action, _processed, data_central,
                                   id_agent, id_robot, variation)
+        processed = context.comp(process_compute_distances, _processed)
+        
         
         keys = dict(id_robot=id_robot, id_episode=id_episode)
         
         reports = {'distances': report_distances,
                    'servo1': report_servo1,
+                   'servo_details': report_servo_details,
                    'raw_display': report_raw_display}
         
         for k, v in reports.items(): 
-            context.add_report(context.comp(v, processed2), k, **keys)
+            context.add_report(context.comp(v, processed), k, **keys)
     
 
 

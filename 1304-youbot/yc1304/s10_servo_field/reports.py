@@ -1,4 +1,10 @@
+import numpy as np
 from reprep import Report
+from yc1304.s10_servo_field.plots import (plot_reference_points_poses,
+    plot_reference_points, plot_scalar_field_sign,
+    plot_style_sensels, plot_style_sensels_deriv)
+from geometry.poses import SE2_from_SE3, translation_angle_from_SE2
+import warnings
  
 def report_raw_display(processed):
     r = Report('raw_display')
@@ -7,10 +13,16 @@ def report_raw_display(processed):
     xy = processed['raw_xy']
     centroid = processed['centroid']
     
+    caption = "Raw trajectories with commands"
+    with f.plot('some', caption=caption) as pylab:
+        pylab.plot(xy[:, 0], xy[:, 1], '-')
+        plot_odom_commands(pylab, processed['raw'][::20])
+        pylab.axis('equal')
+
+    
     caption = "Raw trajectory and selected points"
     with f.plot('sparse_xy', caption=caption) as pylab:
         pylab.plot(xy[:, 0], xy[:, 1], 'k+')
-#         pylab.plot(sparse_xy[:, 0], sparse_xy[:, 1], 'rs')
         pylab.plot(centroid[0], centroid[1], 'gs')
         plot_reference_points(pylab, processed)
         pylab.axis('equal')
@@ -21,41 +33,54 @@ def report_raw_display(processed):
         plot_reference_points_poses(pylab, processed)
         pylab.axis('equal')
 
+    caption = "Selected points, drawn with poses and commands"
+    with f.plot('sparse_poses_commands', caption=caption) as pylab:
+        pylab.plot(xy[:, 0], xy[:, 1], 'k-')
+        
+        plot_odom_commands(pylab, processed['sparse'])
+        pylab.axis('equal')
+
     return r
 
-def plot_reference_points(pylab, processed):
-    centroid = processed['centroid']
-    sparse_xy = processed['sparse_xy']
-    pylab.plot(sparse_xy[:, 0], sparse_xy[:, 1], 'o', zorder=(-1200),  # markeredgecolor='none',
-               markerfacecolor=[0.3, 0.3, 0.3], markersize=0.5)
-    pylab.plot(centroid[0], centroid[1], 'o', zorder=(-1000))
+def plot_odom_commands(pylab, bds):
+    poses = [bd['extra'].item()['odom'] for bd in bds]    
+    commands = [bd['commands'] for bd in  bds]
+    plot_poses_commands(pylab, poses, commands)
 
-def plot_reference_points_poses(pylab, processed):
+def plot_poses_commands(pylab, poses, commands,
+                        pose_arrow_length=0.03,
+                        cmd_arrow_length=0.05):
 
-    arrow_length = 0.05
-    style = dict(head_width=0.01, head_length=0.01,
-                 edgecolor='green')
+    pose_style = dict(head_width=0.01, head_length=0.01,
+                      edgecolor=[0.8, 0.8, 0.8])
+
+    # scale to given arrow_length
+    us = np.array(commands)[:, :2]
+    u_max = np.max(np.hypot(us[:, 0], us[:, 1]))
+    us = us / u_max * cmd_arrow_length
     
-    for bd in processed['sparse']:
-        extra = bd['extra'].item()
-        p = extra['odom_xy']
-        th = extra['odom_th']
-        a = np.cos(th) * arrow_length        
-        b = np.sin(th) * arrow_length
-        pylab.arrow(p[0], p[1], a, b, **style)
-
+    cmd_style = dict(head_width=0.01, head_length=0.01, edgecolor='blue')
+    
+    for pose, u in zip(poses, us):        
+        p, th = translation_angle_from_SE2(SE2_from_SE3(pose))
+        
+        a = np.cos(th) * pose_arrow_length        
+        b = np.sin(th) * pose_arrow_length
+        #  pylab.arrow(p[0], p[1], a, b, **pose_style)
+        
+        # u_w = np.dot(pose, [u[0], u[1], 0, 0])[:2]
+        warnings.warn('This is probably only correct with this dataset')
+        u_w = u[1], -u[0]
+        
+        pylab.arrow(p[0], p[1], u_w[0], u_w[1], **cmd_style)
+        
 
 def report_distances(processed):
     r = Report('distances')
     p_dist = processed['p_distance']
     y_dist = processed['y_distance']
     
-    f = r.figure('distance_stats')
-    #     with f.plot('p_dist_hist') as pylab:
-    #         pylab.hist(p_dist)
-    # 
-    #     with f.plot('y_dist_hist') as pylab:
-    #         pylab.hist(y_dist)
+    f = r.figure('distance_stats') 
 
     with f.plot('y_vs_p') as pylab:
         pylab.plot(y_dist, p_dist, 's')
@@ -79,61 +104,129 @@ def report_servo1(processed):
     xy = processed['sparse_xy']
     bds = processed['sparse']
     
-    with f.plot('u_raw_arrows') as pylab:
+    poses = get_extra_item(bds, 'odom')
+    u = np.array(get_extra_item(bds, 'u'))
+    u_raw = np.array(get_extra_item(bds, 'u_raw'))
+    
+    has_theta = u.shape[1] == 3
+    
+    if has_theta:        
+        u_th = u[:, 2]
+        u_raw_th = u_raw[:, 2]
+
+    caption = 'First two components of "u_raw".'
+    with f.plot('u_raw_arrows', caption=caption) as pylab:
         plot_reference_points(pylab, processed)
-        u_raw = get_extra_item(bds, 'u_raw')
-        plot_servo_arrows(pylab, xy, u_raw)
+        # plot_servo_arrows(pylab, xy, u_raw)
+        plot_poses_commands(pylab, poses, u_raw)
+        pylab.axis('equal')
 
-    with f.plot('u_arrows') as pylab:
+    if has_theta:
+        caption = 'Third component of "u_raw".'
+        with f.plot('u_raw_th_sign', caption=caption) as pylab:
+            plot_reference_points(pylab, processed)
+            plot_scalar_field_sign(pylab, xy, u_raw_th)
+
+
+    caption = 'First two components of "u".'
+    with f.plot('u01_arrows', caption=caption) as pylab:
         plot_reference_points(pylab, processed)
-        u = get_extra_item(bds, 'u')
-        plot_servo_arrows(pylab, xy, u)
+#         plot_servo_arrows(pylab, xy, u)
+        plot_poses_commands(pylab, poses, u)
+        pylab.axis('equal')
 
- 
-#     with f.plot('arrows_inverted') as pylab:
-#         plot_reference_points(pylab, processed)
-#         plot_servo_arrows_inverted(pylab, xy, commands)
-
+    if has_theta:
+        caption = 'Third component of "u".'
+        with f.plot('u_th_sign', caption=caption) as pylab:
+            plot_reference_points(pylab, processed)
+            plot_scalar_field_sign(pylab, xy, u_th)
 
     return r
 
-import numpy as np
-
-def plot_servo_arrows(pylab, ps, commands):
-    """
-        ps : list of 2D points
-        commands: list of 2D commands
-    """
-
-    us = np.array(commands)[:, :2]
-    print('norms: %s' % np.hypot(us[:, 0], us[:, 1]))
-    u_max = np.max(np.hypot(us[:, 0], us[:, 1]))
+def report_servo_details(processed, nsamples=6):
+    r = Report('servo_details')
     
-    arrow_length = 0.1
-    style = dict(head_width=0.01, head_length=0.01,
-                 edgecolor='black')
+    bds = processed['sparse']
+    for i in range(nsamples):
+        bd = bds[np.random.randint(len(bds))]
+        name = 'sample%s' % i
+        r_i = report_servo_details_one(name, processed, bd)
+        r.add_child(r_i)
+    return r
+
+def report_servo_details_one(name, processed, bd):
+    r = Report(name)
+    f = r.figure(cols=4)
     
-    us = us / u_max * arrow_length
-    print('u_max', u_max)
-    for p, u in zip(ps, us):
-        if np.hypot(u[0], u[1]) == 0:
-            continue
-        pylab.arrow(p[0], p[1], u[0], u[1], **style)
-
-
-
-
-def plot_servo_arrows_inverted(pylab, ps, commands):
-    us = np.array(commands)[:, :2]
-    u_max = np.max(np.hypot(us[:, 0], us[:, 1]))
+    y_goal = processed['bd_goal']['observations'].copy()
+    y0 = bd['observations'].copy()
+    e = y0 - y_goal
     
-    arrow_length = 0.1
-    style = dict(head_width=0.01, head_length=0.01,
-                 edgecolor='black')
+    extra = bd['extra'].item()
+    p = extra['odom_xy']
+    u = extra['u']
     
-    us = us / u_max * arrow_length
-    # print 'u_max', u_max
-    for p, u in zip(ps, us):
-        if np.hypot(u[0], u[1]) == 0:
-            continue
-        pylab.arrow(p[0], p[1], u[1], -u[0], **style)
+    bdse_model = processed['servo_agent'].bdse_model
+    y_dot_pred = bdse_model.get_y_dot(y0, u)
+    y_dot_pred = y_dot_pred / np.max(np.abs(y_dot_pred)) * 0.05
+    r.data('u', u)
+    r.data('y_dot_pred', y_dot_pred)
+    dt = 1
+    y1 = y0 + y_dot_pred * dt
+
+    with f.plot('map') as pylab:
+        plot_reference_points(pylab, processed) 
+        pylab.plot(p[0], p[1], 'r+')
+        pylab.arrow(p[0], p[1], u[0], u[1])
+
+    with f.plot('y0_vs_y_goal') as pylab:
+        pylab.plot(y0, label='y0')
+        pylab.plot(y_goal, label='ygoal')
+        plot_style_sensels(pylab)   
+        pylab.legend()
+    with f.plot('y_dot_pred') as pylab:
+        pylab.plot(y_dot_pred, label='y_dot_pred')
+        plot_style_sensels(pylab)
+        pylab.legend()   
+    
+    with f.plot('y0_y1') as pylab:
+        pylab.plot(y0, label='y0')
+        pylab.plot(y_goal, label='ygoal')
+        pylab.plot(y1, label='y1')
+        plot_style_sensels(pylab)
+        pylab.legend()   
+    
+    with f.plot('error') as pylab:
+        pylab.plot(e, label='error')
+
+    r.add_child(report_prediction_all_commands(bd, bdse_model))
+        
+    return r
+
+def report_prediction_all_commands(bd, bdse_model):
+    r = Report('report_prediction')
+    commands = [[1, 0], [-1, 0], [0, 1], [0, -1]]
+    for c in commands:
+        r.add_child(report_prediction_command(bd, bdse_model, np.array(c)))
+    
+    return r
+        
+def report_prediction_command(bd, bdse_model, u):
+    r = Report('cmd%s-%s' % (u[0], u[1]))
+    y0 = bd['observations'].copy()
+    y_dot_pred = bdse_model.get_y_dot(y0, u)
+    y_dot_pred = y_dot_pred / np.max(np.abs(y_dot_pred)) * 0.05
+    r.data('u', u)
+    r.data('y_dot_pred', y_dot_pred)
+    
+    caption = """ Prediction for command %s """ % str(u)
+    f = r.figure(caption=caption)
+    
+    with f.plot('y_dot_pred') as pylab:
+        pylab.plot(y_dot_pred, label='y_dot_pred')
+        plot_style_sensels_deriv(pylab)
+        pylab.legend()   
+  
+    return r
+    
+

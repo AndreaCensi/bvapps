@@ -6,24 +6,23 @@ from yc1304.s10_servo_field.apps import ServoField
 from yc1304.exps.exp_utils import iterate_context_episodes
 
 @campaign_sub
-class Exp04(CampaignCmd, QuickApp):
+class Exp08(CampaignCmd, QuickApp):
     
-    cmd = 'exp04'
-    short = """ Let's see what happens with changing rcond """
-    
-    comment = """ The problem was that we were looking at the xy plane only. """
+    cmd = 'exp08'
+    short = """ Let's try BDSE robustified """
+    comment = """ 
+        The tensor M looks strange. Also should I normalize with the mean or not?
+    """
+
     
     def define_options(self, params):
         pass
     
     def define_jobs_context(self, context):    
+        id_agent = 'exp08_bdser1'
         
-        # id_adapter = 'unicornA_base1_tw_hlhr_sane_s4'
-        
-        id_agent = 'exp04_bdse1'
-        id_robot = 'exp03_uA_tran'
-        id_convert_job = 'exp03_uA_tran'
-        # variation = 'default'
+        id_robot = 'exp05_uA_xy'
+        id_convert_job = 'exp05_uA_xy'
           
         jobs_convert = self.call_recursive(context, 'convert',
                        RS2B, ['--config', self.get_config_dirs()[0],  # XXX
@@ -34,9 +33,7 @@ class Exp04(CampaignCmd, QuickApp):
                               '--jobs', id_convert_job,
                               ])
  
-        jobs_learn = context.subtask(LearnLog,
-                                     agent=id_agent, robot=id_robot,
-                                     interval_publish=5000,
+        jobs_learn = context.subtask(LearnLog, agent=id_agent, robot=id_robot, interval_publish=5000,
                                      extra_dep=jobs_convert.all_jobs())
 
         test_episodes = [

@@ -75,3 +75,20 @@
     - unicornA_tran1_2013-04-12-23-34-08
     id_episode_prefix: nominal_
 
+
+- id: exp05_uA_xy
+  desc: "Trying only XY"
+  code: 
+  - rosstream2boot.ConvertJob
+  - id_robot: exp05_uA_xy
+    adapter: exp05_uA_xy
+    logs:
+    - unicornA_base1_2013-04-11-20-14-27
+    - unicornA_tran1_2013-04-11-23-21-36
+    - unicornA_tran1_2013-04-12-22-29-16
+    - unicornA_tran1_2013-04-12-22-40-02
+    - unicornA_tran1_2013-04-12-23-34-08
+    id_episode_prefix: nominal_
+
+
+

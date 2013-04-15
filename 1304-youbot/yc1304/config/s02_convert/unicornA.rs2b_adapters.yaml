@@ -65,5 +65,14 @@
     sync:
       policy: obs-first-topic
 
+- id: exp05_uA_xy
+  desc: "Two Hokuyos, xy translation"
+  code:
+  - rosstream2boot.ROSRobotAdapter.from_yaml
+  - obs_adapter: unicornA_hlhr_sane_s4
+    cmd_adapter: twist_xy_1
+    sync:
+      policy: obs-first-topic
+
 # - id: unicornA_base1_crcf
 # - id: unicornA_base1_crcfhrhl

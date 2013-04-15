@@ -3,6 +3,7 @@ from quickapp import QuickApp
 from rosstream2boot.interfaces.ros_log import ExpLogFromYaml
 from yc1304.campaign import CampaignCmd, campaign_sub
 import os
+from procgraph_mplayer.mplayer import MPlayer
 
 
 @campaign_sub
@@ -25,6 +26,7 @@ class MakeVideos(CampaignCmd, QuickApp):
         if not isinstance(log, ExpLogFromYaml):
             self.info('Skipping log %r because not raw log.' % id_explog)
             return
+        
         
         bag = log.get_bagfile() 
         
@@ -59,6 +61,45 @@ class MakeVideos(CampaignCmd, QuickApp):
                             video_scan1_mean_n,
                             video_scan2_mean_n, vname('all.mean_n'))
         # video_all_mean = comp(average, video_all, vname('all.mean'))
+        
+        outside = log.get_outside_movie()
+        if outside is not None:
+            do_timestamps = comp(copy_first_timestamp, video_to=outside, video_from=video_all)
+#             video_outside_all = comp(join_two_vert, outside, video_all, vname('outside_all'),
+#                                      max_duration=6000000,
+#                                      extra_dep=[do_timestamps],
+#                                      job_id='outside_all')
+            video_outside_all = comp(join_two_vert, outside, video_all, vname('outside_all_tosync'),
+                                     max_duration=60,
+                                     extra_dep=[do_timestamps],
+                                     job_id='outside_all_tosync')
+            
+            
+        else:
+            self.info('No outside found.')
+
+def copy_first_timestamp(video_to, video_from):
+    """ Adds the timestamp of video2 to video1 """
+    t1 = video_to + MPlayer.TIMESTAMPS_SUFFIX
+    t2 = video_from + MPlayer.TIMESTAMPS_SUFFIX
+    if os.path.exists(t1):
+        print('Already created %r' % t1)
+        return
+    if not os.path.exists(t2):
+        msg = 'Could not open reference timestamp %s' % t2
+        raise Exception(msg)
+    t2l1 = open(t2).readline()
+    print('Read timestamp %r' % t2l1)
+    assert not os.path.exists(t1)
+    with open(t1, 'w') as f:
+        f.write(t2l1)
+    print('Written on %s' % t1)
+    print()
+
+def join_two_vert(video1, video2, out, max_duration):
+    if not os.path.exists(out): 
+        pg('join_two_vert', config=dict(video1=video1, video2=video2, max_duration=max_duration, out=out))
+    return out
 
 def create_video_laser_mean(bag, topic, out):
     if not os.path.exists(out): 
@@ -85,6 +126,7 @@ def join_two(video1, video2, out):
     if not os.path.exists(out): 
         pg('join_two', config=dict(video1=video1, video2=video2, out=out))
     return out
+
 
 def join_four(video1, video2, video3, video4, out):
     print('video1: %s' % video1)

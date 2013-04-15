@@ -1,0 +1,16 @@
+--- model join_two_vert
+""" Joins two video files vertically (one below the other) """
+config video1 'video'
+config video2 'video'
+config out
+config width = 1280
+config max_duration 
+
+|mplayer file=$video1 max_duration=$max_duration quiet=1| --> |resize width=$width| --> rgb_outside
+|mplayer file=$video2 max_duration=$max_duration quiet=1| --> rgb_data
+
+rgb_data, rgb_outside -> |sync| -> rgb_data_s, rgb_outside_s
+
+rgb_outside_s, rgb_data_s -> |grid cols=1| -> rgb
+
+rgb --> |mencoder quiet=1 file=$out|

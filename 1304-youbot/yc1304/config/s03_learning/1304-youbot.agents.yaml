@@ -40,3 +40,40 @@
           linpoint: goal
           strategy: S1n
           gain: 0.1
+
+# BGDS and variations
+
+- id: exp06_bgds1
+  desc: "BGDS agent"
+  code:
+      - boot_agents.BGDSAgent
+      - beta: 1
+
+
+- id: exp07_bgdsr1
+  desc: "BGDS agent robust"
+  code:
+      - boot_agents.BGDSAgent1DRobust
+      - explorer: expsw1
+        importance:
+        - boot_agents.Importance
+        - max_y_dot: 0.1
+          max_gy: 0.1
+          min_y: 0
+          max_y: 1
+
+
+- id: exp08_bdser1
+  desc: "BDSE agent robust"
+  code:
+      - boot_agents.BDSEAgentRobust
+      - explorer: expsw1
+        rcond: 0.0001
+        importance:
+        - boot_agents.Importance
+        - max_y_dot: 0.1
+          max_gy: 0.1
+          min_y: 0
+          max_y: 1
+
+
