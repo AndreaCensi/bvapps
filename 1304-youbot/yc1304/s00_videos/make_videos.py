@@ -1,9 +1,10 @@
 from procgraph import pg
 from quickapp import QuickApp
-from rosstream2boot.interfaces.ros_log import ExpLogFromYaml
+from rosstream2boot.interfaces import ExpLogFromYaml
 from yc1304.campaign import CampaignCmd, campaign_sub
 import os
-from procgraph_mplayer.mplayer import MPlayer
+from procgraph_mplayer import MPlayer
+from yc1304.exps.exp_utils import iterate_context_explogs
 
 
 @campaign_sub
@@ -36,35 +37,52 @@ class MakeVideos(CampaignCmd, QuickApp):
             return os.path.join(context.get_output_dir(),
                                 '%s.%s.mp4' % (id_explog, id_video))
         
-        video_right = comp(create_video_cam, bag, cam1, vname('cam_eye_right'))
-        video_back = comp(create_video_cam, bag, cam2, vname('cam_back'))
-        video_scan1 = comp(create_video_laser, bag, scan1, vname('scan1'))
-        video_scan2 = comp(create_video_laser, bag, scan2, vname('scan2'))
+        video_right = comp(create_video_cam, bag, cam1, vname('cam_eye_right'), job_id='cam_eye_right')
+        video_back = comp(create_video_cam, bag, cam2, vname('cam_back'), job_id='cam_back')
+        video_scan1 = comp(create_video_laser, bag, scan1, vname('scan1'), job_id='scan1')
+        video_scan2 = comp(create_video_laser, bag, scan2, vname('scan2'), job_id='scan2')
     
-        video_right_mean = comp(average, video_right, vname('cam_eye_right.mean'))
-        video_back_mean = comp(average, video_back, vname('cam_back.mean'))
+        video_right_mean = comp(average, video_right, vname('cam_eye_right.mean'),
+                                job_id='cam_eye_right-mean')
+        video_back_mean = comp(average, video_back, vname('cam_back.mean'),
+                               job_id='cam_back-mean')
     
-        video_scan1_mean = comp(create_video_laser_mean, bag, scan1, vname('scan1.mean'))
-        video_scan2_mean = comp(create_video_laser_mean, bag, scan2, vname('scan2.mean'))
-        video_scan1_mean_n = comp(create_video_laser_mean_n, bag, scan1, vname('scan1.mean_n'))
-        video_scan2_mean_n = comp(create_video_laser_mean_n, bag, scan2, vname('scan2.mean_n'))
+        video_scan1_mean = comp(create_video_laser_mean, bag, scan1, vname('scan1.mean'),
+                                job_id='scan1-mean')
+        video_scan2_mean = comp(create_video_laser_mean, bag, scan2, vname('scan2.mean'),
+                                job_id='scan2-mean')
+        video_scan1_mean_n = comp(create_video_laser_mean_n, bag, scan1, vname('scan1.mean_n'),
+                                  job_id='scan1-mean_n')
+        video_scan2_mean_n = comp(create_video_laser_mean_n, bag, scan2, vname('scan2.mean_n'),
+                                   job_id='scan2-mean_n')
     
-        video_scan1_variance = comp(create_video_laser_variance, bag, scan1, vname('scan1.var'))
-        video_scan2_variance = comp(create_video_laser_variance, bag, scan2, vname('scan2.var'))
+        video_scan1_variance = comp(create_video_laser_variance, bag, scan1, vname('scan1.var'),
+                                    job_id='scan1-var')
+        video_scan2_variance = comp(create_video_laser_variance, bag, scan2, vname('scan2.var'),
+                                    job_id='scan2-var')
     
-        video_both = comp(join_two, video_back, video_right, vname('cams'))
+        video_both = comp(join_two, video_back, video_right, vname('cams'),
+                          job_id='cams')
         video_all = comp(join_four, video_back, video_right,
-                        video_scan1, video_scan2, vname('all'))
+                         video_scan1, video_scan2, vname('all'),
+                         job_id='all')
         video_all_mean = comp(join_four,
-                            video_back_mean,
-                            video_right_mean,
-                            video_scan1_mean_n,
-                            video_scan2_mean_n, vname('all.mean_n'))
+                                video_back_mean,
+                                video_right_mean,
+                                video_scan1_mean_n,
+                                video_scan2_mean_n, vname('all.mean_n'),
+                                job_id='all-mean_n')
         # video_all_mean = comp(average, video_all, vname('all.mean'))
+        
+        # TODO: check ok
+        
+        video_servo_both = comp(create_video_servo_both, bag, vname('servo_both'),
+                                job_id='servo_both')
         
         outside = log.get_outside_movie()
         if outside is not None:
-            do_timestamps = comp(copy_first_timestamp, video_to=outside, video_from=video_all)
+            do_timestamps = comp(copy_first_timestamp, video_to=outside, video_from=video_all,
+                                 job_id='outside_all_tosync_copy_first')
 #             video_outside_all = comp(join_two_vert, outside, video_all, vname('outside_all'),
 #                                      max_duration=6000000,
 #                                      extra_dep=[do_timestamps],
@@ -77,6 +95,15 @@ class MakeVideos(CampaignCmd, QuickApp):
             
         else:
             self.info('No outside found.')
+
+def create_video_servo_both(bag, out):
+    if os.path.exists(out):
+        return out
+     
+    pg('video_servo_all', config=dict(bag=bag, out=out))
+    
+    return out
+
 
 def copy_first_timestamp(video_to, video_from):
     """ Adds the timestamp of video2 to video1 """
@@ -146,7 +173,7 @@ def average(video, out):
 
 def create_video_cam(bag, topic, out):
     if not os.path.exists(out): 
-        import procgraph_ros
+        import procgraph_ros  # @UnusedImport
         pg('bag2mp4', config=dict(bag=bag, topic=topic, out=out))
     return out
     
@@ -164,8 +191,6 @@ class campaign_sub(CampaignCmd, QuickApp):
         config = self.get_rs2b_config()
         explogs = list(config.explogs.keys())     
         
-        for i, id_explog in enumerate(explogs):
-            # TODO: user better names
-            self.call_recursive(context, 'log%s' % i,
-                                MakeVideos, dict(id_explog=id_explog))
+        for c, id_explog in iterate_context_explogs(context, explogs):
+            c.subtask(MakeVideos, id_explog=id_explog)
         

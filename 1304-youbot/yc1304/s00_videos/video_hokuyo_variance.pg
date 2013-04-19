@@ -8,8 +8,7 @@ import video_hokuyo_sup
 
 |bagread file=$bag topics=$topic| --> laserdata
 
-laserdata -> |ros_scan2python| -> |scan2image max_reading=6 resolution=120| ->\
-     |transpose| -> y
+laserdata -> |ros_scan2python| -> |scan2image max_reading=6 resolution=120| -> y
 
 y -> |soft_variance| -> y_mean 
 

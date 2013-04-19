@@ -49,6 +49,8 @@
     - unicornA_base1_2013-04-08-16-43-10 #:  25m, gripper not properly placed
     - unicornA_base1_2013-04-06-15-30-06 #:  6m, nominal
     - unicornA_base1_2013-04-03-16-36-03 #:  17m, nominal, ends for under-voltage
+
+    - unicornA_tran1_2013-04-12-23-34-08 # test case in a grid
     id_episode_prefix: nominal_
 
 - id: exp01_uA_tran

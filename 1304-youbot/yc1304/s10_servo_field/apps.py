@@ -75,7 +75,7 @@ class ServoField(CampaignCmd):
         processed = context.comp(process_compute_distances, _processed)
         
         
-        keys = dict(id_robot=id_robot, id_episode=id_episode)
+        keys = dict(id_robot=id_robot, id_episode=id_episode, id_agent=id_agent, variation=variation)
         
         reports = {'distances': report_distances,
                    'servo1': report_servo1,

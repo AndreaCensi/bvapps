@@ -1,0 +1,15 @@
+--- model video_servo_error
+config bag    """.bag file to read""" 
+config out_base     "Output file (no extension)" 
+
+import procgraph_ros
+import video_hokuyo_sup
+import pg_servo_status
+
+
+|bagread file=$bag | --> y,y_goal,servo_state
+bagread.topics='/servo_manager/y,/servo_manager/y_goal,/servo_manager/servo_state'
+
+
+y, y_goal, servo_state -> |sync| -> |servo_error width=320| -> rgb
+rgb -> |mencoder file="${out_base}.mp4"|

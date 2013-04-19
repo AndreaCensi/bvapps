@@ -10,11 +10,9 @@ import video_hokuyo_sup
 
 laserdata -> |ros_scan2python| -> scan
 
-scan -> |expectation_norm| -> |scan2image max_reading=6 resolution=120| ->\
-     |transpose| -> y_mean
+scan -> |expectation_norm| -> |scan2image max_reading=6 resolution=120| -> y_mean
 
-# y -> |expectation| -> y_mean 
-
+ 
 y_mean -> |scale| -> |resize width=320 height=240| -> y_mean_rgb
 
 y_mean_rgb -> |wait n=2| -> |mencoder file=$out|

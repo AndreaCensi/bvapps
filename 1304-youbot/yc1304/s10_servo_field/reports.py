@@ -205,10 +205,14 @@ def report_servo_details_one(name, processed, bd):
 
 def report_prediction_all_commands(bd, bdse_model):
     r = Report('report_prediction')
-    commands = [[1, 0], [-1, 0], [0, 1], [0, -1]]
-    for c in commands:
-        r.add_child(report_prediction_command(bd, bdse_model, np.array(c)))
-    
+    try:
+        commands = [[1, 0], [-1, 0], [0, 1], [0, -1]]
+        for c in commands:
+            r.add_child(report_prediction_command(bd, bdse_model, np.array(c)))
+    except Exception as e:
+        r.text('error', str(e))
+        print('failed')
+        
     return r
         
 def report_prediction_command(bd, bdse_model, u):

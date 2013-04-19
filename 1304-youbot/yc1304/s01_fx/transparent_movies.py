@@ -5,6 +5,7 @@ from yc1304.campaign import CampaignCmd, campaign_sub
 import os
 from procgraph_mplayer.scripts.find_background import find_background
 from procgraph_pil.imwrite import imwrite
+from yc1304.exps.exp_utils import iterate_context_explogs
 
 
 param_hints = {
@@ -89,18 +90,16 @@ class MakeVideoSFXAll(CampaignCmd, QuickApp):
     
     def define_jobs_context(self, context):    
         config = self.get_rs2b_config()
-        all_explogs = list(config.explogs.keys())     
+        explogs = list(config.explogs.keys())     
         
-        for i, id_explog in enumerate(all_explogs):
+        for c, id_explog in iterate_context_explogs(context, explogs):
             explog = config.explogs.instance(id_explog)
             if not isinstance(explog, ExpLogFromYaml):
                 continue  # XX
             if explog.get_outside_movie() is None:
                 continue
-            
-            job_prefix = id_explog.replace('-', '') 
-            self.call_recursive(context, id_explog,
-                                MakeVideoSFX, dict(id_explog=id_explog),
-                                add_outdir='',
-                                add_job_prefix=job_prefix)
+        
+            c.subtask(MakeVideoSFX, id_explog=id_explog)
+#                                 add_outdir='',
+                                
         

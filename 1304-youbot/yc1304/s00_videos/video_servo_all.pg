@@ -1,0 +1,20 @@
+--- model video_servo_all
+config bag    """.bag file to read""" 
+config out     "Output file" 
+
+import procgraph_ros
+import video_hokuyo_sup
+
+|bagread file=$bag topics='/servo_manager/y,/servo_manager/y_goal'| --> y, y_goal
+
+# y --> |servo_values| -> y_v
+# y_goal --> |servo_values| -> y_goal_v
+
+y, y_goal -> |sync| -> |servo_status width=320| -> |text| -> rgb
+
+rgb -> |mencoder file=$out|
+
+
+text.texts = [{string: "ts: {timestamp} frame {frames}", position: [10,30], halign: left, \
+                color: black, bg: green }]
+    

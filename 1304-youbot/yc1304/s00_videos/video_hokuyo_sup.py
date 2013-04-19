@@ -6,4 +6,22 @@ import numpy as np
 def scan2image(readings, max_reading=6, resolution=240):
     readings = readings / max_reading
     readings = np.clip(readings, 0, 1) 
-    return popcode(readings, resolution)
+    y = popcode(readings, resolution)
+    y = y.T
+    y = np.flipud(y)
+    return y
+    
+    
+
+@simple_block
+def servo_values(msg):
+    x = np.array(msg.values)
+    
+    return x
+
+
+
+
+
+
+
