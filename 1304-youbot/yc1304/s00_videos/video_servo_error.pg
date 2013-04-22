@@ -12,4 +12,5 @@ bagread.topics='/servo_manager/y,/servo_manager/y_goal,/servo_manager/servo_stat
 
 
 y, y_goal, servo_state -> |sync| -> |servo_error width=320| -> rgb
-rgb -> |mencoder file="${out_base}.mp4"|
+
+rgb -> |yc_encode file="${out_base}.mp4"|

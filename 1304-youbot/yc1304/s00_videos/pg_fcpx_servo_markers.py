@@ -73,18 +73,12 @@ class FCPXServoMarkers(Block):
         if duration is None:
             fc_duration = "1001/30000s"
         else:
-            fc_duration = self.get_fc_time(duration) 
+            fc_duration = get_fc_time(duration) 
         
-        fc_start = self.get_fc_time(start - self.first_timestamp)
+        fc_start = get_fc_time(start - self.first_timestamp)
         tm = '<marker start="%s" duration="%s" value=%r/>' % (fc_start, fc_duration, value)
         
         return tm + '\n'
-    
-    def get_fc_time(self, t):
-        units = 30000
-        num = int(t * units)
-        den = units
-        return '%d/%ds' % (num, den)
     
     def finish(self):
         base = os.path.basename(self.config.out_base)
@@ -113,7 +107,7 @@ class FCPXServoMarkers(Block):
         """.format(name=name, filename=filename)
 
     def get_project_xml(self, name):
-        duration = self.get_fc_time(self.get_input_timestamp(0) - self.first_timestamp) 
+        duration = get_fc_time(self.get_input_timestamp(0) - self.first_timestamp) 
         out_base = self.config.out_base
         assets = ""
         clips = ""
@@ -142,4 +136,10 @@ class FCPXServoMarkers(Block):
     
     
     
-    
+     
+def get_fc_time(t):
+    units = 30000
+    num = int(t * units)
+    den = units
+    return '%d/%ds' % (num, den)
+

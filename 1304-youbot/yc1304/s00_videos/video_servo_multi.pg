@@ -1,13 +1,13 @@
 --- model video_servo_multi
 config bag    """.bag file to read""" 
 config out_base     "Output file (no extension)" 
+config container = 'mkv'
 
 import procgraph_ros
 import video_hokuyo_sup
 import pg_servo_status
 import pg_fcpx_servo_markers
 
-config fps = 29.97
 
 |bagread file=$bag | --> |sync| --> y,y_goal,servo_state
 
@@ -16,11 +16,13 @@ bagread.topics='/servo_manager/y,/servo_manager/y_goal,/servo_manager/servo_stat
 
 servo_state -> |servo_fcpx_project out_base=$out_base|
 
- servo_state -> |servo_state_indicator| -> |fix_frame_rate fps=$fps| ->  |mencoder file="${out_base}.servo_indicator.mp4"|
+ servo_state -> |servo_state_indicator| ->  servo_rgb
 
 y, y_goal, servo_state -> |servo_error width=320| -> error_rgb
-error_rgb -> |fix_frame_rate fps=$fps| -> |mencoder file="${out_base}.servo_error.mp4"|
 
 y, y_goal, servo_state -> |servo_status width=320| -> status_rgb
-status_rgb -> |fix_frame_rate fps=$fps| -> |mencoder file="${out_base}.servo_status.mp4"|
+
+servo_rgb -> |yc_encode  file="${out_base}.servo_indicator.${container}"|
+error_rgb -> |yc_encode  file="${out_base}.servo_error.${container}"|
+status_rgb -> |yc_encode file="${out_base}.servo_status.${container}"|
 

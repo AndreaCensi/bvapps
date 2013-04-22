@@ -57,9 +57,11 @@ class MakeVideoSFX(CampaignCmd, QuickApp):
         
         tmp_path = os.path.join(dirname, '%s.bg_transp.details' % id_explog)
         static_bg = comp(pg_video_background, video=outside, frames=frames, tmp_path=tmp_path,
-                         out=vname('bg', 'png'))
+                         out=vname('bg', 'png'), job_id='video_background')
+        
+        out_prefix = os.path.join(dirname, id_explog)
         comp(pg_video_bg_depth, video=outside, background=static_bg, perc=perc, every=every,
-             out=vname('bg_transp'))
+             out=out_prefix, job_id='bg_transp')
 
 
 def pg_video_background(video, out, frames, tmp_path):
@@ -99,7 +101,6 @@ class MakeVideoSFXAll(CampaignCmd, QuickApp):
             if explog.get_outside_movie() is None:
                 continue
         
-            c.subtask(MakeVideoSFX, id_explog=id_explog)
-#                                 add_outdir='',
+            c.subtask(MakeVideoSFX, id_explog=id_explog, add_job_prefix='', add_outdir='')
                                 
         

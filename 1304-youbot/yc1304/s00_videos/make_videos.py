@@ -5,22 +5,162 @@ from yc1304.campaign import CampaignCmd, campaign_sub
 import os
 from procgraph_mplayer import MPlayer
 from yc1304.exps.exp_utils import iterate_context_explogs
+from abc import abstractmethod
+from yc1304.s00_videos.fcpx_index_dir import create_event_for_fcpx
+from yc1304.s00_videos.fcpx_project import create_project_for_fcpx
+
+scan1 = '/scan_hokuyo_H1204906'
+scan2 = '/scan_hokuyo_H1205005'
+cam1 = '/cam_eye_right/image_raw/compressed'
+cam2 = '/cam_back/image_raw/compressed'
+
+container = 'mp4'
+# container = 'mkv'
+# container = 'mov'
+
+class CmdForLog(CampaignCmd, QuickApp):
+    """ Commands that make something for one explog """
+     
+    def define_options(self, params):
+        params.add_required_string('id_explog', help='Which exp log to use')        
+    
+    def define_jobs_context(self, context):
+        self.context = context
+        self.id_explog = self.get_options().id_explog
+        self.explog = self.instance_explog(self.id_explog)
+        
+        self.define_jobs_video(context, self.id_explog, self.explog)
+        
+    @abstractmethod
+    def define_jobs_video(self, context, id_explog, explog):
+        raise NotImplementedError()
+    
+    def vname(self, id_video):
+        """ Returns the filename for the video name. """    
+        return os.path.join(self.context.get_output_dir(),
+                            '%s.%s.%s' % (self.id_explog, id_video, container))
+       
+    def get_metadata(self):
+        md = self.explog.get_metadata()
+        # TODO: more stuff
+        md['id_explog'] = self.id_explog
+        return md
+        
+    
+@campaign_sub
+class MakeVideosCams(CmdForLog):
+    
+    short = 'Creates videos for cameras'
+    cmd = 'make-videos2-cams'
+    
+    def define_jobs_video(self, context, id_explog, explog):  # @UnusedVariable
+        bag = explog.get_bagfile() 
+        video_cam_eye_right = self.vname('cam_eye_right')
+        video_cam_back = self.vname('cam_back')
+        
+        md = self.get_metadata()
+        md['sensor'] = cam1
+        md['angle'] = 'cam_eye_right'
+        context.comp(create_video_cam, bag, cam1, video_cam_eye_right, md=md, job_id='cam_eye_right')
+        
+        md = self.get_metadata()
+        md['sensor'] = cam2
+        md['angle'] = 'cam_back'
+        context.comp(create_video_cam, bag, cam2, video_cam_back, md=md, job_id='cam_back')        
+
+        context.checkpoint('creation')
+        job_fcpx_index(context, self.context.get_output_dir(), id_explog) 
+        
+        
+def job_fcpx_index(context, outdir, id_explog):
+    """ Creates a job for index """
+    event_name = id_explog + '-event'
+    project_name = id_explog + '-project'
+    event_filename = os.path.join(outdir, 'event.fcpxml')
+    project_filename = os.path.join(outdir, 'project.fcpxml')
+    pattern = '*.%s' % container
+    context.comp(create_event_for_fcpx, dirname=outdir, pattern=pattern, event_filename=event_filename, event_name=event_name)
+    context.comp(create_project_for_fcpx, dirname=outdir, pattern=pattern, project_filename=project_filename,
+                 project_name=project_name, event_name=event_name)
+    
+    
+@campaign_sub
+class MakeVideosScans(CmdForLog):
+    
+    short = 'Creates videos for scans'
+    cmd = 'make-videos2-scans'
+    
+    def define_jobs_video(self, context, id_explog, explog):  # @UnusedVariable
+        bag = explog.get_bagfile() 
+        video_scan1 = self.vname('scan1')
+        video_scan2 = self.vname('scan2')
+        md = self.get_metadata()
+        md['sensor'] = scan1
+        md['angle'] = 'scan1'
+        context.comp(create_video_laser, bag, scan1, video_scan1, md=md, job_id='scan1')
+        md['sensor'] = scan2
+        md['angle'] = 'scan2'
+        context.comp(create_video_laser, bag, scan2, video_scan2, md=md, job_id='scan2')
+
+        context.checkpoint('creation')
+        job_fcpx_index(context, self.context.get_output_dir(), id_explog) 
+
+
+@campaign_sub
+class MakeVideos2(CmdForLog):
+    
+    cmd = 'make-videos2'
+    
+    def define_options(self, params):
+        params.add_required_string('id_explog', help='Which exp log to use')            
+
+    def define_jobs_video(self, context, id_explog, explog):  # @UnusedVariable
+        context.subtask(MakeVideosCams, id_explog=id_explog, add_job_prefix='cams', add_outdir='')
+        context.subtask(MakeVideosScans, id_explog=id_explog, add_job_prefix='scans', add_outdir='')
+
+        context.checkpoint('videos')
+        video_cam_eye_right = self.vname('cam_eye_right')
+        video_cam_back = self.vname('cam_back')
+        video_scan1 = self.vname('scan1')
+        video_scan2 = self.vname('scan2')
+        video_all = self.vname('all')
+        context.comp(join_four, video_cam_back, video_cam_eye_right,
+                                video_scan1, video_scan2, video_all,
+                     job_id='vall')
+    
+        context.checkpoint('creation')
+        job_fcpx_index(context, self.context.get_output_dir(), id_explog) 
+
+
+@campaign_sub
+class MakeVideos2All(CampaignCmd, QuickApp):
+    
+    cmd = 'make-videos2-all'
+    short = 'Creates a set of videos for all explogs available.'
+    
+    def define_options(self, params):
+        pass
+    
+    def define_jobs_context(self, context):    
+        config = self.get_rs2b_config()
+        explogs = list(config.explogs.keys())     
+        
+        for c, id_explog in iterate_context_explogs(context, explogs):
+            c.subtask(MakeVideos2, id_explog=id_explog,
+                      add_job_prefix='', add_outdir='')
+            
+
 
 
 @campaign_sub
 class MakeVideos(CampaignCmd, QuickApp):
     
-    cmd = 'make-videos'
+    cmd = 'make-videos-mix'
     
     def define_options(self, params):
         params.add_string('id_explog', help='Which exp log to use', compulsory=True)
 
     def define_jobs_context(self, context):    
-        scan1 = '/scan_hokuyo_H1204906'
-        scan2 = '/scan_hokuyo_H1205005'
-        cam1 = '/cam_eye_right/image_raw/compressed'
-        cam2 = '/cam_back/image_raw/compressed'
-
         id_explog = self.get_options().id_explog
         rs2b_config = self.get_rs2b_config()
         log = rs2b_config.explogs.instance(id_explog)
@@ -28,14 +168,13 @@ class MakeVideos(CampaignCmd, QuickApp):
             self.info('Skipping log %r because not raw log.' % id_explog)
             return
         
-        
         bag = log.get_bagfile() 
         
         comp = context.comp
         
         def vname(id_video):
             return os.path.join(context.get_output_dir(),
-                                '%s.%s.mp4' % (id_explog, id_video))
+                                '%s.%s.%s' % (id_explog, id_video, container))
         
         video_right = comp(create_video_cam, bag, cam1, vname('cam_eye_right'), job_id='cam_eye_right')
         video_back = comp(create_video_cam, bag, cam2, vname('cam_back'), job_id='cam_back')
@@ -76,7 +215,7 @@ class MakeVideos(CampaignCmd, QuickApp):
         
         # TODO: check ok
         
-        video_servo_both = comp(create_video_servo_both, bag, vname('servo_both'),
+        comp(create_video_servo_both, bag, vname('servo_both'),
                                 job_id='servo_both')
         
         outside = log.get_outside_movie()
@@ -87,7 +226,7 @@ class MakeVideos(CampaignCmd, QuickApp):
 #                                      max_duration=6000000,
 #                                      extra_dep=[do_timestamps],
 #                                      job_id='outside_all')
-            video_outside_all = comp(join_two_vert, outside, video_all, vname('outside_all_tosync'),
+            comp(join_two_vert, outside, video_all, vname('outside_all_tosync'),
                                      max_duration=60,
                                      extra_dep=[do_timestamps],
                                      job_id='outside_all_tosync')
@@ -96,6 +235,26 @@ class MakeVideos(CampaignCmd, QuickApp):
         else:
             self.info('No outside found.')
 
+    
+@campaign_sub
+class campaign_sub(CampaignCmd, QuickApp):
+    
+    cmd = 'make-videos-all'
+    short = 'Creates a set of videos for all explogs available.'
+    
+    def define_options(self, params):
+        pass
+    
+    def define_jobs_context(self, context):    
+        config = self.get_rs2b_config()
+        explogs = list(config.explogs.keys())     
+        
+        for c, id_explog in iterate_context_explogs(context, explogs):
+            c.subtask(MakeVideos, id_explog=id_explog)
+            
+            
+            
+            
 def create_video_servo_both(bag, out):
     if os.path.exists(out):
         return out
@@ -144,9 +303,9 @@ def create_video_laser_variance(bag, topic, out):
         pg('video_hokuyo_variance', config=dict(bag=bag, topic=topic, out=out))
     return out
 
-def create_video_laser(bag, topic, out):
+def create_video_laser(bag, topic, out, md={}):
     if not os.path.exists(out): 
-        pg('video_hokuyo', config=dict(bag=bag, topic=topic, out=out))
+        pg('video_hokuyo', config=dict(bag=bag, topic=topic, out=out, md=md))
     return out
 
 def join_two(video1, video2, out):
@@ -171,26 +330,10 @@ def average(video, out):
         pg('video_average', config=dict(video=video, out=out))
     return out
 
-def create_video_cam(bag, topic, out):
+def create_video_cam(bag, topic, out, md={}):
     if not os.path.exists(out): 
         import procgraph_ros  # @UnusedImport
-        pg('bag2mp4', config=dict(bag=bag, topic=topic, out=out))
+        pg('video_cam', config=dict(bag=bag, topic=topic, out=out, md=md))
     return out
     
-    
-@campaign_sub
-class campaign_sub(CampaignCmd, QuickApp):
-    
-    cmd = 'make-videos-all'
-    short = 'Creates a set of videos for all explogs available.'
-    
-    def define_options(self, params):
-        pass
-    
-    def define_jobs_context(self, context):    
-        config = self.get_rs2b_config()
-        explogs = list(config.explogs.keys())     
-        
-        for c, id_explog in iterate_context_explogs(context, explogs):
-            c.subtask(MakeVideos, id_explog=id_explog)
         

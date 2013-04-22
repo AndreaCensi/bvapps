@@ -1,0 +1,14 @@
+--- model video_cam
+config bag    ".bag file to read"
+config topic  "topic to read" 
+config out    "Output file (mp4)" 
+config md = {}   "Metadata"
+import procgraph_ros
+import video_hokuyo_sup
+
+|bagread file=$bag topics=$topic| --> msg
+
+msg -> |ros2rgb| -> |resize width=320 height=240| ->  rgb
+
+
+rgb -> |yc_encode file=$out md=$md|

@@ -6,6 +6,7 @@ from quickapp.library.app_commands.app_with_commands import (QuickMultiCmdApp,
     QuickMultiCmd, add_subcommand)
 from rosstream2boot.config.rbconfig import get_rs2b_config
 import os
+from rosstream2boot.interfaces.ros_log import ExpLogFromYaml
 
 
 class Campaign(QuickMultiCmdApp):
@@ -72,7 +73,16 @@ class CampaignCmd(QuickMultiCmd):
     def get_log_index(self):
         return self.get_data_central().get_log_index()
 
-
+    def instance_explog(self, id_explog):
+        """ Instances the given explog and checks it is a ExpLogFromYaml """
+        rs2b_config = self.get_rs2b_config()
+        
+        log = rs2b_config.explogs.instance(id_explog)
+        if not isinstance(log, ExpLogFromYaml):
+            self.info('Skipping log %r because not raw log.' % id_explog)
+            return
+        return log 
+    
 def campaign_sub(x):
     add_subcommand(Campaign, x)
     return x

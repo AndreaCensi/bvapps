@@ -14,6 +14,6 @@ scan -> |expectation| -> |scan2image max_reading=6 resolution=120| -> y_mean
 
 y_mean -> |scale| -> |resize width=320 height=240| -> y_mean_rgb
 
-y_mean_rgb -> |wait n=2| -> |mencoder file=$out|
+y_mean_rgb -> |wait n=2| -> |yc_encode file=$out|
 
 
