@@ -1,9 +1,9 @@
 from . import process, read_pose_observations, report_raw_display
 from yc1304.campaign import CampaignCmd, campaign_sub
-from yc1304.s10_servo_field.show_field import compute_servo_action, \
-    remove_discontinuities, process_compute_distances
-from yc1304.s10_servo_field.reports import report_distances, report_servo1, \
-    report_servo_details
+from yc1304.s10_servo_field.report_long_term import report_long_term
+from yc1304.s10_servo_field.reports import (report_distances, report_servo1, report_servo_details)
+from yc1304.s10_servo_field.show_field import (compute_servo_action,
+    remove_discontinuities, process_compute_distances)
 
 
 @campaign_sub
@@ -51,7 +51,7 @@ class ServoField(CampaignCmd):
         params.add_string('id_robot', help='', compulsory=True)
         params.add_string('id_episode', help='', compulsory=True)
         params.add_string('id_agent', help='', compulsory=True)
-        params.add_string('variation', help='', compulsory=True)
+        params.add_string('variation', help='')
         params.add_float('min_dist', help='Minimum distance for fake grid',
                          default=0.07)
 
@@ -80,6 +80,7 @@ class ServoField(CampaignCmd):
         reports = {'distances': report_distances,
                    'servo1': report_servo1,
                    'servo_details': report_servo_details,
+                   'long_term': report_long_term,
                    'raw_display': report_raw_display}
         
         for k, v in reports.items(): 

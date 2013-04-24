@@ -13,6 +13,21 @@
   - topic: '/cam_back/image_raw/compressed'
     shape: [240, 320]
 
+- id: unicornA_cf_320_1D
+  desc: 'Vertical average of camera data'
+  code:
+  - rosstream2boot.library.ROSObservationsAdapterNuisance.from_yaml
+  - id_adapter: unicornA_cf_320
+    id_nuisance: camh1d
+
+- id: unicornA_cf_320_1D_strip
+  desc: 'Vertical average of camera data, on a strip of 1/3 of the image.'
+  code:
+  - rosstream2boot.library.ROSObservationsAdapterNuisance.from_yaml
+  - id_adapter: unicornA_cf_320
+    id_nuisance: camh1d_third
+
+
 - id: unicornA_hl
   desc: Hokuyo left (?)
   code:
@@ -47,7 +62,6 @@
   - rosstream2boot.library.ROSObservationsAdapterNuisance.from_yaml
   - id_adapter: unicornA_hlhr
     id_nuisance: unicornA_hlhr_sane_s4
-
 
 
 # scan1='/scan_hokuyo_H1204906'

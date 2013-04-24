@@ -1,14 +1,12 @@
-from contracts import contract
-from geometry.manifolds import R2
-from geometry.manifolds.point_set import PointSet
-from geometry.poses import translation_from_SE3, angle_from_SE2, SE2_from_SE3
-import numpy as np
-from bootstrapping_olympics.programs.manager.meat.load_agent_state import load_agent_state
+from boot_agents.bdse import BDSEServo, BDSEmodel
 from bootstrapping_olympics.configuration.master import set_boot_config
+from bootstrapping_olympics.extra.reprep.reprep_publisher import ReprepPublisher
+from bootstrapping_olympics.programs.manager.meat import load_agent_state
+from contracts import contract
+from geometry import (PointSet, R2, translation_from_SE3, angle_from_SE2,
+    SE2_from_SE3)
+import numpy as np
 import warnings
-from boot_agents.bdse.agent.bdse_servo import BDSEServo
-from boot_agents.bdse.model.bdse_model import BDSEmodel
-from boot_agents.bds.bds_agent import BDSAgent
 
 
 def read_pose_observations(data_central, id_robot, id_episode):
@@ -139,7 +137,6 @@ def remove_discontinuities(processed, threshold=0.2):
     bd = processed['bd_goal'] 
     bd['observations'] = remove_array_discontinuity(bd['observations'], max_diff)
     
-    
     for bd in processed['sparse']: 
         bd['observations'] = remove_array_discontinuity(bd['observations'], max_diff)
      
@@ -154,27 +151,72 @@ def remove_discontinuities(processed, threshold=0.2):
 
 def compute_servo_action(processed, data_central, id_agent, id_robot, variation):
     set_boot_config(data_central.get_bo_config())
-    agent, state = load_agent_state(data_central, id_agent, id_robot,
-                                    reset_state=False, raise_if_no_state=True)
+    agent, _ = load_agent_state(data_central, id_agent, id_robot,
+                                reset_state=False, raise_if_no_state=True)
     
+#     if True:
+#         warnings.warn('change back; using ServoLongTerm')
+#         servo_agent = ServoLongTerm.from_bds(agent.estimator.get_model())
+#     else: 
     servo_agent = agent.get_servo()             
 
     if False:
-        if False or not isinstance(agent, BDSAgent):
-            servo_agent = agent.get_servo()             
-        else:
+#         if False or not isinstance(agent, BDSAgent):
+#             servo_agent = agent.get_servo()             
+#         else:
             warnings.warn('using our own servo variation')
             
-            T = agent.bdse_estimator.T.get_value()
+            T = agent.estimator.T.get_value()
+            U = agent.estimator.U.get_value()
+            
+#             if True:
+#                 warnings.warn('using M=0')
+#                 T = T * 0
+#                 
+#                 
+#             M = -T * R
+#
+            model = agent.estimator.get_model()
             
             if True:
-                warnings.warn('using M=0')
-                T = T * 0
-            U = agent.bdse_estimator.U.get_value()
-            model = BDSEmodel(M=T, N=U)
+                M = model.M
+            else:
+                warnings.warn('using N=-T')
+                M = -T
+                 
+            if True:
+                warnings.warn('using N=0')
+                N = U * 0
+            else:
+                N = U
+
+            if True:
+                warnings.warn('weight by covariance')
+                R = agent.estimator.y_stats.get_correlation()
+                W = R * R 
+#                 print R.shape, M.shape
+                for i in range(M.shape[2]):
+                    M[:, :, i] = M[:, :, i] * W
+                    
+            if True:
+                warnings.warn('symmetrizing')
+                for i in range(M.shape[2]):
+                    M[:, :, i] = (M[:, :, i] - M[:, :, i].T) / 2
+
+            
+            model = BDSEmodel(M=M, N=N)
             servo_agent = BDSEServo(model, agent.commands_spec,
                                     strategy='S1', gain=0.1, linpoint='current')
         
+        
+            print('creating report for modified model')
+            publisher = ReprepPublisher('servo_model')
+            model.publish(publisher)
+            report = publisher.r
+            filename = 'servo_model.html'
+            print('writing on %r' % filename)
+            report.to_html(filename)
+      
  
     bd_goal = processed['bd_goal']
     
@@ -184,23 +226,22 @@ def compute_servo_action(processed, data_central, id_agent, id_robot, variation)
     
     for i, bd in enumerate(processed['sparse']):
         extra = bd['extra'].item()
-        res = compute_servo_commands(servo_agent, bd_goal, bd, variation)
+        res = compute_servo_commands(servo_agent, bd_goal, bd)
         extra.update(res)
         
       
     return processed
 
-def compute_servo_commands(servo_agent, bd_goal, bd, variation):
+def compute_servo_commands(servo_agent, bd_goal, bd):
     servo_agent.set_goal_observations(bd_goal['observations'])
     servo_agent.process_observations(bd) 
-    res = servo_agent.choose_commands2()
-
+    res = servo_agent.choose_commands_ext()
     u = res['u']
     
     y0 = bd['observations']
     y_goal = bd_goal['observations']
   
-    if True:
+    if False:
         # checking descent direction
         y_dot_pred = servo_agent.bdse_model.get_y_dot(y0, u)
         dt = 0.1
@@ -210,11 +251,12 @@ def compute_servo_commands(servo_agent, bd_goal, bd, variation):
         e1 = np.linalg.norm(y_goal - y1)
         
         print('e0 %.3f  e1 %.3f e1 - e0 = %+.3f' % (e0, e1, e1 - e0))
-        res['e0'] = e0
-        res['e1'] = e1
-        res['e_diff'] = e1 - e0
+#         res['e0'] = e0
+#         res['e1'] = e1
+#         res['e_diff'] = e1 - e0
         
     return res
+
 
 
 @contract(points='array[Nx2]', returns='int,>=0,<N')
@@ -242,7 +284,6 @@ class Sparsifier():
             return True
         else:
             return False
-        
         
         
 def sparsify(data, min_dist):

@@ -74,5 +74,36 @@
     sync:
       policy: obs-first-topic
 
+
+- id: uA_b1_tw_cf
+  desc: "Grayscale 1D frontal camera, base1"
+  code:
+  - rosstream2boot.ROSRobotAdapter.from_yaml
+  - obs_adapter: unicornA_cf_320_1D
+    cmd_adapter: twist_1_1
+    sync:
+      policy: obs-first-topic
+
+
+- id: uA_b1_tw_cf_strip
+  desc: "Grayscale 1D frontal camera, base1"
+  code:
+  - rosstream2boot.ROSRobotAdapter.from_yaml
+  - obs_adapter: unicornA_cf_320_1D_strip
+    cmd_adapter: twist_1_1
+    sync:
+      policy: obs-first-topic
+
+- id: uA_b1_xy_cf_strip
+  desc: "Grayscale 1D frontal camera, only translation"
+  code:
+  - rosstream2boot.ROSRobotAdapter.from_yaml
+  - obs_adapter: unicornA_cf_320_1D_strip
+    cmd_adapter: twist_xy_1
+    sync:
+      policy: obs-first-topic
+
+
+
 # - id: unicornA_base1_crcf
 # - id: unicornA_base1_crcfhrhl

@@ -24,3 +24,13 @@ def iterate_context_explogs(context, explogs):
         name = id_explog.replace('-', '')
         e_c = context.child(name)
         yield e_c, id_explog
+
+
+
+def iterate_context_agents_and_episodes(context, agents, episodes):
+    """ Yields context, id_agent, id_episode  """
+    for cc, id_agent in iterate_context_agents(context, agents):
+        for c, id_episode in iterate_context_episodes(cc, episodes):
+            yield c, id_agent, id_episode
+
+

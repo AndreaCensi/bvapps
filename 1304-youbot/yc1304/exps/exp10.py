@@ -1,7 +1,7 @@
 from quickapp.library.app.quickapp_imp import QuickApp
 from rosstream2boot.programs.rs2b import RS2B
 from . import CampaignCmd, campaign_sub
-from yc1304.s03_learning.log_learn import LearnLog, PublishLearningResult
+from yc1304.s03_learning.log_learn import PublishLearningResult
 from yc1304.s10_servo_field.apps import ServoField
 from yc1304.exps.exp_utils import iterate_context_episodes
 

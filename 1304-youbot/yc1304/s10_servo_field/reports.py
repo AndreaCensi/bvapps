@@ -97,50 +97,62 @@ def report_distances(processed):
 def get_extra_item(bds, field):
     return [bd['extra'].item()[field] for bd in bds]
  
-def report_servo1(processed):
-    r = Report('servo1')
+def repsec_servo1_u(r, processed):
     f = r.figure()
-     
-    xy = processed['sparse_xy']
+    
     bds = processed['sparse']
+    u = np.array(get_extra_item(bds, 'u'))
+    xy = processed['sparse_xy']
     
     poses = get_extra_item(bds, 'odom')
-    u = np.array(get_extra_item(bds, 'u'))
-    u_raw = np.array(get_extra_item(bds, 'u_raw'))
-    
     has_theta = u.shape[1] == 3
-    
-    if has_theta:        
-        u_th = u[:, 2]
-        u_raw_th = u_raw[:, 2]
-
-    caption = 'First two components of "u_raw".'
-    with f.plot('u_raw_arrows', caption=caption) as pylab:
-        plot_reference_points(pylab, processed)
-        # plot_servo_arrows(pylab, xy, u_raw)
-        plot_poses_commands(pylab, poses, u_raw)
-        pylab.axis('equal')
-
-    if has_theta:
-        caption = 'Third component of "u_raw".'
-        with f.plot('u_raw_th_sign', caption=caption) as pylab:
-            plot_reference_points(pylab, processed)
-            plot_scalar_field_sign(pylab, xy, u_raw_th)
-
 
     caption = 'First two components of "u".'
     with f.plot('u01_arrows', caption=caption) as pylab:
         plot_reference_points(pylab, processed)
-#         plot_servo_arrows(pylab, xy, u)
         plot_poses_commands(pylab, poses, u)
         pylab.axis('equal')
 
     if has_theta:
+        u_th = u[:, 2]
         caption = 'Third component of "u".'
         with f.plot('u_th_sign', caption=caption) as pylab:
             plot_reference_points(pylab, processed)
             plot_scalar_field_sign(pylab, xy, u_th)
 
+
+def repsec_servo1_u_raw(r, processed):
+    f = r.figure()
+    
+    bds = processed['sparse']
+    u = np.array(get_extra_item(bds, 'u_raw'))
+    xy = processed['sparse_xy']
+    
+    poses = get_extra_item(bds, 'odom')
+    has_theta = u.shape[1] == 3
+
+    caption = 'First two components of "u".'
+    with f.plot('u01_arrows', caption=caption) as pylab:
+        plot_reference_points(pylab, processed)
+        plot_poses_commands(pylab, poses, u)
+        pylab.axis('equal')
+
+    if has_theta:
+        u_th = u[:, 2]
+        caption = 'Third component of "u".'
+        with f.plot('u_th_sign', caption=caption) as pylab:
+            plot_reference_points(pylab, processed)
+            plot_scalar_field_sign(pylab, xy, u_th)
+    
+def report_servo1(processed):
+    r = Report('servo1')
+
+    with r.subsection('u', robust=True) as s:
+        repsec_servo1_u(s, processed)
+    
+    with r.subsection('u_raw', robust=True) as s:
+        repsec_servo1_u_raw(s, processed)
+     
     return r
 
 def report_servo_details(processed, nsamples=6):
