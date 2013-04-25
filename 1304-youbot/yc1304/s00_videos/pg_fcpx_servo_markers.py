@@ -65,7 +65,9 @@ class FCPXServoMarkers(Block):
         for i, timestamps in enumerate(self.servo_sequences):
             start = timestamps[0]
             end = timestamps[-1]
-            s += self.get_marker_xml(start=start, duration=None, value='Servo %d - start' % i)
+            duration = end - start
+#             s += self.get_marker_xml(start=start, duration=duration, value='Servo %d' % i)
+            s += self.get_marker_xml(start=start, duration=duration, value='Servo %d - start' % i)
             s += self.get_marker_xml(start=end, duration=None, value='Servo %d - end' % i)
         return s
     
@@ -103,7 +105,7 @@ class FCPXServoMarkers(Block):
         
     def get_asset_xml(self, name, filename):
         return  """ 
-          <asset id="{name}" src="file:{filename}"/>
+          <asset id="{name}" src="{filename}"/>
         """.format(name=name, filename=filename)
 
     def get_project_xml(self, name):
@@ -114,22 +116,23 @@ class FCPXServoMarkers(Block):
         
         for video in ['servo_status', 'servo_error', 'servo_indicator']:
             filename = '%s.%s.mp4' % (out_base, video)
-            filename = os.path.realpath(filename)
+            # filename = os.path.realpath(filename)
             assets += self.get_asset_xml(video, filename)
             clips += self.get_clip_xml(video, duration)
         
-        template = """
-        <fcpxml version="1.0">
-              <project name="{name}">
-                  
-                  <resources>
-                      <format id="r1" frameDuration="1001/30000s" width="320" height="240"/>
-                      {assets}
-                  </resources>
-                
-                    {clips}
-        </project>
-        </fcpxml>
+        template = """<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE fcpxml>
+<fcpxml version="1.2">
+<project name="{name}">
+          
+          <resources>
+              <format id="r1" frameDuration="1001/30000s" width="320" height="240"/>
+              {assets}
+          </resources>
+        
+            {clips}
+</project>
+</fcpxml>
         """
         s = template.format(name=name, assets=assets, clips=clips)
         return s

@@ -1,7 +1,7 @@
 --- model video_servo_multi
 config bag    """.bag file to read""" 
 config out_base     "Output file (no extension)" 
-config container = 'mkv'
+config container = 'mp4'
 
 import procgraph_ros
 import video_hokuyo_sup
@@ -9,7 +9,7 @@ import pg_servo_status
 import pg_fcpx_servo_markers
 
 
-|bagread file=$bag | --> |sync| --> y,y_goal,servo_state
+|bagread file=$bag| --> |sync| --> y,y_goal,servo_state
 
 bagread.topics='/servo_manager/y,/servo_manager/y_goal,/servo_manager/servo_state'
 #,u,servo_state

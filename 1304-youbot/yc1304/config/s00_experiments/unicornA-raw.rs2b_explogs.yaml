@@ -422,10 +422,26 @@
         notes: | 
           xxx
           
-# /ros-logs/unicornA_servocorner_laseronly_2013-04-23-21-40-22.bag.
+# /ros-logs/.
 
 
-
+- id: unicornA_servocorner_laseronly_2013-04-23-21-40-22
+  desc:  "Servo experiments with camera, only translation"
+  code:
+    - rosstream2boot.ExpLogFromYaml
+    - files:
+        "file:bag": ~/01-youbot-ros-logs-good/unicornA_servocorner_laseronly_2013-04-23-21-40-22.bag
+        "file:outside": ~/01-youbot-ros-logs-good/unicornA_servocorner_laseronly_2013-04-23-21-40-22.outside.mp4
+      annotations:
+        robot: *unicornA_base1
+        motion:
+          agent: servo  
+        environment: *lab_corner
+        events:
+          disturbances: [andrea_panels, light]
+        notes: | 
+          "laseronly" in the name is wrong
+ 
 ##########################################
 # Template:
 # - id:  
