@@ -1,7 +1,0 @@
-# - id: unicornA_base1_all
-#   desc: all logs from unicornA
-#   code:
-#     - rosstream2boot.MultiLog
-#     - logs: 
-#       - 'unicornA_base1_2013-04-*'
-
