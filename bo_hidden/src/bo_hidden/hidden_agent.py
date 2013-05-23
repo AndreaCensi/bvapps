@@ -40,11 +40,11 @@ class HiddenAgent(ExpSwitcher):
             self.current_stage = Stage(self.boot_spec)
 
 
-    def publish(self, publisher):
+    def publish(self, pub):
 
         for i, stage in enumerate(self.stages):
             bgds_estimator = stage.agent.bgds_estimator
-            S = publisher.section('s%s' % i)
+            S = pub.section('s%s' % i)
             bgds_estimator.publish_compact(S) # XXX
 
 
