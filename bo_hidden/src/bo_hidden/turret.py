@@ -2,7 +2,7 @@ from bootstrapping_olympics import StreamSpec
 from contracts import contract
 from geometry import (SE3, se3, SE3_from_SE2, angle_from_SE2,
     SE2_from_translation_angle, SE2_from_SE3, ProductManifold)
-from vehicles_dynamics import CircleVel, Dynamics, SE2Dynamics
+from vehicles.library.dynamics import CircleVel, Dynamics, SE2Dynamics
 import numpy as np
 
 
@@ -35,10 +35,10 @@ class BaseTopDynamics(Dynamics):
         # random_angle = SO2.convert_to(SE3, SO2.sample_uniform()) # XXX
 #        random_angle = SE3_from_SE2(SE2_from_SO2(SO2.sample_uniform()))
 
-        #angle = BaseTopDynamics.last_turret_angle
+        # angle = BaseTopDynamics.last_turret_angle
         angle = np.random.rand() * np.pi * 2
         turret_pose = SE3_from_SE2(SE2_from_translation_angle([0, 0], angle))
-        #print('Starting at %s deg ' % np.rad2deg(angle))
+        # print('Starting at %s deg ' % np.rad2deg(angle))
         return self.compose_state(base=self.base.pose2state(pose),
                                   top=self.top.pose2state(turret_pose))
 
@@ -58,8 +58,8 @@ class BaseTopDynamics(Dynamics):
         # Save angle
         q, _ = self.top.joint_state(top_state2)
         BaseTopDynamics.last_turret_angle = angle_from_SE2(SE2_from_SE3(q))
-        #print('angle: %s deg ' % np.rad2deg(Turret.last_turret_angle))
-        #print('new state:\n%s' % self.print_state(stateb))
+        # print('angle: %s deg ' % np.rad2deg(Turret.last_turret_angle))
+        # print('new state:\n%s' % self.print_state(stateb))
         return stateb
 
     def base_state_from_big_state(self, state):
@@ -90,15 +90,15 @@ class BaseTopDynamics(Dynamics):
         conf = self.base.joint_state(base_state, 0)
         body_pose, body_vel = conf
         if joint == 0:
-            #print('here: %s' % describe_value(conf))
+            # print('here: %s' % describe_value(conf))
             return body_pose, body_vel
         elif joint == 1:
             # FIXME: velocity not computed
             q, _ = self.top.joint_state(top_state)
             j = SE3.multiply(body_pose, q)
-            jvel = se3.zero() #@UndefinedVariable
+            jvel = se3.zero()  # @UndefinedVariable
             conf2 = j, jvel
-            #print('there: %s' % describe_value(conf2))
+            # print('there: %s' % describe_value(conf2))
             return conf2
         else:
             raise ValueError('No such joint %d.' % joint)

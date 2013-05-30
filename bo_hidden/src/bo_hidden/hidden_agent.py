@@ -1,5 +1,5 @@
-from boot_agents.bds import BDSAgent
-from boot_agents.bgds import BGDSAgent
+# from boot_agents.bds import BDSAgent
+# from boot_agents.bgds import BGDSAgent
 from boot_agents.simple_stats.exp_switcher import ExpSwitcher
 
 
@@ -45,6 +45,6 @@ class HiddenAgent(ExpSwitcher):
         for i, stage in enumerate(self.stages):
             bgds_estimator = stage.agent.bgds_estimator
             S = pub.section('s%s' % i)
-            bgds_estimator.publish_compact(S) # XXX
+            bgds_estimator.publish_compact(S)  # XXX
 
 
