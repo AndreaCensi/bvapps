@@ -19,7 +19,7 @@ all: sets-all subdirs-all
 
 %-set-status:
 	@echo "----------------------- Status for $* -----------------------"
-	@compmake --slave --path sets/$*/storage/compmake default stats
+	-compmake sets/$*/storage/compmake -c stats
 
 test: subdirs-test boot-tests vehicles-tests local-tests
 
