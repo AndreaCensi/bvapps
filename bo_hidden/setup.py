@@ -25,8 +25,8 @@ setup(name='BOHidden',
       package_dir={'':'src'},
       packages=find_packages('src'),
       install_requires=[ 
-        'BootOlympics[compmake]>=1.0,<2', 
-        'PyVehicles[procgraph,boot]>=1.0,<2',
+        #'BootOlympics[compmake]>=1.0,<2', 
+        #'PyVehicles[procgraph,boot]>=1.0,<2',
       ],
       extras_require={
         # 'videos':  ['PyVehicles[procgraph]'],
