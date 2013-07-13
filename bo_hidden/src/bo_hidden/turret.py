@@ -2,8 +2,9 @@ from bootstrapping_olympics import StreamSpec
 from contracts import contract
 from geometry import (SE3, se3, SE3_from_SE2, angle_from_SE2,
     SE2_from_translation_angle, SE2_from_SE3, ProductManifold)
-from vehicles.library.dynamics import CircleVel, Dynamics, SE2Dynamics
+from vehicles.library.dynamics import CircleVel, SE2Dynamics
 import numpy as np
+from vehicles import Dynamics
 
 
 class BaseTopDynamics(Dynamics):
