@@ -2,3 +2,4 @@
 *.egg-info
 #*lyx#
 bdse1/.compmake_history.txt
+.compmake_history.txt
