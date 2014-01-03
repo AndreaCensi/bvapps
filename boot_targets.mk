@@ -37,6 +37,9 @@ vehicles-tests:
 %-set-all: sets/display_vehicles
 	$(nice) $(bom) $(bom_params) batch $* --command "$(command) $(targets_all)"
 
+%-set-console: 
+	$(nice) $(bom) $(bom_params) batch $*  --command "exit"
+
 %-set-complete: sets/display_vehicles
 		$(nice) $(bom) $(bom_params) batch $* --command "$(command) $(targets_complete)"
 

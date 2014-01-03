@@ -1,5 +1,5 @@
 subdirs=
-sets=bv1bds1 bv1bds2 bv1bds3 bv1servo1 bv1ddstest1 bv1ddstest2
+sets=bv1bds1 bv1bds2 bv1bds3 bv1servo1 bv1ddstest1 bv1ddstest2 bv1bds4
 
 include ../boot_targets.mk 
 
