@@ -19,7 +19,7 @@ all: sets-all subdirs-all
 
 %-set-status:
 	@echo "----------------------- Status for $* -----------------------"
-	@compmake --slave --path sets/$*/storage/compmake default stats
+	-compmake sets/$*/storage/compmake -c stats
 
 test: subdirs-test boot-tests vehicles-tests local-tests
 
@@ -36,6 +36,9 @@ vehicles-tests:
 
 %-set-all: sets/display_vehicles
 	$(nice) $(bom) $(bom_params) batch $* --command "$(command) $(targets_all)"
+
+%-set-console: 
+	$(nice) $(bom) $(bom_params) batch $*  --command "exit"
 
 %-set-complete: sets/display_vehicles
 		$(nice) $(bom) $(bom_params) batch $* --command "$(command) $(targets_complete)"

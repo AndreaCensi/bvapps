@@ -13,7 +13,8 @@
   code:
     - bootstrapping_olympics.library.robots.EquivRobot
     - robot: "r-${vehicle}"
-      cmd_nuisance: [n_GLa]
+      #cmd_nuisance: [n_GLa]
+      cmd_nuisance: [GLa]
       obs_nuisance: []
           
           
