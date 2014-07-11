@@ -4,14 +4,16 @@
 - id: bdse1
   desc: "BDSE agent "
   code:
-      - boot_agents.BDSEAgent
-      - change_fraction: 0.5
-        explorer: expsw1
-        estimator: 
-        - boot_agents.BDSEEstimator
-        - rcond: 0.000000001
-        servo:
-          gain: 0.1
+  - boot_agents.BDSEAgent
+  - change_fraction: 0.5
+    explorer: expsw1
+    estimator: 
+    - boot_agents.BDSEEstimator
+    - rcond: 0.000000001
+    servo:
+    - boot_agents.BDSEServo
+    - gain: 0.1
+      linpoint: current
 
 - id: bdse3
   desc: "BDSE agent (linpoint=curr) "
@@ -23,7 +25,8 @@
     - boot_agents.BDSEEstimator
     - rcond: 0.000000001
     servo:
-      gain: 0.05
+    - boot_agents.BDSEServo
+    - gain: 0.05
       linpoint: current
 
 # - id: bdse1_smid
@@ -47,7 +50,8 @@
     - boot_agents.BDSEEstimator
     - rcond: 0.000000001
     servo:
-      gain: 0.05
+    - boot_agents.BDSEServo
+    - gain: 0.05
       linpoint: goal
       
 
