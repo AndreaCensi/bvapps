@@ -5,7 +5,7 @@ bom_params=--seterr=raise
 command=parmake
 #bom_params=--contracts --seterr=raise
 # Default targets for compmake
-targets_all=not video*
+targets_all=not *video*
 targets_complete=all
 
 # targets=
@@ -53,7 +53,7 @@ sets/display_vehicles:
 
 %-set-clean-videos:
 	-rm -rf sets/$*/videos/
-	-$(bom) $(bom_params) batch $* --command "clean video*; parmake videos"	
+	-$(bom) $(bom_params) batch $* --command "clean *video*; parmake *videos"	
 
 %-set-clean-compmake:
 	-rm -rf sets/$*/storage/compmake
