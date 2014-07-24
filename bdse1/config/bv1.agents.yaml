@@ -23,11 +23,11 @@
 - id: stats1
   desc: Computes simple statistics (1D data)
   code:
-  - boot_agents.EstStats
-  - beta: 1 # XXX
+  - boot_agents_stats.EstStats
+  - {}
 
 - id: stats2
   desc: Computes simple statistics (2D data)
   code:
-  - boot_agents.EstStats2D
-  - beta: 1 # XXX
+  - boot_agents_stats.EstStats2D
+  - {}

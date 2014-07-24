@@ -129,7 +129,7 @@
 
 
 - id: bv1bds2
-  desc: 'Very small number of episodes (10)'
+  desc: 'Very small number of episodes (10) for testing purposes'
   code:
   - bootstrapping_olympics.batch_jobs1
   - robots: [
@@ -140,14 +140,14 @@
     predict: {}
     explore:
         num_episodes: 10
-        num_episodes_videos: 0
+        num_episodes_videos: 2
         explorer: expsw1 
         max_episode_len: 30
         episodes_per_tranche: 100
-        videos: []
+        videos: [mp4f2sr]
     servo:
         num_episodes: 50
-        num_episodes_videos: 10
+        num_episodes_videos: 2
         max_episode_len: 60
         displacement: 1
         videos: [mp4f2sr]
