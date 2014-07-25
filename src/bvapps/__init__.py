@@ -7,6 +7,7 @@ from quickapp import iterate_context_names
 import os
 
 
+
 def jobs_comptests(context):
     from comptests import jobs_registrar
 
@@ -22,8 +23,6 @@ def jobs_comptests(context):
     
     # load into bootstrapping_olympics
     from bootstrapping_olympics import get_boot_config
-    # need to load it
-    from bootstrapping_olympics.configuration.batch_config import BatchConfigMaster
 
 
     for d in [dirname, dirname2]:
@@ -35,19 +34,23 @@ def jobs_comptests(context):
         
     # Our tests are its tests with our configuration
     from bootstrapping_olympics import unittests
-    if False:
-        j1 = jobs_registrar(context, get_boot_config())
-        j2 = jobs_registrar(context, get_vehicles_config())
     
-        return [j1, j2]
+    from boot_manager import unittests, get_bootbatch_config
     
-    which = ["bv1bds2"]
-    for c, id_set in iterate_context_names(context, which, key='set'):
-        root = os.path.join(c.get_output_dir(), 'data_central')
-        if not os.path.exists(root):
-            os.makedirs(root)
-            os.makedirs(os.path.join(root, 'config'))
-        data_central = DataCentral(root)
-        c.comp_config_dynamic(batch_process_manager, data_central, which_sets=id_set)
+    
+    jobs_registrar(context, get_boot_config())
+    jobs_registrar(context, get_vehicles_config())
+    jobs_registrar(context, get_bootbatch_config())
+
+
+#     
+#     which = ["bv1bds2"]
+#     for c, id_set in iterate_context_names(context, which, key='set'):
+#         root = os.path.join(c.get_output_dir(), 'data_central')
+#         if not os.path.exists(root):
+#             os.makedirs(root)
+#             os.makedirs(os.path.join(root, 'config'))
+#         data_central = DataCentral(root)
+#         c.comp_config_dynamic(batch_process_manager, data_central, which_sets=id_set)
      
     
