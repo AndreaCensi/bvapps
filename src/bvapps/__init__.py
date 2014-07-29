@@ -1,4 +1,4 @@
-from bootstrapping_olympics.programs.manager.batch.batch_manager import (
+from bootstrapping_olympics.programs.manager.batch.main import (
     batch_process_manager)
 from bootstrapping_olympics.programs.manager.meat.data_central import (
     DataCentral)
