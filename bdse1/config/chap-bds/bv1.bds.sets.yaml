@@ -65,7 +65,6 @@
     ]
     agents: [bdse1, bgds1]
     predict: {}
-    #    live_plugins: [live_bridge_predict]
     explore:
         num_episodes: 1000
         num_episodes_videos: 5
@@ -212,8 +211,7 @@
     ]
     agents: [bdse1]
     predict: {}
-    #    live_plugins: [live_bridge_predict]
-    explore_modulus:
+    explore: # XXX: it was explore_modulus:
         num_episodes: 20
         num_episodes_videos: 5
         explorer: expswitch_t1 #XXX change
