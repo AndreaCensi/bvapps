@@ -12,7 +12,7 @@ def jobs_comptests(context):
     rel = resource_filename("bvapps", "configs")
     dirname = os.path.join(rel, '..', '..', '..', 'bdse1')
     dirname2 = os.path.join(rel, '..', '..', '..', 'bo_app1') # e.g. r_rf_A
-    dirs = [dirname, dirname2, "vehicles.config"]
+    dirs = [dirname, dirname2, "vehicles.configs"]
     
     from conf_tools import GlobalConfig
     GlobalConfig.global_load_dirs(dirs)
