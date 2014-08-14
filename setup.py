@@ -21,17 +21,20 @@ setup(name='bvapps',
       ],
 
       version=version,
-      download_url='http://github.com/AndreaCensi/boot_olympics/tarball/%s' % version,
+      download_url='http://github.com/AndreaCensi/bvapps/tarball/%s' % version,
 
       package_dir={'':'src'},
       packages=find_packages('src'),
       install_requires=[
         'BootOlympics',
+        'vehicles',
+        'BootAgents',
       ],
       extras_require={},
 
       setup_requires=['nose>=1.0'],
-      tests_require=['nose>=1.0', 'rudolf', 'nose-progressive', 'nose-cov',
+      tests_require=[
+        'nose>=1.0', 'rudolf', 'nose-progressive', 'nose-cov',
                      'comptests'],
 
       entry_points={

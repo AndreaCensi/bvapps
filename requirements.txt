@@ -1,0 +1,3 @@
+-e git+https://github.com/AndreaCensi/vehicles.git@env_fault#egg=vehicles
+-e git+https://github.com/AndreaCensi/boot_olympics.git@env_fault#egg=BootOlympics
+-e git+https://github.com/AndreaCensi/boot_agents.git@env_fault#egg=BootAgents
