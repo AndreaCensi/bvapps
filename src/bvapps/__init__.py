@@ -1,9 +1,5 @@
-from bootstrapping_olympics.programs.manager.batch.main import (
-    batch_process_manager)
-from bootstrapping_olympics.programs.manager.meat.data_central import (
-    DataCentral)
+from boot_manager import DataCentral, batch_process_manager
 import os
-
 
 
 def jobs_comptests(context):

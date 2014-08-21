@@ -27,7 +27,7 @@ setup(name='bvapps',
       packages=find_packages('src'),
       install_requires=[
         'BootOlympics',
-        'vehicles',
+        'PyVehicles',
         'BootAgents',
       ],
       extras_require={},
