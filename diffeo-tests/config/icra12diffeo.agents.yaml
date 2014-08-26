@@ -7,7 +7,7 @@
 - id: icra12-bgds_agent
   desc: "Dev. version"
   code:
-      - boot_agents.BGDSAgent
+      - boot_agents_bgds.BGDSAgent
       - beta: 1
         skip: 1
         fixed_dt: 1

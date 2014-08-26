@@ -54,6 +54,6 @@
 - id: BGDSAgent_C1
   desc: "BDS agent"
   code:
-      - boot_agents.BGDSAgent
+      - boot_agents_bgds.BGDSAgent
       - beta: 1
 

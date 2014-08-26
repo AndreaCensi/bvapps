@@ -31,14 +31,14 @@ setup(name='bvapps',
         'BootAgents',
       ],
       extras_require={},
-
       setup_requires=['nose>=1.0'],
       tests_require=[
-        'nose>=1.0', 'rudolf', 'nose-progressive', 'nose-cov',
-                     'comptests'],
+        'nose>=1.0', 
+        'comptests',
+       ],
 
       entry_points={
       },
-      test_suite='nose.collector'
+      test_suite='nose.collector',
 )
 

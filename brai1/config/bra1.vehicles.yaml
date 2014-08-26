@@ -1,11 +1,13 @@
 - id: "brai_2eyes"
   desc: A classical braitenberg vehicle with 2 eyes.
-  id_dynamics: d_SE2_dd_v
-  sensors:
-      - id_sensor: fuzzy-eye
+  code:
+  - vehicles.Vehicle
+  - dynamics: d_SE2_dd_v
+    sensors:
+      - sensor: fuzzy-eye
         pose: [0.45, -0.12, 0]
-      - id_sensor: fuzzy-eye
+      - sensor: fuzzy-eye
         pose: [0.45, +0.12, 0]
-  radius: 0.5
-  extra:
-    skin: ddrive
+    radius: 0.5
+    extra:
+      skin: ddrive

@@ -1,55 +1,67 @@
 - id: v_fs_A
   desc: ""
-  id_dynamics: SE2_rb_v
-  sensors:
-    - id_sensor: s_fs_A
-  radius: 0.5
-  extra:
-    skin: omni
+  code:
+  - vehicles.Vehicle
+  - dynamics: SE2_rb_v
+    sensors:
+      - sensor: s_fs_A
+    radius: 0.5
+    extra:
+      skin: omni
 
 - id: v_fs_B
   desc: "Omnidirectional, square field sampler."
-  id_dynamics: SE2_rb_v
-  sensors:
-    - id_sensor: s_fs_B
-  radius: 0.5
-  extra:
-    skin: omni
+  code:
+  - vehicles.Vehicle
+  - dynamics: SE2_rb_v
+    sensors:
+      - sensor: s_fs_B
+    radius: 0.5
+    extra:
+      skin: omni
 
 - id: v_fs_C
   desc: "Omnidirectional, square field sampler."
-  id_dynamics: SE2_rb_v
-  sensors:
-    - id_sensor: s_fs_C
-  radius: 0.5
-  extra:
-    skin: omni
+  code:
+  - vehicles.Vehicle
+  - dynamics: SE2_rb_v
+    sensors:
+      - sensor: s_fs_C
+    radius: 0.5
+    extra:
+      skin: omni
 
 
 - id: v_fs_D
   desc: ""
-  id_dynamics: SE2_rb_v
-  sensors:
-    - id_sensor: s_fs_D
-  radius: 0.5
-  extra:
-    skin: omni
+  code:
+  - vehicles.Vehicle
+  - dynamics: SE2_rb_v
+    sensors:
+      - sensor: s_fs_D
+    radius: 0.5
+    extra:
+      skin: omni
 
 
 - id: v_rf_A
   desc: ""
-  id_dynamics: SE2_rb_v
-  sensors:
-    - id_sensor: s_rf_A
-  radius: 0.5
-  extra:
-    skin: omni
+  code:
+  - vehicles.Vehicle
+  - dynamics: SE2_rb_v
+    sensors:
+      - sensor: s_rf_A
+    radius: 0.5
+    extra:
+      skin: omni
 
 - id: v_cam_A
   desc: ""
-  id_dynamics: SE2_rb_v
-  sensors:
-    - id_sensor: s_cam_A
-  radius: 0.5
-  extra:
-    skin: omni
+  code:
+  - vehicles.Vehicle
+  - dynamics: SE2_rb_v
+    sensors:
+      - sensor: s_cam_A
+    radius: 0.5
+    extra:
+      skin: omni

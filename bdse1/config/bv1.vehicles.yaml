@@ -1,136 +1,164 @@
 - id: "rb1${sensor}"
   desc: ""
-  id_dynamics: rb1
-  sensors:
-    - id_sensor: "${sensor}"
-  radius: 0.5
-  extra:
-    skin: omni
+  code:
+  - vehicles.Vehicle
+  - dynamics: rb1
+    sensors:
+    - sensor: "${sensor}"
+    radius: 0.5
+    extra:
+      skin: omni
 
 - id: "cl1${sensor}"
   desc: ""
-  id_dynamics: cl1
-  sensors:
-    - id_sensor: "${sensor}"
-  radius: 0.5
-  extra:
-    skin: car_with_wheels
+  code:
+  - vehicles.Vehicle
+  - dynamics: cl1
+    sensors:
+    - sensor: "${sensor}"
+    radius: 0.5
+    extra:
+      skin: car_with_wheels
 
 
 - id: "dd1${sensor}"
   desc: ""
-  id_dynamics: dd1
-  sensors:
-    - id_sensor: "${sensor}"
-  radius: 0.5
-  extra:
-    skin: ddrive
+  code:
+  - vehicles.Vehicle
+  - dynamics: dd1
+    sensors:
+    - sensor: "${sensor}"
+    radius: 0.5
+    extra:
+      skin: ddrive
 
 
 - id: "rb2${sensor}"
   desc: ""
-  id_dynamics: rb2
-  sensors:
-    - id_sensor: "${sensor}"
-  radius: 0.5
-  extra:
-    skin: omni
+  code:
+  - vehicles.Vehicle
+  - dynamics: rb2
+    sensors:
+    - sensor: "${sensor}"
+    radius: 0.5
+    extra:
+      skin: omni
 
 - id: "rb1Mr1${sensor}"
   desc: ""
-  id_dynamics: rb1
-  sensors:
-    - id_sensor: "${sensor}"
+  code:
+  - vehicles.Vehicle
+  - dynamics: rb1
+    sensors:
+    - sensor: "${sensor}"
       pose: [0,0,45]
-  radius: 0.5
-  extra:
-    skin: omni
+    radius: 0.5
+    extra:
+      skin: omni
   
 - id: "rb1Mx1${sensor}"
   desc: ""
-  id_dynamics: rb1
-  sensors:
-    - id_sensor: "${sensor}"
+  code:
+  - vehicles.Vehicle
+  - dynamics: rb1
+    sensors:
+    - sensor: "${sensor}"
       pose: [0.1,0,0]
-  radius: 0.5
-  extra:
-    skin: omni
+    radius: 0.5
+    extra:
+      skin: omni
 
 - id: "rb1PMy2ccMy1cc"
   desc: "Vehicle with stereo camera"
-  id_dynamics: rb1
-  sensors:
-    - id_sensor: "cc"
+  code:
+  - vehicles.Vehicle
+  - dynamics: rb1
+    sensors:
+    - sensor: "cc"
       pose: [0,-0.1,0]
-    - id_sensor: "cc"
+    - sensor: "cc"
       pose: [0,+0.1,0]
-  radius: 0.5
-  extra:
-    skin: omni
+    radius: 0.5
+    extra:
+      skin: omni
 
 - id: "rb1My1${sensor}"
   desc: ""
-  id_dynamics: rb1
-  sensors:
-    - id_sensor: "${sensor}"
+  code:
+  - vehicles.Vehicle
+  - dynamics: rb1
+    sensors:
+    - sensor: "${sensor}"
       pose: [0,0.1,0]
-  radius: 0.5
-  extra:
-    skin: omni
+    radius: 0.5
+    extra:
+      skin: omni
 
 - id: "d1rb1${sensor}"
   desc: ""
-  id_dynamics: d1rb1
-  sensors:
-    - id_sensor: "${sensor}"
-  radius: 0.5
-  extra:
-    skin: omni
+  code:
+  - vehicles.Vehicle
+  - dynamics: d1rb1
+    sensors:
+    - sensor: "${sensor}"
+    radius: 0.5
+    extra:
+      skin: omni
 
 - id: "d2rb1${sensor}"
   desc: ""
-  id_dynamics: d2rb1
-  sensors:
-    - id_sensor: "${sensor}"
-  radius: 0.5
-  extra:
-    skin: omni
+  code:
+  - vehicles.Vehicle
+  - dynamics: d2rb1
+    sensors:
+    - sensor: "${sensor}"
+    radius: 0.5
+    extra:
+      skin: omni
 
 - id: "rb1Proco"
   desc: "Vehicle with both sensors"
-  id_dynamics: d2rb1
-  sensors:
-    - id_sensor: ro
-    - id_sensor: co
-  radius: 0.5
-  extra:
-    skin: omni
+  code:
+  - vehicles.Vehicle
+  - dynamics: d2rb1
+    sensors:
+    - sensor: ro
+    - sensor: co
+    radius: 0.5
+    extra:
+      skin: omni
 
 
 
 - id: "t1${sensor}"
   desc: ""
-  id_dynamics: t1
-  sensors:
-    - id_sensor: "${sensor}"
-  radius: 0.5
-  extra:
-    skin: S1
+  code:
+  - vehicles.Vehicle
+  - dynamics: t1
+    sensors:
+    - sensor: "${sensor}"
+    radius: 0.5
+    extra:
+      skin: S1
 
 - id: "tt1${sensor}"
   desc: ""
-  id_dynamics: tt1
-  sensors:
-    - id_sensor: "${sensor}"
-  radius: 0.5
-  extra:
-    skin: S1
+  code:
+  - vehicles.Vehicle
+  - dynamics: tt1
+    sensors:
+    - sensor: "${sensor}"
+    radius: 0.5
+    extra:
+      skin: S1
 
 - id: "ci1${sensor}"
   desc: ""
-  id_dynamics: ci1
-  sensors:
-    - id_sensor: "${sensor}"
-  radius: 0.5
-  extra:
-    skin: S1
+  code:
+  - vehicles.Vehicle
+  - dynamics: ci1
+    sensors:
+      - sensor: "${sensor}"
+    radius: 0.5
+    extra:
+      skin: S1

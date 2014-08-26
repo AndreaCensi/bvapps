@@ -54,7 +54,7 @@
 - id: co
   desc: "An omnidirectional camera with 180 sensels"
   code: 
-      - vehicles.library.sensors.PhotoreceptorsSmoothUniform
+      - vehicles.library.sensors.PhotoreceptorsUniform
       - num_sensels: 180
         fov_deg:     360
         spatial_sigma_deg: 0.01
@@ -66,8 +66,8 @@
       - vehicles.library.sensors.PhotoreceptorsSmoothUniform
       - num_sensels: 128
         fov_deg:     360
-        spatial_sigma_deg: 0.01
-        upsample: 2
+        spatial_sigma_deg: 2
+        upsample: 7
 
 - id: ico
   desc: "An omnidirectional camera with 180 sensels, irregularly sampled"

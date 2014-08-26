@@ -1,17 +1,15 @@
 - id: turret
   desc: 'A robot with a rotating turrent'
   dynamics: 
-      id: turret
-      desc: 'A dynamics with 2 joints.'
-      code: 
+      # 'A dynamics with 2 joints.'
       - bo_hidden.Turret
       - max_linear_velocity: [0.2,0.2]
         max_angular_velocity: 0.2
         max_turret_velocity: 0.05
   sensors:
-      - pose: [0,0,0]
-        joint: 1
-        id_sensor: cam_f360_n180_s
+  - pose: [0,0,0]
+    joint: 1
+    sensor: cam_f360_n180_s
   radius: 0.5
   extra:
       skin: omni_turret 
@@ -19,17 +17,15 @@
 - id: turret_rf
   desc: 'A robot with a rotating turrent'
   dynamics: 
-      id: turret
-      desc: 'A dynamics with 2 joints.'
-      code: 
+      #desc: 'A dynamics with 2 joints.'
       - bo_hidden.Turret
       - max_linear_velocity: [0.2,0.2]
         max_angular_velocity: 0.2
         max_turret_velocity: 0.05
   sensors:
-      - pose: [0,0,0]
-        joint: 1
-        id_sensor: rf360
+  - pose: [0,0,0]
+    joint: 1
+    sensor: rf360
   extra:
      skin: omni_turret
   radius: 0.5
