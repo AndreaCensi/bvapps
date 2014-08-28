@@ -6,24 +6,24 @@
   code:
      - vehicles_boot.BOVehicleSimulation
      - dt: 0.05
-       id_vehicle: d_SE2_car_v-rf360
-       id_world: SBox2_10a
+       vehicle: d_SE2_car_v-rf360
+       world: SBox2_10a
 
 - id: r-d_SE2_dd_v2-rf360
   desc: ""
   code:
      - vehicles_boot.BOVehicleSimulation
      - dt: 0.05
-       id_vehicle: d_SE2_dd_v2-rf360
-       id_world: SBox2_10a
+       vehicle: d_SE2_dd_v2-rf360
+       world: SBox2_10a
 
 - id: r-d_SE2_dd_v-rf360
   desc: ""
   code:
      - vehicles_boot.BOVehicleSimulation
      - dt: 0.05
-       id_vehicle: d_SE2_dd_v-rf360
-       id_world: SBox2_10a
+       vehicle: d_SE2_dd_v-rf360
+       world: SBox2_10a
 
 # These are the variations with the popcode
 

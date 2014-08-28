@@ -4,8 +4,8 @@
   code:
      - vehicles_boot.BOVehicleSimulation
      - dt: 0.033
-       id_vehicle: ${vehicle}
-       id_world: empty_fixed_5
+       vehicle: ${vehicle}
+       world: empty_fixed_5
 
 
 - id: "rn-${vehicle}"

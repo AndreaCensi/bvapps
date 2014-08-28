@@ -57,8 +57,6 @@
       - vehicles.library.sensors.PhotoreceptorsUniform
       - num_sensels: 180
         fov_deg:     360
-        spatial_sigma_deg: 0.01
-        upsample: 1
 
 - id: s1co2
   desc: "128 sensels, 2 deg smooth"

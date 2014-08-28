@@ -1,59 +1,52 @@
 - id: expswitch_t1
   desc: Switches randomly between commands with an exponential switching time.
   code:
-      - boot_agents.ExpSwitcher
-      - beta: 1
+  - boot_agents.ExpSwitcher
+  - beta: 1
 
 - id: embed
   desc: Estimates sensor geometry with MDS.
   code:
-      - boot_agents.Embed
-      - beta: 1
-        statistic: y_corr
-        scale_score: False
+  - boot_agents.Embed
+  - statistic: y_corr
+    scale_score: False
 
 - id: EstStats
   desc: Estimates some observations statistics.
   code:
-      - boot_agents.EstStats
-      - beta: 1
+  - boot_agents_stats.EstStats
+  - {}
 
 
 - id: BDSAgent_C1
   desc: "BDS agent (servo strategy S1)"
   code:
-      - boot_agents.BDSAgent
-      - beta: 1
-        change_fraction: 0.5
-        servo:
-            strategy: S1
-            gain: 0.1
+  - boot_agents_bdse.BDSEAgent2
+  - servo:
+        strategy: S1
+        gain: 0.1
 
 - id: BDSAgent_C2
   desc: "BDS agent (servo strategy S2)"
   code:
-      - boot_agents.BDSAgent
-      - beta: 1
-        change_fraction: 0.5
-        servo:
-            strategy: S2
-            gain: 0.1
+  - boot_agents_bdse.BDSEAgent2
+  - servo:
+        strategy: S2
+        gain: 0.1
             
 
 - id: BDSAgent_C3
   desc: "BDS agent (servo strategy S1n)"
   code:
-      - boot_agents.BDSAgent
-      - beta: 1
-        change_fraction: 0.5
-        servo:
-            strategy: S1n
-            gain: 0.1
+  - boot_agents_bdse.BDSEAgent2
+  - servo:
+        strategy: S1n
+        gain: 0.1
 
             
 - id: BGDSAgent_C1
-  desc: "BDS agent"
+  desc: "BGDS agent"
   code:
-      - boot_agents_bgds.BGDSAgent
-      - beta: 1
+  - boot_agents_bgds.BGDSAgent
+  - {}
 

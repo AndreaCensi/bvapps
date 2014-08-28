@@ -3,8 +3,8 @@
   code:
      - vehicles_boot.BOVehicleSimulation
      - dt: 0.033
-       id_vehicle: "${vehicle}"
-       id_world: SBox2_10a # Need SBox2 for sources
+       vehicle: "${vehicle}"
+       world: SBox2_10a # Need SBox2 for sources
 
 
 - id: r_turret
@@ -12,8 +12,8 @@
   code:
      - vehicles_boot.BOVehicleSimulation
      - dt: 0.033
-       id_vehicle: turret
-       id_world: stochastic_box_10
+       vehicle: turret
+       world: stochastic_box_10
 
 
 - id: r_turret_rf
@@ -21,5 +21,5 @@
   code:
      - vehicles_boot.BOVehicleSimulation
      - dt: 0.033
-       id_vehicle: turret_rf
-       id_world: stochastic_box_10
+       vehicle: turret_rf
+       world: stochastic_box_10

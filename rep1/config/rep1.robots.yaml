@@ -4,9 +4,9 @@
   code:
      - vehicles_boot.BOVehicleSimulation
      - dt: 0.033
-       id_vehicle: "${vehicle}"
-       # id_world: rep1a_world
-       id_world: BigMama_r10s1_orig
+       vehicle: "${vehicle}"
+       # world: rep1a_world
+       world: BigMama_r10s1_orig
        
 
 - id: "${vehicle}-rsim2"
@@ -14,8 +14,8 @@
   code:
     - vehicles_boot.BOVehicleSimulation
     - dt: 0.033
-      id_vehicle: "${vehicle}"
-      id_world: SBox2_10a       
+      vehicle: "${vehicle}"
+      world: SBox2_10a       
 
        
 - id: "${robot}-afew"

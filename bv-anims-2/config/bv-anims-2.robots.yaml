@@ -4,8 +4,8 @@
   code:
      - vehicles_boot.BOVehicleSimulation
      - dt: 0.033
-       id_vehicle: "${vehicle}"
-       id_world: SBox2_10a # XXX to change 
+       vehicle: "${vehicle}"
+       world: SBox2_10a # XXX to change 
 
 
 - id: "rsimfixed-${vehicle}"
@@ -13,8 +13,8 @@
   code:
     - vehicles_boot.BOVehicleSimulation
     - dt: 0.033
-      id_vehicle: "${vehicle}"
-      id_world: SBox2_10a #XXX empty_fixed_obstacles
+      vehicle: "${vehicle}"
+      world: SBox2_10a #XXX empty_fixed_obstacles
 
 
 - id: "rsimf-${vehicle}"
@@ -22,8 +22,8 @@
   code:
   - vehicles_boot.BOVehicleSimulation
   - dt: 0.033
-    id_vehicle: "${vehicle}"
-    id_world: simple-world-column
+    vehicle: "${vehicle}"
+    world: simple-world-column
 
 
 - id: "rsimw-${vehicle}"
@@ -31,6 +31,6 @@
   code:
   - vehicles_boot.BOVehicleSimulation
   - dt: 0.033
-    id_vehicle: "${vehicle}"
-    id_world: simple-wall
+    vehicle: "${vehicle}"
+    world: simple-wall
     safety_margin: 1

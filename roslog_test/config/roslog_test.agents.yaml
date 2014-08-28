@@ -1,13 +1,13 @@
 - id: EstStats
   desc: Estimates some observations statistics.
   code:
-      - boot_agents.EstStats
-      - beta: 1
+      - boot_agents_stats.EstStats
+      - {}
 
 
 - id: BDSAgent_C1
   desc: "BDS agent"
   code:
-      - boot_agents.BDSAgent
+      - boot_agents_bdse.BDSAgent
       - beta: 1
         change_fraction: 0.5

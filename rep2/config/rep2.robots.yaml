@@ -4,8 +4,8 @@
   code:
     - vehicles_boot.BOVehicleSimulation
     - dt: 0.033
-      id_vehicle: "${vehicle}"
-      id_world: SBox2_10a       
+      vehicle: "${vehicle}"
+      world: SBox2_10a       
       
 - id: "onev-${robot}" 
   desc: "Converts bits to 1 integer value (symbols)"

@@ -31,7 +31,7 @@
   desc: ""
   code: 
       - vehicles.library.worlds.Join
-      - id_worlds: 
+      - worlds: 
         - box0
         - ssources1
 
@@ -39,7 +39,7 @@
   desc: ""
   code: 
       - vehicles.library.worlds.Join
-      - id_worlds: 
+      - worlds: 
         - box1
         - ssources1
         

@@ -4,6 +4,6 @@
   code:
    - vehicles_boot.BOVehicleSimulation
    - dt: 0.0333
-     id_vehicle: "${vehicle}"
-     id_world: "${world}"
+     vehicle: "${vehicle}"
+     world: "${world}"
 

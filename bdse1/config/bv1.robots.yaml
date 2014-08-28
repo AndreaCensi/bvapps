@@ -21,8 +21,8 @@
   code:
      - vehicles_boot.BOVehicleSimulation
      - dt: 0.033
-       id_vehicle: "${vehicle}"
-       id_world: "${id_environment}"
+       vehicle: "${vehicle}"
+       world: "${id_environment}"
 
 
  
@@ -32,7 +32,7 @@
   code:
      - vehicles_boot.BOVehicleSimulation
      - dt: 0.033 
-       id_vehicle: |
+       vehicle: |
           ${vehicle|
             rcunA=v_cA_rf_f180n180dU_n0;
             rcuoA=v_cA_rf_f180n180dU_n1;
@@ -88,7 +88,7 @@
             C000A=v_cC_cam_f360n180dRs4_n0;
             C000A=v_cC_cam_f360n180dRs4_n1;
             C000A=v_cC_cam_f360n180dRs4_n2}
-       id_world: "${world|A=SBox3_10scale1;B=SBox3_10scale05}"
+       world: "${world|A=SBox3_10scale1;B=SBox3_10scale05}"
 
 
 - id: r_rf_A_n1

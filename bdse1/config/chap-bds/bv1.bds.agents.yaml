@@ -4,38 +4,32 @@
 - id: bdse1
   desc: "BDSE agent "
   code:
-  - boot_agents.BDSEAgent
-  - change_fraction: 0.5
-    explorer: expsw1
-    estimator: 
-    - boot_agents.BDSEEstimator
+  - boot_agents_bdse.BDSEAgent2
+  - estimator: 
+    - boot_agents_bdse.BDSEEstimator
     - rcond: 0.000000001
     servo:
-    - boot_agents.BDSEServo
+    - boot_agents_bdse.BDSEServo
     - gain: 0.1
       linpoint: current
 
 - id: bdse3
   desc: "BDSE agent (linpoint=curr) "
   code:
-  - boot_agents.BDSEAgent
-  - change_fraction: 0.5
-    explorer: expsw1
-    estimator: 
-    - boot_agents.BDSEEstimator
+  - boot_agents_bdse.BDSEAgent2
+  - estimator: 
+    - boot_agents_bdse.BDSEEstimator
     - rcond: 0.000000001
     servo:
-    - boot_agents.BDSEServo
+    - boot_agents_bdse.BDSEServo
     - gain: 0.05
       linpoint: current
 
 # - id: bdse1_smid
 #   desc: "BDSE agent "
 #   code:
-#       - boot_agents.BDSEAgent
-#       - change_fraction: 0.5
-#         explorer: expsw1
-#         rcond: 0.000000001
+#       - boot_agents_bdse.BDSEAgent2
+#       - rcond: 0.000000001
 #         servo:
 #           gain: 0.05
 #           linpoint: middle
@@ -43,27 +37,22 @@
 - id: bdse4
   desc: "BDSE agent (linpoint=goal)"
   code:
-  - boot_agents.BDSEAgent
-  - change_fraction: 0.5
-    explorer: expsw1
-    estimator: 
-    - boot_agents.BDSEEstimator
+  - boot_agents_bdse.BDSEAgent2
+  - estimator: 
+    - boot_agents_bdse.BDSEEstimator
     - rcond: 0.000000001
     servo:
-    - boot_agents.BDSEServo
+    - boot_agents_bdse.BDSEServo
     - gain: 0.05
       linpoint: goal
-      
 
 
 - id: bdse2
   desc: "BDSE agent (higher rcond)"
   code:
-  - boot_agents.BDSEAgent
-  - change_fraction: 0.5
-    explorer: expsw1    
-    estimator: 
-    - boot_agents.BDSEEstimator
+  - boot_agents_bdse.BDSEAgent2
+  - estimator: 
+    - boot_agents_bdse.BDSEEstimator
     - rcond: 0.001
 
 # # BGDS and variations
@@ -71,6 +60,6 @@
 # - id: bgds1
 #   desc: "BGDS agent"
 #   code:
-#       - boot_agents.BGDSAgent
+#       - boot_agents_bdse.BGDSAgent
 #       - beta: 1
  

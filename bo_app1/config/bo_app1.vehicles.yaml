@@ -34,7 +34,7 @@
 
 - id: v_fs_D
   desc: ""
-   code:
+  code:
   - vehicles.Vehicle
   - dynamics: SE2_rb_v
     sensors:

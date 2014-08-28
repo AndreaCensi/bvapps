@@ -1,29 +1,27 @@
 - id: expswitch_t1
   desc: Switches randomly between commands with an exponential switching time.
   code:
-      - boot_agents.ExpSwitcher
-      - beta: 1
+  - boot_agents.ExpSwitcher
+  - beta: 1
 
 - id: EstStats
   desc: Estimates some observations statistics.
   code:
-  - boot_agents.EstStats
-  - beta: 1
+  - boot_agents_stats.EstStats
+  - {}
 
 - id: SymbolsStats
   desc: Estimates symbols statistics.
   code:
   - boot_agents.SymbolsStats
-  - beta: 1
-    window: 4
+  - window: 4
   
 
 - id: SymbolsStats10
   desc: Estimates symbols statistics.
   code:
   - boot_agents.SymbolsStats
-  - beta: 1
-    window: 10
+  - window: 10
 
 
 

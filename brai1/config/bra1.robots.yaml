@@ -3,5 +3,5 @@
   code:
      - vehicles_boot.BOVehicleSimulation
      - dt: 0.033
-       id_vehicle: ${vehicle}
-       id_world: empty_light
+       vehicle: ${vehicle}
+       world: empty_light

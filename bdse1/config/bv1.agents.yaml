@@ -2,15 +2,15 @@
 - id: expsw1
   desc: Switches randomly between commands with an exponential switching time.
   code:
-      - boot_agents.ExpSwitcher
-      - beta: 1
+  - boot_agents.ExpSwitcher
+  - beta: 1
 
 # XXX: to change
 - id: expswitch_t1
   desc: Switches randomly between commands with an exponential switching time.
   code:
-      - boot_agents.ExpSwitcher
-      - beta: 1
+  - boot_agents.ExpSwitcher
+  - beta: 1
 
 - id: expswcan1
   desc: Switches randomly among canonical commands.
