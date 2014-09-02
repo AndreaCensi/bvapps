@@ -3,6 +3,6 @@
 - id: bgds1
   desc: "BGDS agent"
   code:
-      - boot_agents_bgds.BGDSAgent
-      - beta: 1
+  - boot_agents_bgds.BGDSAgent
+  - {}
 

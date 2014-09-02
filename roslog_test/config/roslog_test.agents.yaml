@@ -9,5 +9,4 @@
   desc: "BDS agent"
   code:
       - boot_agents_bdse.BDSAgent
-      - beta: 1
-        change_fraction: 0.5
+      - {}

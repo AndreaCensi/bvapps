@@ -6,7 +6,7 @@
   code:
   - boot_agents_bdse.BDSEAgent2
   - estimator: 
-    - boot_agents_bdse.BDSEEstimator
+    - bdse.BDSEEstimator
     - rcond: 0.000000001
     servo:
     - boot_agents_bdse.BDSEServo
@@ -18,7 +18,7 @@
   code:
   - boot_agents_bdse.BDSEAgent2
   - estimator: 
-    - boot_agents_bdse.BDSEEstimator
+    - bdse.BDSEEstimator
     - rcond: 0.000000001
     servo:
     - boot_agents_bdse.BDSEServo
@@ -39,7 +39,7 @@
   code:
   - boot_agents_bdse.BDSEAgent2
   - estimator: 
-    - boot_agents_bdse.BDSEEstimator
+    - bdse.BDSEEstimator
     - rcond: 0.000000001
     servo:
     - boot_agents_bdse.BDSEServo
@@ -52,14 +52,6 @@
   code:
   - boot_agents_bdse.BDSEAgent2
   - estimator: 
-    - boot_agents_bdse.BDSEEstimator
+    - bdse.BDSEEstimator
     - rcond: 0.001
 
-# # BGDS and variations
-
-# - id: bgds1
-#   desc: "BGDS agent"
-#   code:
-#       - boot_agents_bdse.BGDSAgent
-#       - beta: 1
- 
